@@ -1,0 +1,69 @@
+:root {
+  /* Architectural Light Palette */
+  --bg-pure: #ffffff;
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --bg-tertiary: #e2e8f0;
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --bg-card-hover: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.82);
+  --bg-glass-strong: rgba(255, 255, 255, 0.94);
+  --bg-dark-accent: #0b0f19;
+
+  /* Borders & Dividers */
+  --border-subtle: rgba(15, 23, 42, 0.08);
+  --border-glass: rgba(15, 23, 42, 0.12);
+  --border-glow: rgba(0, 112, 243, 0.35);
+  --border-cyan-active: #0284c7;
+
+  /* Accent Color Matrix */
+  --cyan-primary: #0284c7;
+  --cyan-glow: rgba(2, 132, 199, 0.3);
+  --cyan-soft: rgba(2, 132, 199, 0.08);
+  --blue-bright: #0070f3;
+  --blue-deep: #1d4ed8;
+  --indigo-tech: #4f46e5;
+  --violet-glow: rgba(79, 70, 229, 0.2);
+  --emerald-status: #059669;
+  --amber-alert: #d97706;
+  --rose-accent: #e11d48;
+
+  /* Text & Typography */
+  --text-primary: #090d16;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+  --text-dim: #94a3b8;
+  --text-cyan: #0284c7;
+
+  /* Font Families */
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 200ms;
+  --duration-normal: 350ms;
+  --duration-slow: 600ms;
+
+  /* Box Shadows & Ambient Lighting */
+  --shadow-subtle: 0 4px 20px rgba(15, 23, 42, 0.04);
+  --shadow-card: 0 10px 30px -4px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+  --shadow-cyan-glow: 0 10px 30px -5px rgba(2, 132, 199, 0.2);
+  --shadow-blue-glow: 0 15px 40px -5px rgba(0, 112, 243, 0.25);
+
+  /* Layout Containers */
+  --container-max: 1380px;
+  --container-wide: 1600px;
+  --header-height: 80px;
+}

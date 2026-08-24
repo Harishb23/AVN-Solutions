@@ -1,0 +1,286 @@
+.automation-sim-section {
+  position: relative;
+  background-color: #f8fafc;
+}
+
+.automation-console-wrapper {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08), 0 0 35px rgba(2, 132, 199, 0.08);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.console-top-hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+  background: #f1f5f9;
+  border-bottom: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.hud-brand-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hud-firmware {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #0284c7;
+  font-weight: 700;
+  background: rgba(2, 132, 199, 0.1);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-xs);
+}
+
+.hud-room-name {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.hud-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.console-main-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 2.5rem;
+  padding: 2.5rem;
+}
+
+/* Touch Pad */
+.virtual-touch-pad {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.touch-pad-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.touch-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+}
+
+.btn-start-macro {
+  width: 100%;
+  padding: 1.75rem 2rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, #0284c7 0%, #0070f3 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 10px 30px rgba(2, 132, 199, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
+}
+
+.btn-start-macro:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(2, 132, 199, 0.6);
+}
+
+.btn-start-macro.executing {
+  background: linear-gradient(135deg, #4f46e5 0%, #0284c7 100%);
+  animation: pulse 1.5s infinite;
+}
+
+.btn-reset-macro {
+  width: 100%;
+  padding: 1.5rem 2rem;
+  border-radius: var(--radius-lg);
+  background: #f1f5f9;
+  border: 1px solid rgba(15, 23, 42, 0.15);
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.btn-reset-macro:hover {
+  background: #e2e8f0;
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
+.power-icon {
+  flex-shrink: 0;
+}
+
+.btn-macro-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-macro-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.btn-macro-sub {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+/* Subsystems */
+.subsystems-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.subsystem-cell {
+  background: #f8fafc;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.subsystem-cell.active {
+  background: rgba(2, 132, 199, 0.08);
+  border-color: #0284c7;
+  box-shadow: 0 4px 15px rgba(2, 132, 199, 0.15);
+}
+
+.cell-icon {
+  color: #0284c7;
+  flex-shrink: 0;
+}
+
+.cell-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.cell-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+}
+
+.cell-val {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Log Panel */
+.automation-log-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: #f8fafc;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+}
+
+.log-heading {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: #0284c7;
+  font-weight: 700;
+}
+
+.log-steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.log-step-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.log-step-row.current {
+  opacity: 1;
+  border-color: #0284c7;
+  background: rgba(2, 132, 199, 0.06);
+  transform: translateX(4px);
+}
+
+.log-step-row.done {
+  opacity: 1;
+  border-color: rgba(5, 150, 105, 0.3);
+}
+
+.log-step-indicator {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  margin-top: 0.1rem;
+}
+
+.log-step-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.log-step-title {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.log-step-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.automation-footer-note {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.78rem;
+  color: var(--text-tertiary);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1rem;
+  margin-top: auto;
+}
+
+@media (max-width: 1024px) {
+  .console-main-layout {
+    grid-template-columns: 1fr;
+  }
+}
