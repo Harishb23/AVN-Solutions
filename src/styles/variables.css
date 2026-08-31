@@ -1,69 +1,153 @@
 :root {
-  /* Architectural Light Palette */
-  --bg-pure: #ffffff;
-  --bg-primary: #f8fafc;
-  --bg-secondary: #f1f5f9;
-  --bg-tertiary: #e2e8f0;
-  --bg-card: rgba(255, 255, 255, 0.9);
-  --bg-card-hover: #ffffff;
-  --bg-glass: rgba(255, 255, 255, 0.82);
-  --bg-glass-strong: rgba(255, 255, 255, 0.94);
-  --bg-dark-accent: #0b0f19;
+  /* Brand Core Colors */
+  --navy-deep: #07101F;
+  --navy-dark: #0B1B32;
+  --navy-card: #0F223D;
+  --navy-light: #162C4E;
+  
+  --blue-primary: #0877D1;
+  --blue-hover: #0762ad;
+  --blue-deep: #0B1B32;
+  
+  --cyan-bright: #00C9F5;
+  --cyan-glow: rgba(0, 201, 245, 0.35);
+  --cyan-soft: rgba(0, 201, 245, 0.08);
+  
+  --bg-light: #F5F8FC;
+  --bg-pure: #FFFFFF;
+  --bg-card-light: #FFFFFF;
+  --text-muted: #667085;
+  --text-dark: #07101F;
+  --border-light: #DCE5EF;
+  --border-subtle: #E2E8F0;
+  
+  /* Status Colors */
+  --emerald-status: #10B981;
+  --amber-alert: #F59E0B;
+  --rose-accent: #EF4444;
 
-  /* Borders & Dividers */
-  --border-subtle: rgba(15, 23, 42, 0.08);
-  --border-glass: rgba(15, 23, 42, 0.12);
-  --border-glow: rgba(0, 112, 243, 0.35);
-  --border-cyan-active: #0284c7;
+  /* Default Architectural Light Palette */
+  --bg-primary: #F5F8FC;
+  --bg-secondary: #EDF3FA;
+  --bg-tertiary: #E2EBF5;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F8FAFC;
+  --bg-glass: rgba(255, 255, 255, 0.92);
+  --bg-glass-strong: rgba(255, 255, 255, 0.98);
+  --bg-dark-accent: #07101F;
 
-  /* Accent Color Matrix */
-  --cyan-primary: #0284c7;
-  --cyan-glow: rgba(2, 132, 199, 0.3);
-  --cyan-soft: rgba(2, 132, 199, 0.08);
-  --blue-bright: #0070f3;
-  --blue-deep: #1d4ed8;
-  --indigo-tech: #4f46e5;
-  --violet-glow: rgba(79, 70, 229, 0.2);
-  --emerald-status: #059669;
-  --amber-alert: #d97706;
-  --rose-accent: #e11d48;
+  /* Borders & Shadows */
+  --border-color: #DCE5EF;
+  --border-glass: rgba(8, 119, 209, 0.18);
+  --border-glow: rgba(0, 201, 245, 0.35);
+  --border-cyan-active: #0877D1;
 
-  /* Text & Typography */
-  --text-primary: #090d16;
+  /* Accent Mappings */
+  --cyan-primary: #0877D1;
+  --blue-bright: #0877D1;
+  --indigo-tech: #0B1B32;
+
+  /* Typography */
+  --text-primary: #07101F;
   --text-secondary: #475569;
-  --text-tertiary: #64748b;
-  --text-dim: #94a3b8;
-  --text-cyan: #0284c7;
+  --text-tertiary: #667085;
+  --text-dim: #94A3B8;
+  --text-cyan: #0877D1;
 
-  /* Font Families */
-  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-heading: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Fonts */
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', 'Sora', sans-serif;
+  --font-sans: 'Inter', 'Manrope', -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Radii */
   --radius-xs: 4px;
   --radius-sm: 8px;
   --radius-md: 12px;
-  --radius-lg: 18px;
-  --radius-xl: 24px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
   --radius-full: 9999px;
 
   /* Transitions */
   --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-  --duration-fast: 200ms;
-  --duration-normal: 350ms;
-  --duration-slow: 600ms;
+  --duration-fast: 160ms;
+  --duration-normal: 280ms;
+  --duration-slow: 450ms;
 
-  /* Box Shadows & Ambient Lighting */
-  --shadow-subtle: 0 4px 20px rgba(15, 23, 42, 0.04);
-  --shadow-card: 0 10px 30px -4px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
-  --shadow-cyan-glow: 0 10px 30px -5px rgba(2, 132, 199, 0.2);
-  --shadow-blue-glow: 0 15px 40px -5px rgba(0, 112, 243, 0.25);
+  /* Shadows */
+  --shadow-subtle: 0 4px 20px rgba(7, 16, 31, 0.04);
+  --shadow-card: 0 10px 30px -4px rgba(7, 16, 31, 0.06), 0 2px 6px -1px rgba(7, 16, 31, 0.02);
+  --shadow-elevated: 0 20px 40px -8px rgba(7, 16, 31, 0.12);
+  --shadow-cyan-glow: 0 10px 30px -5px rgba(0, 201, 245, 0.25);
+  --shadow-blue-glow: 0 12px 35px -5px rgba(8, 119, 209, 0.28);
 
-  /* Layout Containers */
   --container-max: 1380px;
   --container-wide: 1600px;
-  --header-height: 80px;
+  --header-height: 76px;
+}
+
+/* 1. DARK / HYBRID THEME (DEFAULT) */
+:root,
+.theme-dark-active,
+.theme-hybrid-active {
+  --bg-pure: #050B15;
+  --bg-primary: #07101F;
+  --bg-secondary: #0B1B32;
+  --bg-tertiary: #102442;
+  --bg-card: rgba(11, 27, 50, 0.88);
+  --bg-card-hover: rgba(16, 36, 66, 0.95);
+  --bg-glass: rgba(7, 16, 31, 0.90);
+  --bg-glass-strong: rgba(11, 27, 50, 0.96);
+  --bg-dark-accent: #050B15;
+
+  --border-color: rgba(220, 229, 239, 0.12);
+  --border-glass: rgba(0, 201, 245, 0.22);
+  --border-glow: rgba(0, 201, 245, 0.45);
+  --border-cyan-active: #00C9F5;
+
+  --cyan-primary: #00C9F5;
+  --cyan-glow: rgba(0, 201, 245, 0.40);
+  --cyan-soft: rgba(0, 201, 245, 0.12);
+
+  --text-primary: #FFFFFF;
+  --text-secondary: #CBD5E1;
+  --text-tertiary: #94A3B8;
+  --text-dim: #64748B;
+  --text-cyan: #00C9F5;
+
+  --shadow-card: 0 14px 40px -5px rgba(0, 0, 0, 0.70);
+  --shadow-cyan-glow: 0 0 35px rgba(0, 201, 245, 0.35);
+}
+
+/* 2. ARCHITECTURAL LIGHT THEME */
+.theme-light-active {
+  --bg-pure: #FFFFFF;
+  --bg-primary: #F5F8FC;
+  --bg-secondary: #EDF3FA;
+  --bg-tertiary: #E2EBF5;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F8FAFC;
+  --bg-glass: rgba(255, 255, 255, 0.92);
+  --bg-glass-strong: rgba(255, 255, 255, 0.98);
+  --bg-dark-accent: #07101F;
+
+  --border-color: #DCE5EF;
+  --border-glass: rgba(8, 119, 209, 0.18);
+  --border-glow: rgba(0, 201, 245, 0.35);
+  --border-cyan-active: #0877D1;
+
+  --cyan-primary: #0877D1;
+  --cyan-glow: rgba(0, 201, 245, 0.25);
+  --cyan-soft: rgba(8, 119, 209, 0.08);
+
+  --text-primary: #07101F;
+  --text-secondary: #475569;
+  --text-tertiary: #667085;
+  --text-dim: #94A3B8;
+  --text-cyan: #0877D1;
+
+  --shadow-subtle: 0 4px 20px rgba(7, 16, 31, 0.04);
+  --shadow-card: 0 10px 30px -4px rgba(7, 16, 31, 0.06), 0 2px 6px -1px rgba(7, 16, 31, 0.02);
+  --shadow-cyan-glow: 0 10px 30px -5px rgba(0, 201, 245, 0.25);
 }

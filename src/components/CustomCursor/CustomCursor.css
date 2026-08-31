@@ -72,26 +72,28 @@
 .custom-cursor-root.cursor-listen .cursor-ring,
 .custom-cursor-root.cursor-explore .cursor-ring,
 .custom-cursor-root.cursor-start .cursor-ring {
-  width: 74px;
-  height: 74px;
-  top: -37px;
-  left: -37px;
-  background: var(--cyan-primary);
-  border-color: #ffffff;
-  box-shadow: 0 8px 30px rgba(2, 132, 199, 0.5);
+  width: 44px;
+  height: 44px;
+  top: -22px;
+  left: -22px;
+  background: rgba(8, 119, 209, 0.25);
+  border: 1.5px solid var(--cyan-bright);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 16px rgba(0, 201, 245, 0.4);
 }
 
 .custom-cursor-root.cursor-view .cursor-dot,
 .custom-cursor-root.cursor-listen .cursor-dot,
 .custom-cursor-root.cursor-explore .cursor-dot,
 .custom-cursor-root.cursor-start .cursor-dot {
-  opacity: 0;
+  opacity: 0.8;
+  transform: scale(0.6);
 }
 
 .custom-cursor-root.cursor-start .cursor-ring {
-  background: linear-gradient(135deg, #0284c7, #0070f3);
+  background: rgba(8, 119, 209, 0.35);
 }
 
 .custom-cursor-root.cursor-listen .cursor-ring {
-  background: linear-gradient(135deg, #4f46e5, #0284c7);
+  background: rgba(0, 201, 245, 0.25);
 }

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight, PhoneCall, Sun, Moon, Sparkles } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Sun, Moon, Sparkles, Search, Volume2, VolumeX, Sliders } from 'lucide-react';
+import { soundFx } from '../../utils/sound';
+import logoImg from '../../assets/Logo_350x80-01.png';
 import './Header.css';
 
 export type ThemeMode = 'hybrid' | 'dark' | 'light';
@@ -8,6 +10,7 @@ interface HeaderProps {
   currentPage: string;
   onNavigate: (page: string, sectionId?: string) => void;
   onOpenProjectModal: () => void;
+  onOpenCommandPalette: () => void;
   themeMode?: ThemeMode;
   onToggleTheme?: (mode: ThemeMode) => void;
 }
@@ -16,37 +19,43 @@ export const Header: React.FC<HeaderProps> = ({
   currentPage,
   onNavigate,
   onOpenProjectModal,
-  themeMode = 'hybrid',
+  onOpenCommandPalette,
+  themeMode = 'dark',
   onToggleTheme
 }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMuted, setIsMuted] = useState<boolean>(soundFx.getMuted());
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { label: 'HOME', page: 'home' },
-    { label: 'SOLUTIONS', page: 'solutions' },
-    { label: 'INDUSTRIES', page: 'industries' },
-    { label: 'PROJECTS', page: 'projects' },
-    { label: 'ABOUT', page: 'about' },
-    { label: 'INSIGHTS', page: 'insights' },
-    { label: 'CONTACT', page: 'contact' }
+    { label: 'Home', page: 'home' },
+    { label: 'Solutions', page: 'solutions' },
+    { label: 'Industries', page: 'industries' },
+    { label: 'Products', page: 'products' },
+    { label: 'Projects', page: 'projects' },
+    { label: 'Services', page: 'services' },
+    { label: 'About', page: 'about' },
+    { label: 'Insights', page: 'insights' },
+    { label: 'Contact', page: 'contact' }
   ];
 
   const handleLinkClick = (page: string) => {
+    soundFx.playClick();
     setMobileMenuOpen(false);
     onNavigate(page);
   };
 
   const cycleTheme = () => {
     if (!onToggleTheme) return;
+    soundFx.playPulse();
     if (themeMode === 'hybrid') onToggleTheme('dark');
     else if (themeMode === 'dark') onToggleTheme('light');
     else onToggleTheme('hybrid');
@@ -56,7 +65,7 @@ export const Header: React.FC<HeaderProps> = ({
     <>
       <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
         <div className="container-wide header-inner">
-          {/* Brand Identity / Monogram */}
+          {/* Brand Identity / Official Logo */}
           <button 
             className="brand-logo-btn"
             onClick={() => handleLinkClick('home')}
@@ -64,23 +73,7 @@ export const Header: React.FC<HeaderProps> = ({
             data-cursor-text="HOME"
             aria-label="AVN Solutions Homepage"
           >
-            <div className="brand-monogram">
-              <svg viewBox="0 0 40 40" className="brand-svg">
-                <polygon points="6,34 20,6 34,34 26,34 20,22 14,34" fill="url(#header-gradient)" />
-                <circle cx="20" cy="15" r="2.5" fill="#00F0FF" />
-                <defs>
-                  <linearGradient id="header-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#00F0FF" />
-                    <stop offset="100%" stopColor="#0070F3" />
-                  </linearGradient>
-                </defs>
-              </svg>
-              <div className="brand-glow" />
-            </div>
-            <div className="brand-text">
-              <span className="brand-name">AVN<span className="brand-highlight">.</span></span>
-              <span className="brand-sub">SOLUTIONS</span>
-            </div>
+            <img src={logoImg} alt="AVN Solutions" className="brand-logo-img" />
           </button>
 
           {/* Desktop Navigation */}
@@ -97,54 +90,88 @@ export const Header: React.FC<HeaderProps> = ({
             ))}
           </nav>
 
-          {/* Header Action CTA */}
+          {/* Header Action CTAs */}
           <div className="header-actions">
-            {/* Theme Toggle Pill */}
+            {/* Quick Command / Search Button */}
+            <button
+              className="quick-search-header-btn hide-tablet"
+              onClick={() => {
+                soundFx.playClick();
+                onOpenCommandPalette();
+              }}
+              title="Search & Commands (Ctrl + K)"
+              aria-label="Search and Commands"
+            >
+              <Search size={15} />
+              <span className="search-hint">Search / Cmd</span>
+              <kbd className="search-kbd">⌘K</kbd>
+            </button>
+
+            {/* Audio Feedback Toggle */}
+            <button
+              className={`audio-toggle-btn ${!isMuted ? 'is-active' : ''}`}
+              onClick={() => {
+                const nextMuted = soundFx.toggleMute();
+                setIsMuted(nextMuted);
+              }}
+              title={isMuted ? 'Enable Sound Effects' : 'Mute Sound Effects'}
+              aria-label={isMuted ? 'Enable Sound Effects' : 'Mute Sound Effects'}
+            >
+              {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+            </button>
+
+            {/* Theme Toggle Button */}
             {onToggleTheme && (
               <button
-                className="theme-toggle-btn"
+                className={`theme-toggle-btn mode-${themeMode}`}
                 onClick={cycleTheme}
-                title={`Current Theme: ${themeMode.toUpperCase()} (Click to toggle)`}
-                data-cursor="explore"
-                data-cursor-text="THEME"
+                title={`Theme: ${themeMode.toUpperCase()} (Click to cycle)`}
+                aria-label={`Current Theme: ${themeMode}. Click to switch theme.`}
               >
-                {themeMode === 'hybrid' && <Sparkles size={14} className="text-cyan" />}
-                {themeMode === 'dark' && <Moon size={14} className="text-cyan" />}
-                {themeMode === 'light' && <Sun size={14} style={{ color: '#f59e0b' }} />}
-                <span className="theme-toggle-label">
-                  {themeMode === 'hybrid' ? 'HYBRID' : themeMode === 'dark' ? 'DARK' : 'LIGHT'}
-                </span>
+                <div className="theme-toggle-icon">
+                  {themeMode === 'hybrid' && <Sparkles size={16} />}
+                  {themeMode === 'dark' && <Moon size={16} />}
+                  {themeMode === 'light' && <Sun size={16} />}
+                </div>
+                <span className="theme-toggle-label">{themeMode}</span>
               </button>
             )}
 
-            <a 
-              href="tel:04424501688" 
-              className="quick-call-btn"
-              title="Call AVN Solutions Chennai"
-              data-cursor="listen"
-              data-cursor-text="CALL"
+            {/* Space Configurator Quick Launch */}
+            <button 
+              className="btn-configure-header hide-mobile"
+              onClick={() => {
+                soundFx.playPulse();
+                onNavigate('solutions', 'configurator');
+              }}
+              title="Interactive Room Configurator"
             >
-              <PhoneCall size={16} />
-              <span className="quick-call-text">044 2450 1688</span>
-            </a>
+              <Sliders size={14} className="text-cyan animate-pulse-gentle" />
+              <span>Configurator</span>
+            </button>
 
-            <button
-              className="btn-primary start-project-btn"
-              onClick={onOpenProjectModal}
-              data-cursor="start"
-              data-cursor-text="START"
+            {/* Get Quote Action */}
+            <button 
+              className="btn-primary header-quote-btn"
+              onClick={() => {
+                soundFx.playPowerChime();
+                onOpenProjectModal();
+              }}
             >
-              <span>START A PROJECT</span>
-              <ArrowUpRight size={16} />
+              <span>Get a Quote</span>
+              <ArrowUpRight size={15} />
             </button>
 
             {/* Mobile Hamburger Toggle */}
             <button
               className="mobile-toggle-btn"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              onClick={() => {
+                soundFx.playClick();
+                setMobileMenuOpen(!mobileMenuOpen);
+              }}
               aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Menu'}
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
@@ -154,16 +181,19 @@ export const Header: React.FC<HeaderProps> = ({
       <div className={`mobile-menu-overlay ${mobileMenuOpen ? 'is-open' : ''}`}>
         <div className="mobile-menu-content">
           <div className="mobile-menu-header">
-            <div className="brand-text">
-              <span className="brand-name">AVN</span>
-              <span className="brand-sub">SOLUTIONS</span>
-            </div>
+            <button 
+              className="brand-logo-btn mobile-logo-btn"
+              onClick={() => handleLinkClick('home')}
+              aria-label="AVN Solutions Homepage"
+            >
+              <img src={logoImg} alt="AVN Solutions" className="brand-logo-img mobile-brand-logo-img" />
+            </button>
             <button
               className="mobile-close-btn"
               onClick={() => setMobileMenuOpen(false)}
               aria-label="Close menu"
             >
-              <X size={28} />
+              <X size={26} />
             </button>
           </div>
 
@@ -172,23 +202,27 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 key={item.page}
                 className={`mobile-nav-link ${currentPage === item.page ? 'active' : ''}`}
-                style={{ animationDelay: `${0.05 * (idx + 1)}s` }}
+                style={{ animationDelay: `${0.03 * (idx + 1)}s` }}
                 onClick={() => handleLinkClick(item.page)}
               >
                 <span className="mobile-nav-num">0{idx + 1}</span>
                 <span className="mobile-nav-title">{item.label}</span>
-                <ArrowUpRight size={20} className="mobile-nav-arrow" />
+                <ArrowUpRight size={18} className="mobile-nav-arrow" />
               </button>
             ))}
           </div>
 
           <div className="mobile-menu-footer">
-            {onToggleTheme && (
-              <button className="btn-secondary mobile-theme-btn" onClick={cycleTheme}>
-                <Sparkles size={16} className="text-cyan" />
-                <span>THEME MODE: {themeMode.toUpperCase()}</span>
-              </button>
-            )}
+            <button
+              className="btn-secondary mobile-calc-btn"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onNavigate('tools');
+              }}
+            >
+              <Sliders size={16} className="text-cyan" />
+              <span>Design Your Space (AV Calculators)</span>
+            </button>
 
             <button
               className="btn-primary mobile-start-btn"
@@ -197,7 +231,7 @@ export const Header: React.FC<HeaderProps> = ({
                 onOpenProjectModal();
               }}
             >
-              <span>START A PROJECT</span>
+              <span>Get a Quote</span>
               <ArrowUpRight size={18} />
             </button>
 

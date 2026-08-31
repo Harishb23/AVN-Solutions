@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
-import { ArrowUpRight, MapPin, ChevronLeft, ChevronRight, Cpu } from 'lucide-react';
+import React, { useState } from 'react';
+import { MapPin, ArrowRight, CheckCircle2, SlidersHorizontal } from 'lucide-react';
 import { projectsData } from '../../data/projects';
 import type { ProjectItem } from '../../types';
-import { SectionHeading } from '../../components/SectionHeading/SectionHeading';
+import { soundFx } from '../../utils/sound';
 import './ProjectsGallery.css';
 
 interface ProjectsGalleryProps {
@@ -14,97 +14,130 @@ export const ProjectsGallery: React.FC<ProjectsGalleryProps> = ({
   onSelectProject,
   onViewAllProjects
 }) => {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeCategory, setActiveCategory] = useState<string>('All');
 
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollRef.current) {
-      const { scrollLeft, clientWidth } = scrollRef.current;
-      const scrollAmount = clientWidth * 0.75;
-      scrollRef.current.scrollTo({
-        left: direction === 'left' ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
-        behavior: 'smooth'
-      });
-    }
+  const categories = [
+    'All',
+    'Corporate',
+    'Auditorium',
+    'Healthcare',
+    'Hospitality',
+    'Residential',
+    'Retail'
+  ];
+
+  const filteredProjects = activeCategory === 'All'
+    ? projectsData
+    : projectsData.filter(p => p.industry === activeCategory);
+
+  const handleFilter = (cat: string) => {
+    soundFx.playClick(900);
+    setActiveCategory(cat);
   };
 
   return (
-    <section className="section-spacing projects-gallery-section" id="projects">
+    <section className="projects-gallery-section" id="projects">
       <div className="container-wide">
-        <div className="gallery-header-row">
-          <SectionHeading
-            badge="WOW 5 — FEATURED DEPLOYMENTS"
-            title="SPACES WE TRANSFORMED"
-            subtitle="Explore high-impact boardrooms, auditoriums, innovation centers, and mission-critical NOC facilities engineered across India."
-          />
+        {/* Section Heading */}
+        <div className="section-head-center">
+          <div className="section-eyebrow-pill">
+            <span className="eyebrow-dot" />
+            <span className="eyebrow-title">VERIFIED CASE STUDIES</span>
+          </div>
+          <h2 className="section-grand-title">
+            Spaces We've Helped <span className="title-highlight">Perform Better.</span>
+          </h2>
+          <p className="section-lead-desc">
+            Explore turnkey boardrooms, auditoriums, video walls, and luxury private theatres delivered across Chennai, Tamil Nadu, and South India.
+          </p>
+        </div>
 
-          <div className="gallery-controls">
-            <button
-              className="gallery-nav-arrow"
-              onClick={() => scroll('left')}
-              aria-label="Scroll projects left"
-            >
-              <ChevronLeft size={22} />
-            </button>
-            <button
-              className="gallery-nav-arrow"
-              onClick={() => scroll('right')}
-              aria-label="Scroll projects right"
-            >
-              <ChevronRight size={22} />
-            </button>
+        {/* Filter Buttons */}
+        <div className="projects-filter-row">
+          <div className="filter-icon-label">
+            <SlidersHorizontal size={14} className="text-cyan" />
+            <span>Filter by Sector:</span>
+          </div>
+          <div className="filter-buttons-list">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                className={`proj-filter-btn ${activeCategory === cat ? 'active' : ''}`}
+                onClick={() => handleFilter(cat)}
+              >
+                {cat}
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Horizontal Project Track */}
-        <div className="projects-horizontal-track" ref={scrollRef}>
-          {projectsData.map((project) => (
+        {/* Projects Grid */}
+        <div className="projects-grid-container">
+          {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="project-cinema-card glass-panel"
-              onClick={() => onSelectProject(project)}
+              className="project-display-card"
+              onClick={() => {
+                soundFx.playClick(850);
+                onSelectProject(project);
+              }}
               data-cursor="view"
-              data-cursor-text="INSPECT"
+              data-cursor-text="CASE STUDY"
             >
-              <div className="card-media-wrap">
-                <img src={project.image} alt={project.title} className="card-image" />
-                <div className="card-gradient-overlay" />
+              {/* Media Wrap */}
+              <div className="project-card-image-wrap">
+                <img src={project.image} alt={project.title} className="project-card-img" loading="lazy" />
+                <div className="project-card-overlay" />
 
-                <div className="card-top-badges">
-                  <span className="card-num-badge">0{project.number}</span>
-                  <span className="card-industry-badge">{project.industry}</span>
+                <div className="project-card-top-tags">
+                  <span className="project-num-tag">0{project.number}</span>
+                  <span className="project-ind-tag">{project.industry}</span>
                 </div>
 
-                <div className="card-bottom-info">
-                  <div className="card-loc-row">
-                    <MapPin size={13} className="text-cyan" />
+                <div className="project-card-quick-meta">
+                  <div className="project-loc-tag">
+                    <MapPin size={12} className="text-cyan" />
                     <span>{project.location}</span>
                   </div>
+                  <span className="project-client-name">{project.clientType}</span>
+                </div>
+              </div>
 
-                  <h3 className="card-project-title">{project.title}</h3>
+              {/* Card Body */}
+              <div className="project-card-body">
+                <h3 className="project-title-text">{project.title}</h3>
+                <p className="project-summary-text">{project.summary}</p>
 
-                  <div className="card-tech-chips">
-                    {project.technologiesUsed.slice(0, 3).map((t, idx) => (
-                      <span key={idx} className="tech-chip">
-                        <Cpu size={10} />
-                        {t}
+                {/* Solutions Delivered */}
+                <div className="project-solutions-delivered">
+                  <span className="sol-label">SOLUTIONS DELIVERED:</span>
+                  <div className="sol-chips-row">
+                    {project.technologiesUsed.slice(0, 3).map((tech, i) => (
+                      <span key={i} className="sol-tech-chip">
+                        <CheckCircle2 size={11} className="text-cyan" />
+                        <span>{tech}</span>
                       </span>
                     ))}
                   </div>
                 </div>
 
-                <div className="card-hover-prompt">
-                  <span>INSPECT ENGINEERING METRICS</span>
-                  <ArrowUpRight size={18} />
+                {/* Card Action */}
+                <div className="project-card-footer">
+                  <span className="view-case-study-text">
+                    <span>View Case Study</span>
+                    <ArrowRight size={14} />
+                  </span>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* View Full Portfolio CTA */}
-        <div className="gallery-bottom-cta">
-          <button className="btn-secondary" onClick={onViewAllProjects} data-cursor="explore">
-            <span>VIEW ALL ENTERPRISE DEPLOYMENTS →</span>
+        {/* View All Projects Button */}
+        <div className="projects-bottom-action">
+          <button className="btn-secondary view-all-projects-btn" onClick={onViewAllProjects}>
+            <span>View All Enterprise Case Studies</span>
+            <ArrowRight size={16} />
           </button>
         </div>
       </div>

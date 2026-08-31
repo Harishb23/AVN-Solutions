@@ -22,9 +22,8 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({ onStartProject, in
             <Cpu size={14} className="text-cyan" />
             <span>ENGINEERING DISCIPLINES</span>
           </div>
-          <h1 className="page-hero-title text-gradient-white">
-            AUDIO, VISUAL &<br />
-            <span className="text-gradient-cyan">INTELLIGENT INTEGRATION</span>
+          <h1 className="page-hero-title">
+            Audio, Visual & <span className="industries-title-cyan">Intelligent Integration.</span>
           </h1>
           <p className="page-hero-subtitle">
             Explore our turnkey technical capabilities. We design, program, calibrate, and support mission-critical AV systems across India.

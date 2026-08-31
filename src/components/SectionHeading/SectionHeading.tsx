@@ -24,7 +24,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
           <span className="badge-text">{badge}</span>
         </div>
       )}
-      <h2 className="heading-title text-gradient-white">{title}</h2>
+      <h2 className="heading-title">{title}</h2>
       {subtitle && <p className="heading-subtitle">{subtitle}</p>}
       <div className="heading-accent-line" />
     </div>

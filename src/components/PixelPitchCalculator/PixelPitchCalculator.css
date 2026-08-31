@@ -1,0 +1,225 @@
+.pixel-pitch-panel {
+  width: 100%;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.pitch-heading {
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  margin-top: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.pitch-sub {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.pitch-body-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 2rem;
+}
+
+.pitch-controls-box {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.slider-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--text-primary);
+}
+
+.slider-val {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.pitch-range-slider {
+  width: 100%;
+  accent-color: var(--cyan-primary);
+  height: 6px;
+  cursor: pointer;
+}
+
+.slider-ticks {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  margin-top: 0.5rem;
+}
+
+.options-title {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.pitch-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.pitch-opt-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1.1rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--duration-fast) var(--ease-smooth);
+}
+
+.pitch-opt-btn:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-glass);
+}
+
+.pitch-opt-btn.active {
+  background: var(--bg-card);
+  border-color: var(--cyan-primary);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+}
+
+.pitch-opt-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pitch-opt-num {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cyan-primary);
+  background: var(--cyan-soft);
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-xs);
+}
+
+.pitch-opt-name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+}
+
+.pitch-opt-for {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.pitch-telemetry-box {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  border: 1px solid var(--border-glow);
+}
+
+.acuity-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.acuity-calc-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.85rem;
+  background: var(--bg-primary);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.acuity-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-tertiary);
+}
+
+.acuity-value {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.acuity-metrics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.acuity-metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 0.8rem;
+}
+
+.m-key {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+}
+
+.m-val {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.78rem;
+}
+
+.pitch-compliance-note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .pitch-body-grid {
+    grid-template-columns: 1fr;
+  }
+}

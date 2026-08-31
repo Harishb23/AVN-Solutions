@@ -1,0 +1,323 @@
+.tech-engineering-section {
+  position: relative;
+  padding: 5.5rem 0;
+  background: #07101F;
+  color: #FFFFFF;
+  overflow: hidden;
+}
+
+.tech-head-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.tech-eyebrow-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.95rem;
+  background: rgba(11, 27, 50, 0.8);
+  border: 1px solid rgba(0, 201, 245, 0.3);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--cyan-bright);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.tech-grand-headline {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  max-width: 850px;
+}
+
+.tech-cyan-gradient {
+  background: linear-gradient(135deg, #00C9F5 0%, #0877D1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tech-lead-summary {
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  color: #94A3B8;
+  max-width: 700px;
+  line-height: 1.65;
+}
+
+/* Glowing Tech Chips Cloud */
+.tech-chips-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.glowing-tech-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(15, 34, 61, 0.7);
+  border: 1px solid rgba(0, 201, 245, 0.25);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #E2E8F0;
+  transition: all 0.2s ease;
+}
+
+.glowing-tech-chip:hover {
+  background: rgba(8, 119, 209, 0.3);
+  border-color: var(--cyan-bright);
+  color: #FFFFFF;
+  box-shadow: 0 0 15px rgba(0, 201, 245, 0.4);
+}
+
+/* Diagram Container */
+.tech-diagram-container {
+  background: rgba(11, 27, 50, 0.75);
+  border: 1px solid rgba(0, 201, 245, 0.2);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Stepper Bar */
+.diagram-stepper-bar {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background: rgba(7, 16, 31, 0.95);
+  border-bottom: 1px solid rgba(220, 229, 239, 0.1);
+}
+
+.diagram-stage-step {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1rem;
+  background: none;
+  border: none;
+  border-right: 1px solid rgba(220, 229, 239, 0.08);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.diagram-stage-step:last-child {
+  border-right: none;
+}
+
+.diagram-stage-step:hover {
+  background: rgba(16, 36, 66, 0.6);
+}
+
+.diagram-stage-step.is-active {
+  background: rgba(8, 119, 209, 0.2);
+  border-bottom: 3px solid var(--cyan-bright);
+}
+
+.step-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(15, 34, 61, 0.9);
+  border: 1px solid rgba(0, 201, 245, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cyan-bright);
+  flex-shrink: 0;
+}
+
+.diagram-stage-step.is-active .step-circle {
+  background: var(--blue-primary);
+  color: #FFFFFF;
+  box-shadow: 0 0 12px var(--cyan-glow);
+}
+
+.step-text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  overflow: hidden;
+}
+
+.step-idx {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--cyan-bright);
+}
+
+.step-name {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Inspection Card */
+.stage-inspection-card {
+  padding: 2.25rem;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.inspection-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.stage-num-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--cyan-bright);
+  letter-spacing: 0.1em;
+}
+
+.inspection-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+
+.inspection-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--cyan-bright);
+}
+
+.inspection-desc {
+  font-size: 0.88rem;
+  color: #CBD5E1;
+  line-height: 1.6;
+  margin-top: 0.25rem;
+}
+
+.inspection-technologies {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.tech-list-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #94A3B8;
+  letter-spacing: 0.08em;
+}
+
+.tech-chips-mini {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.chip-mini {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  background: rgba(15, 34, 61, 0.9);
+  border: 1px solid rgba(0, 201, 245, 0.2);
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.inspection-right {
+  background: rgba(7, 16, 31, 0.8);
+  border: 1px solid rgba(0, 201, 245, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.telemetry-box-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--cyan-bright);
+  letter-spacing: 0.08em;
+}
+
+.benchmarks-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.benchmark-tile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid rgba(220, 229, 239, 0.08);
+}
+
+.benchmark-tile:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.bm-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #94A3B8;
+}
+
+.bm-value {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.inspection-cta-btn {
+  margin-top: 0.5rem;
+  width: 100%;
+  justify-content: center;
+  padding: 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+}
+
+@media (max-width: 1040px) {
+  .diagram-stepper-bar {
+    grid-template-columns: 1fr;
+  }
+  .stage-inspection-card {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+}

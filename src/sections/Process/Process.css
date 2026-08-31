@@ -1,6 +1,6 @@
 .process-section {
   position: relative;
-  background-color: #ffffff;
+  background-color: var(--bg-primary);
 }
 
 /* Continuous Animated Pipeline Track */
@@ -16,7 +16,7 @@
   left: 5%;
   right: 5%;
   height: 2px;
-  background: rgba(15, 23, 42, 0.1);
+  background: var(--border-subtle);
   z-index: 0;
 }
 
@@ -25,8 +25,8 @@
   top: 36px;
   left: 5%;
   height: 2px;
-  background: linear-gradient(90deg, #0284c7, #0070f3);
-  box-shadow: 0 0 10px rgba(2, 132, 199, 0.4);
+  background: linear-gradient(90deg, var(--cyan-primary), var(--blue-bright));
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
   z-index: 1;
   transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -59,29 +59,29 @@
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: #ffffff;
-  border: 1.5px solid rgba(15, 23, 42, 0.15);
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-subtle);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--text-tertiary);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--shadow-subtle);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .pipeline-node-btn:hover .node-icon-circle,
 .pipeline-node-btn.active .node-icon-circle {
-  background: #0284c7;
-  border-color: #0284c7;
-  color: #ffffff;
+  background: var(--cyan-primary);
+  border-color: var(--cyan-primary);
+  color: #030508;
   transform: scale(1.1);
-  box-shadow: 0 8px 25px rgba(2, 132, 199, 0.4);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
 }
 
 .pipeline-node-btn.past .node-icon-circle {
-  background: rgba(2, 132, 199, 0.1);
-  border-color: #0284c7;
-  color: #0284c7;
+  background: var(--cyan-soft);
+  border-color: var(--cyan-primary);
+  color: var(--cyan-primary);
 }
 
 .node-step-tag {
@@ -92,7 +92,7 @@
 }
 
 .pipeline-node-btn.active .node-step-tag {
-  color: #0284c7;
+  color: var(--cyan-primary);
 }
 
 .node-step-title {
@@ -105,15 +105,15 @@
 }
 
 .pipeline-node-btn.active .node-step-title {
-  color: #0f172a;
+  color: var(--text-primary);
   font-weight: 700;
 }
 
 /* Blueprint Viewer */
 .blueprint-stage-viewer {
-  background: #f8fafc;
-  border: 1px solid rgba(15, 23, 42, 0.1);
-  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.05);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-card);
   border-radius: var(--radius-xl);
   overflow: hidden;
 }
@@ -123,7 +123,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.25rem 2rem;
-  background: #ffffff;
+  background: var(--bg-pure);
   border-bottom: 1px solid var(--border-subtle);
   flex-wrap: wrap;
   gap: 1rem;
@@ -139,7 +139,7 @@
 }
 
 .cad-phase {
-  color: #0284c7;
+  color: var(--cyan-primary);
   font-weight: 700;
 }
 
@@ -149,7 +149,7 @@
   gap: 0.5rem;
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: #0f172a;
+  color: var(--text-primary);
 }
 
 .blueprint-body-grid {
@@ -164,7 +164,7 @@
   font-family: var(--font-mono);
   font-size: 3.5rem;
   font-weight: 900;
-  color: rgba(2, 132, 199, 0.25);
+  color: rgba(0, 240, 255, 0.15);
   line-height: 1;
 }
 
@@ -173,7 +173,7 @@
   font-size: clamp(1.8rem, 3.2vw, 2.5rem);
   font-weight: 800;
   margin: 0.5rem 0 1rem;
-  color: #090d16;
+  color: var(--text-primary);
 }
 
 .stage-desc {
@@ -198,8 +198,8 @@
 .blueprint-cad-schematic {
   position: relative;
   height: 320px;
-  background: #ffffff;
-  border: 1px dashed rgba(15, 23, 42, 0.15);
+  background: var(--bg-pure);
+  border: 1px dashed var(--border-glass);
   border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
@@ -211,8 +211,8 @@
   position: absolute;
   inset: 0;
   background-image: 
-    linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
@@ -227,10 +227,10 @@
 .cad-ring {
   position: absolute;
   border-radius: 50%;
-  border: 1px solid rgba(2, 132, 199, 0.2);
+  border: 1px solid rgba(0, 240, 255, 0.15);
 }
 
-.ring-1 { width: 140px; height: 140px; animation: pulse 4s infinite linear; }
+.ring-1 { width: 140px; height: 140px; }
 .ring-2 { width: 220px; height: 220px; border-style: dashed; }
 .ring-3 { width: 280px; height: 280px; }
 
@@ -241,17 +241,17 @@
   flex-direction: column;
   align-items: center;
   gap: 0.4rem;
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--bg-card);
   padding: 1.5rem 2rem;
   border-radius: var(--radius-md);
-  border: 1px solid rgba(15, 23, 42, 0.1);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-subtle);
 }
 
 .cad-hud-step {
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  color: #0284c7;
+  color: var(--cyan-primary);
   font-weight: 700;
 }
 
@@ -259,7 +259,7 @@
   font-family: var(--font-display);
   font-size: 0.95rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--text-primary);
 }
 
 @media (max-width: 1024px) {

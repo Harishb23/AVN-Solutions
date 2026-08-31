@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Power, Sun, Monitor, Camera, Mic, ShieldCheck, CheckCircle2, RotateCcw } from 'lucide-react';
 import { SectionHeading } from '../../components/SectionHeading/SectionHeading';
+import { soundFx } from '../../utils/sound';
 import './AutomationSim.css';
 
 interface AutomationSimProps {
@@ -27,33 +28,39 @@ export const AutomationSim: React.FC<AutomationSimProps> = ({ onStartProject }) 
     if (isExecuting) return;
     setIsExecuting(true);
     setStepIndex(1);
+    soundFx.playPowerChime();
 
     // Sequence 1: Dim lights & lower motorized shades
     setTimeout(() => {
+      soundFx.playClick(600);
       setState(s => ({ ...s, lighting: '35% Presentation Dim', shades: 'Motorized Drop (100%)' }));
       setStepIndex(2);
     }, 600);
 
     // Sequence 2: Power on 4K Direct-View LED Display
     setTimeout(() => {
+      soundFx.playClick(750);
       setState(s => ({ ...s, display: 'Active (4K HDR Feed)' }));
       setStepIndex(3);
     }, 1300);
 
     // Sequence 3: AI PTZ Camera un-parks and frames executive table
     setTimeout(() => {
+      soundFx.playClick(900);
       setState(s => ({ ...s, camera: 'AI Auto-Framing Active' }));
       setStepIndex(4);
     }, 2000);
 
     // Sequence 4: Ceiling beamforming mics un-mute & DSP AEC online
     setTimeout(() => {
+      soundFx.playClick(1050);
       setState(s => ({ ...s, mics: 'Un-muted (Beamtracking)', dsp: 'AEC Noise Filter 0.00ms' }));
       setStepIndex(5);
     }, 2700);
 
     // Sequence 5: Complete Room Mode Activated
     setTimeout(() => {
+      soundFx.playPulse();
       setMeetingActive(true);
       setIsExecuting(false);
       setStepIndex(6);
@@ -61,6 +68,7 @@ export const AutomationSim: React.FC<AutomationSimProps> = ({ onStartProject }) 
   };
 
   const handleResetMeeting = () => {
+    soundFx.playReset();
     setMeetingActive(false);
     setStepIndex(0);
     setState({
@@ -86,9 +94,9 @@ export const AutomationSim: React.FC<AutomationSimProps> = ({ onStartProject }) 
     <section className="section-spacing automation-sim-section" id="automation">
       <div className="container-wide">
         <SectionHeading
-          badge="WOW 4 — LIVE SIMULATOR"
+          badge="LIVE SIMULATOR — MACRO CHOREOGRAPHER"
           title="ONE TOUCH. COMPLETE CONTROL."
-          subtitle="Experience the power of custom automation. Click 'START MEETING' below to watch lighting, shades, displays, cameras, and audio synchronize in real-time."
+          subtitle="Experience the power of enterprise automation. Click 'START MEETING' below to watch lighting, shades, displays, cameras, and audio synchronize in real-time."
         />
 
         <div className="automation-console-wrapper glass-panel">
@@ -214,8 +222,11 @@ export const AutomationSim: React.FC<AutomationSimProps> = ({ onStartProject }) 
                 <span>Engineered with dual-redundancy Crestron 4-Series control processors.</span>
                 {onStartProject && (
                   <button
-                    onClick={onStartProject}
-                    style={{ marginLeft: 'auto', color: 'var(--cyan-primary)', fontSize: '0.75rem', fontWeight: 600 }}
+                    onClick={() => {
+                      soundFx.playPowerChime();
+                      onStartProject();
+                    }}
+                    style={{ marginLeft: 'auto', color: 'var(--cyan-primary)', fontSize: '0.78rem', fontWeight: 700 }}
                   >
                     SPECIFY THIS SYSTEM →
                   </button>

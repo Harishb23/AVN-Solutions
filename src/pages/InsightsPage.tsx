@@ -18,9 +18,8 @@ export const InsightsPage: React.FC<InsightsPageProps> = ({ onSelectArticle }) =
             <BookOpen size={14} className="text-cyan" />
             <span>RESEARCH & ENGINEERING WHITEPAPERS</span>
           </div>
-          <h1 className="page-hero-title text-gradient-white">
-            THE FUTURE OF<br />
-            <span className="text-gradient-cyan">AUDIO VISUAL TECHNOLOGY</span>
+          <h1 className="page-hero-title">
+            The Future of <span className="industries-title-cyan">Audio Visual Technology.</span>
           </h1>
           <p className="page-hero-subtitle">
             Technical analysis, architectural guidelines, and emerging trends in enterprise collaboration, spatial acoustics, and direct-view MicroLED displays.

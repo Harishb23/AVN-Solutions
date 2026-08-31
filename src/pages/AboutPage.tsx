@@ -1,7 +1,6 @@
 import React from 'react';
 import { ShieldCheck, MapPin, Award } from 'lucide-react';
-import { timelineMilestones, companyStats } from '../data/company';
-import { AnimatedCounter } from '../components/AnimatedCounter/AnimatedCounter';
+import { timelineMilestones, companyStats, companyDetails } from '../data/company';
 import './Pages.css';
 
 interface AboutPageProps {
@@ -40,13 +39,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onStartProject, onContact 
       <section className="section-spacing" style={{ paddingTop: 0 }}>
         <div className="container-wide">
           <div className="about-stats-strip glass-panel">
-            {companyStats.map((st, idx) => (
+            {companyStats.map((st: { label: string; value: string }, idx: number) => (
               <div key={idx} className="about-stat-col">
-                <div className="about-stat-val">
-                  <AnimatedCounter value={st.value} suffix={st.suffix} />
-                </div>
+                <div className="about-stat-val">{st.value}</div>
                 <h4 className="about-stat-label">{st.label}</h4>
-                <p className="about-stat-desc">{st.description}</p>
               </div>
             ))}
           </div>
@@ -79,7 +75,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onStartProject, onContact 
                 ))}
               </div>
 
-              <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem' }}>
+              <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                 <button className="btn-primary" onClick={onStartProject}>
                   <span>START A PROJECT</span>
                 </button>
@@ -94,7 +90,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onStartProject, onContact 
               <h3 className="story-subheading">Our Journey of Precision</h3>
 
               <div className="milestones-vertical-list">
-                {timelineMilestones.map((m, idx) => (
+                {timelineMilestones.map((m: { year: string; title: string; description: string }, idx: number) => (
                   <div key={idx} className="m-step">
                     <div className="m-dot" />
                     <div className="m-body">
@@ -112,9 +108,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onStartProject, onContact 
                 <div>
                   <h4 className="loc-title">AVN SOLUTIONS CHENNAI</h4>
                   <p className="loc-address">
-                    10, MGR Rd, Ezhil Nagar, Ganesh Nagar, Sholinganallur, Chennai, Tamil Nadu 600119
+                    {companyDetails.address.line1}, {companyDetails.address.area}, {companyDetails.address.city}, Tamil Nadu {companyDetails.address.pincode}
                   </p>
-                  <p className="loc-phone">📞 044 2450 1688</p>
+                  <p className="loc-phone">📞 {companyDetails.phone.display}</p>
                 </div>
               </div>
             </div>

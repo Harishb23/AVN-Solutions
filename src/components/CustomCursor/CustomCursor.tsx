@@ -17,14 +17,12 @@ export const CustomCursor: React.FC = () => {
     text: '',
     variant: 'default'
   });
-  const [isTouch, setIsTouch] = useState(false);
+  const [isTouch] = useState(() => 
+    typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0)
+  );
 
   useEffect(() => {
-    // Check if device has touch capability
-    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-      setIsTouch(true);
-      return;
-    }
+    if (isTouch) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       setCursor(prev => ({
@@ -74,7 +72,7 @@ export const CustomCursor: React.FC = () => {
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseover', handleMouseOver);
     };
-  }, []);
+  }, [isTouch]);
 
   if (isTouch) return null;
 

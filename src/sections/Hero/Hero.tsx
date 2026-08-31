@@ -1,5 +1,23 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Play, Sparkles, ChevronDown, Award, Volume2, Monitor, Wifi, Activity, Radio, Layers } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import { 
+  ArrowRight, 
+  PhoneCall, 
+  CheckCircle2, 
+  Monitor, 
+  Volume2, 
+  Cpu, 
+  Network, 
+  Tv, 
+  SunMedium, 
+  Sliders, 
+  Sparkles, 
+  Award,
+  Zap,
+  Activity,
+  Radio,
+  ChevronDown
+} from 'lucide-react';
+import { soundFx } from '../../utils/sound';
 import './Hero.css';
 
 interface HeroProps {
@@ -9,8 +27,8 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onExplore, onStartProject }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [activeVisualMode, setActiveVisualMode] = useState<'8k' | 'dante' | 'ai'>('8k');
 
+  // High-performance, lightweight particle constellation & soundwave canvas (Zero lag, no shadow blur overhead)
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -18,41 +36,35 @@ export const Hero: React.FC<HeroProps> = ({ onExplore, onStartProject }) => {
     if (!ctx) return;
 
     let animationFrameId: number;
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
+    let width = (canvas.width = canvas.parentElement?.clientWidth || window.innerWidth);
+    let height = (canvas.height = canvas.parentElement?.clientHeight || window.innerHeight);
 
     const handleResize = () => {
       if (!canvas) return;
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+      width = canvas.width = canvas.parentElement?.clientWidth || window.innerWidth;
+      height = canvas.height = canvas.parentElement?.clientHeight || window.innerHeight;
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
 
-    // Mouse coordinates for interactive physics
-    let mouse = { x: width / 2, y: height / 2, targetX: width / 2, targetY: height / 2 };
-    const handleMouseMove = (e: MouseEvent) => {
-      mouse.targetX = e.clientX;
-      mouse.targetY = e.clientY;
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-
-    // Dynamic particles
-    const particleCount = Math.min(45, Math.floor(width / 35));
+    // Particle nodes for high-tech constellation
+    const particleCount = Math.min(width > 768 ? 32 : 14, 36);
     const particles: Array<{
       x: number;
       y: number;
       vx: number;
       vy: number;
       size: number;
+      baseAlpha: number;
     }> = [];
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        size: Math.random() * 2 + 1.2
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        size: Math.random() * 1.6 + 0.8,
+        baseAlpha: Math.random() * 0.3 + 0.15
       });
     }
 
@@ -60,71 +72,67 @@ export const Hero: React.FC<HeroProps> = ({ onExplore, onStartProject }) => {
 
     const render = () => {
       time += 0.015;
-      mouse.x += (mouse.targetX - mouse.x) * 0.05;
-      mouse.y += (mouse.targetY - mouse.y) * 0.05;
-
       ctx.clearRect(0, 0, width, height);
 
-      // Draw subtle audio soundwave ribbons across the lower section
-      const waveCount = 2;
+      // 1. Draw connecting constellation lines
+      for (let i = 0; i < particles.length; i++) {
+        const p1 = particles[i];
+        p1.x += p1.vx;
+        p1.y += p1.vy;
+
+        if (p1.x < 0) p1.x = width;
+        if (p1.x > width) p1.x = 0;
+        if (p1.y < 0) p1.y = height;
+        if (p1.y > height) p1.y = 0;
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 100) {
+            const alpha = (1 - dist / 100) * 0.16;
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(0, 229, 255, ${alpha})`;
+            ctx.lineWidth = 0.6;
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        }
+
+        // Draw clean particle dot (no heavy shadow blur for pure 120fps)
+        const pulse = Math.sin(time * 2 + i) * 0.2 + 0.8;
+        ctx.beginPath();
+        ctx.arc(p1.x, p1.y, p1.size * pulse, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 229, 255, ${p1.baseAlpha * pulse})`;
+        ctx.fill();
+      }
+
+      // 2. High-Tech Multi-layer Soundwaves along bottom
+      const waveCount = 3;
       for (let w = 0; w < waveCount; w++) {
         ctx.beginPath();
-        const baseAmp = 22 + w * 16;
-        const speed = time * (1 + w * 0.35);
+        const baseAmp = 14 + w * 9;
+        const speed = time * (0.8 + w * 0.25);
+        ctx.strokeStyle = w === 0 
+          ? 'rgba(0, 229, 255, 0.45)' 
+          : w === 1 
+            ? 'rgba(8, 119, 209, 0.32)' 
+            : 'rgba(56, 189, 248, 0.18)';
+        ctx.lineWidth = 2 - w * 0.4;
 
-        ctx.strokeStyle = `rgba(0, 240, 255, ${0.4 - w * 0.15})`;
-        ctx.lineWidth = 2.2 - w * 0.4;
-
-        for (let x = 0; x <= width; x += 10) {
-          const mouseDist = Math.abs(x - mouse.x);
-          const mouseFactor = Math.max(0, 1 - mouseDist / 400);
+        for (let x = 0; x <= width; x += 14) {
           const y =
-            height * 0.72 +
-            Math.sin(x * 0.003 + speed + w) * (baseAmp + mouseFactor * 45) +
-            Math.cos(x * 0.006 - speed * 0.4) * 10;
+            height * 0.88 +
+            Math.sin(x * 0.0032 + speed + w * 1.4) * baseAmp +
+            Math.cos(x * 0.006 - speed * 0.5) * 8;
 
           if (x === 0) ctx.moveTo(x, y);
           else ctx.lineTo(x, y);
         }
         ctx.stroke();
-      }
-
-      // Draw particles & interconnecting mesh
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.x < 0 || p.x > width) p.vx *= -1;
-        if (p.y < 0 || p.y > height) p.vy *= -1;
-
-        // Mouse interactivity
-        const dx = mouse.x - p.x;
-        const dy = mouse.y - p.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 140) {
-          const force = (140 - dist) / 140;
-          p.x -= (dx / dist) * force * 2;
-          p.y -= (dy / dist) * force * 2;
-        }
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = '#00f0ff';
-        ctx.fill();
-
-        for (let j = i + 1; j < particles.length; j++) {
-          const p2 = particles[j];
-          const dist2 = Math.hypot(p.x - p2.x, p.y - p2.y);
-          if (dist2 < 110) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(0, 240, 255, ${0.22 * (1 - dist2 / 110)})`;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          }
-        }
       }
 
       animationFrameId = requestAnimationFrame(render);
@@ -135,193 +143,216 @@ export const Hero: React.FC<HeroProps> = ({ onExplore, onStartProject }) => {
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('resize', handleResize);
-      window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
 
+  const capabilities = [
+    { label: '4K / 8K MicroLED Video Walls', icon: Monitor },
+    { label: 'Beamforming Audio & Dante DSP', icon: Volume2 },
+    { label: 'Teams & Zoom Video Conferencing', icon: Network },
+    { label: 'Crestron Smart Room Automation', icon: Cpu },
+    { label: 'Enterprise Digital Signage', icon: Tv },
+    { label: 'Circadian DALI Lighting & Shades', icon: SunMedium },
+    { label: 'Acoustic RT60 Simulation', icon: Sliders }
+  ];
+
   return (
-    <section className="hero-section" id="hero">
-      {/* High-Resolution Architectural AV Experience Center Background */}
-      <div className="hero-backdrop-layer">
+    <section className="hero-section rich-cinematic-hero" id="hero">
+      {/* Background Media & Cinematic Layering */}
+      <div className="hero-bg-media">
         <img
-          src="/hero-bg.jpg"
-          alt="AVN Solutions Architectural Audio Visual Experience Center"
-          className="hero-showroom-img"
+          src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=2600&q=90"
+          alt="Luxury Corporate Boardroom & Enterprise AV Architecture"
+          className="hero-bg-image"
+          loading="eager"
         />
-        <div className="hero-glass-veil" />
-        <div className="hero-radial-glow" />
+        <div className="hero-bg-gradient-overlay" />
+        
+        {/* Animated Cybernetic HUD Rings */}
+        <div className="hero-hud-rings-cluster">
+          <div className="hero-hud-ring ring-outer" />
+          <div className="hero-hud-ring ring-mid" />
+          <div className="hero-hud-ring ring-inner" />
+        </div>
+        <div className="hero-hud-scanner-line" />
+
+        {/* Ambient Optics */}
+        <div className="hero-glass-lens-flare" />
+        <div className="hero-perspective-grid" />
+        <div className="hero-glow-orb orb-primary" />
+        <div className="hero-glow-orb orb-secondary" />
       </div>
 
-      {/* Interactive Soundwave & Particle Canvas */}
-      <canvas ref={canvasRef} className="hero-canvas" />
+      {/* Dynamic Soundwave & Particle Canvas */}
+      <canvas ref={canvasRef} className="hero-soundwave-canvas" />
 
-      {/* Main Content Layout */}
-      <div className="container-wide hero-content-grid">
-        {/* Left Column: Core Value Proposition */}
-        <div className="hero-left-block">
-          <div className="hero-tag-badge">
-            <Sparkles size={14} className="hero-tag-icon" />
-            <span>AV SYSTEM INTEGRATOR & OEM SUPPLIER // CHENNAI</span>
-          </div>
-
-          <h1 className="hero-main-title text-gradient-white">
-            ENGINEERING<br />
-            <span className="text-gradient-cyan">EXPERIENCES</span>
-          </h1>
-
-          <div className="hero-concept-flow">
-            <span className="flow-step">FROM SOUND</span>
-            <span className="flow-sep">→</span>
-            <span className="flow-step">VISION</span>
-            <span className="flow-sep">→</span>
-            <span className="flow-step active-step">INTELLIGENCE</span>
-          </div>
-
-          <p className="hero-lead-paragraph">
-            AVN Solutions engineers high-performance acoustic environments, seamless direct-view MicroLED video walls, certified Microsoft Teams/Zoom rooms, and intelligent touch automation for enterprise, education, and entertainment venues.
-          </p>
-
-          {/* Action CTAs */}
-          <div className="hero-cta-group">
-            <button
-              className="btn-primary hero-main-btn"
-              onClick={onStartProject}
-              data-cursor="start"
-              data-cursor-text="START"
-            >
-              <span>ENGINEER YOUR SPACE</span>
-              <Award size={18} />
-            </button>
-
-            <button
-              className="btn-secondary hero-demo-btn"
-              onClick={onExplore}
-              data-cursor="explore"
-              data-cursor-text="EXPLORE"
-            >
-              <Play size={16} className="play-icon text-cyan" />
-              <span>EXPLORE DISCIPLINES</span>
-            </button>
-          </div>
-
-          {/* Trust Specs Strip */}
-          <div className="hero-specs-strip">
-            <div className="spec-badge">
-              <span className="spec-dot" />
-              <span>Sholinganallur, Chennai Integration Facility</span>
-            </div>
-            <div className="spec-badge">
-              <span className="spec-dot" />
-              <span>Direct Line: 044 2450 1688</span>
-            </div>
-            <div className="spec-badge">
-              <span className="spec-dot" />
-              <span>Certified CTS-D & CTS-I Engineering</span>
-            </div>
-          </div>
+      {/* Floating Holographic Telemetry Cards (Silky Smooth CSS Keyframes) */}
+      <div className="hero-telemetry-badge badge-left hide-tablet">
+        <div className="telemetry-icon-box cyan-glow">
+          <Activity size={16} className="text-cyan animate-pulse" />
         </div>
-
-        {/* Right Column: Interactive Room Telemetry & Experience Switcher */}
-        <div className="hero-right-block">
-          <div className="hero-glass-control-card glass-panel" data-cursor="view">
-            {/* HUD Top Bar */}
-            <div className="control-hud-top">
-              <div className="hud-label-group">
-                <span className="hud-sub-label">ROOM TELEMETRY SYSTEM</span>
-                <h4 className="hud-main-heading">Flagship Experience Hub</h4>
-              </div>
-              <div className="hud-live-pill">
-                <span className="live-pulse-dot" />
-                <span>ONLINE 24/7</span>
-              </div>
-            </div>
-
-            {/* Interactive Mode Tabs */}
-            <div className="hero-mode-tabs">
-              <button
-                className={`mode-tab ${activeVisualMode === '8k' ? 'active' : ''}`}
-                onClick={() => setActiveVisualMode('8k')}
-              >
-                <Monitor size={13} />
-                <span>8K MICROLED</span>
-              </button>
-              <button
-                className={`mode-tab ${activeVisualMode === 'dante' ? 'active' : ''}`}
-                onClick={() => setActiveVisualMode('dante')}
-              >
-                <Radio size={13} />
-                <span>DANTE AUDIO</span>
-              </button>
-              <button
-                className={`mode-tab ${activeVisualMode === 'ai' ? 'active' : ''}`}
-                onClick={() => setActiveVisualMode('ai')}
-              >
-                <Layers size={13} />
-                <span>AI DIRECTOR</span>
-              </button>
-            </div>
-
-            {/* Telemetry Matrix Grid */}
-            <div className="hud-metrics-grid">
-              <div className="metric-box">
-                <div className="metric-box-top">
-                  <Volume2 size={13} className="text-cyan" />
-                  <span className="metric-box-key">ACOUSTIC STI SCORE</span>
-                </div>
-                <span className="metric-box-val text-cyan">0.84 // OPTIMAL</span>
-                <span className="metric-box-sub">Speech Intelligibility Index</span>
-              </div>
-
-              <div className="metric-box">
-                <div className="metric-box-top">
-                  <Monitor size={13} className="text-cyan" />
-                  <span className="metric-box-key">DISPLAY MATRIX</span>
-                </div>
-                <span className="metric-box-val">0.9mm FINE PITCH</span>
-                <span className="metric-box-sub">Direct-View Curved LED</span>
-              </div>
-
-              <div className="metric-box">
-                <div className="metric-box-top">
-                  <Wifi size={13} className="text-cyan" />
-                  <span className="metric-box-key">NETWORK PROTOCOL</span>
-                </div>
-                <span className="metric-box-val">SDVoE 10G IP</span>
-                <span className="metric-box-sub">Zero-Latency Uncompressed</span>
-              </div>
-
-              <div className="metric-box">
-                <div className="metric-box-top">
-                  <Activity size={13} className="text-cyan" />
-                  <span className="metric-box-key">AUTOMATION CORE</span>
-                </div>
-                <span className="metric-box-val text-cyan">CRESTRON 4-SERIES</span>
-                <span className="metric-box-sub">One-Touch Macro Engine</span>
-              </div>
-            </div>
-
-            {/* Bottom Action Strip */}
-            <div className="control-hud-footer">
-              <div className="footer-status-text">
-                <span className="status-text-lead">Custom Schematics & Acoustic Bills:</span>
-                <span className="status-text-sub">Available for Architects & Consultants</span>
-              </div>
-              <button className="btn-primary hud-cta-btn" onClick={onStartProject}>
-                <span>SPECIFY SYSTEM</span>
-              </button>
-            </div>
+        <div className="telemetry-content">
+          <div className="telemetry-top">
+            <span className="telemetry-label">Dante DSP Network</span>
+            <span className="telemetry-live-dot" />
           </div>
+          <span className="telemetry-value">98.4% STI Speech Clarity</span>
+          <span className="telemetry-sub">Shure MXA920 Beamforming</span>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <button
-        className="hero-scroll-cue"
-        onClick={onExplore}
-        aria-label="Scroll down to explore disciplines"
+      <div className="hero-telemetry-badge badge-right hide-tablet">
+        <div className="telemetry-icon-box blue-glow">
+          <Zap size={16} className="text-cyan animate-pulse" />
+        </div>
+        <div className="telemetry-content">
+          <div className="telemetry-top">
+            <span className="telemetry-label">0.9mm MicroLED Canvas</span>
+            <span className="telemetry-badge-pill">4K HDR</span>
+          </div>
+          <span className="telemetry-value">1,200 Nits Direct-View</span>
+          <span className="telemetry-sub">&lt; 0.04ms Video Latency</span>
+        </div>
+      </div>
+
+      {/* Main Hero Stage */}
+      <div className="container-wide hero-content-center">
+        {/* Trust Statement Eyebrow */}
+        <div className="hero-trust-pill animate-fade-in-down">
+          <span className="trust-pulse-dot" />
+          <Radio size={13} className="text-cyan animate-spin-slow" />
+          <span className="trust-location">Chennai • Tamil Nadu • Enterprise Commercial & Luxury AV</span>
+          <span className="trust-pipe">|</span>
+          <Award size={13} className="text-cyan" />
+          <span className="trust-cert-text">AVIXA CTS CERTIFIED INTEGRATOR</span>
+        </div>
+
+        {/* Grand Headline with Glowing Holographic Reveal */}
+        <h1 className="hero-grand-title animate-title-glow">
+          Engineering Better Experiences{' '}
+          <span className="hero-gradient-text animated-shimmer-text">Through Audio & Visual Technology.</span>
+        </h1>
+
+        {/* Supporting Tagline */}
+        <p className="hero-lead-tagline animate-fade-in">
+          Professional AV solutions designed, integrated and installed for spaces that need to perform.
+        </p>
+
+        {/* Comprehensive Description */}
+        <p className="hero-main-description animate-fade-in">
+          From executive boardrooms and university auditoriums to healthcare centers, digital signage networks, and luxury private cinemas, we engineer high-performance audio-visual ecosystems that connect people, spaces, and experiences.
+        </p>
+
+        {/* Mobile Telemetry Quick Highlights Strip */}
+        <div className="hero-mobile-telemetry-row show-tablet-only">
+          <div className="mobile-telem-pill">
+            <span className="mobile-telem-dot green" />
+            <span>98.4% Audio Clarity</span>
+          </div>
+          <div className="mobile-telem-pill">
+            <span className="mobile-telem-dot cyan" />
+            <span>0.9mm 4K MicroLED</span>
+          </div>
+          <div className="mobile-telem-pill">
+            <span className="mobile-telem-dot blue" />
+            <span>&lt;150ms Crestron</span>
+          </div>
+        </div>
+
+        {/* Glowing Frosted Capability Chips Cloud */}
+        <div className="hero-capabilities-cloud">
+          {capabilities.map((cap, idx) => {
+            const Icon = cap.icon;
+            return (
+              <div 
+                key={idx} 
+                className="hero-tech-chip hover-glow-bounce" 
+                data-cursor="explore"
+                style={{ animationDelay: `${0.1 + idx * 0.04}s` }}
+              >
+                <Icon size={14} className="text-cyan chip-icon" />
+                <span>{cap.label}</span>
+                <span className="chip-shine" />
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Dual High-Impact Action CTAs */}
+        <div className="hero-cta-row">
+          <button
+            className="btn-primary hero-btn-primary animated-pulse-glow"
+            onClick={() => {
+              soundFx.playClick();
+              onExplore();
+            }}
+            data-cursor="explore"
+            data-cursor-text="SOLUTIONS"
+          >
+            <span>Explore AV Solutions</span>
+            <ArrowRight size={18} />
+          </button>
+
+          <button
+            className="btn-secondary hero-btn-quote"
+            onClick={() => {
+              soundFx.playPowerChime();
+              onStartProject();
+            }}
+            data-cursor="start"
+            data-cursor-text="GET BOQ"
+          >
+            <Sparkles size={16} className="text-cyan" />
+            <span>Request System Quote</span>
+          </button>
+
+          <a
+            href="tel:04424501688"
+            className="btn-secondary hero-btn-call"
+            onClick={() => soundFx.playClick(900)}
+            data-cursor="start"
+            data-cursor-text="CALL"
+          >
+            <PhoneCall size={15} className="text-cyan" />
+            <span>Talk to an AV Expert</span>
+          </a>
+        </div>
+
+        {/* Bottom Frosted Telemetry Trust Bar */}
+        <div className="hero-trust-bar">
+          <div className="trust-bar-item">
+            <CheckCircle2 size={15} className="text-cyan" />
+            <span>Direct OEM Supply (50+ Brands)</span>
+          </div>
+          <div className="trust-bar-item">
+            <CheckCircle2 size={15} className="text-cyan" />
+            <span>Turnkey Installation & Crestron Logic</span>
+          </div>
+          <div className="trust-bar-item">
+            <CheckCircle2 size={15} className="text-cyan" />
+            <span>Chennai Local Demo Lab & 24/7 SLA</span>
+          </div>
+          <div className="trust-bar-item">
+            <CheckCircle2 size={15} className="text-cyan" />
+            <span>250+ Enterprise Deployments</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Interactive Scroll Down Indicator */}
+      <button 
+        className="hero-scroll-down-btn"
+        onClick={() => {
+          soundFx.playClick(800);
+          onExplore();
+        }}
+        aria-label="Scroll to explore solutions"
       >
-        <span className="cue-text">EXPLORE DISCIPLINES</span>
-        <ChevronDown size={18} className="cue-icon" />
+        <div className="scroll-mouse-icon">
+          <div className="scroll-mouse-wheel" />
+        </div>
+        <span className="scroll-hint-text">SCROLL TO DISCOVER</span>
+        <ChevronDown size={14} className="scroll-chevron-arrow" />
       </button>
     </section>
   );

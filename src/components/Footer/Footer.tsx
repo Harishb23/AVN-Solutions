@@ -1,15 +1,22 @@
 import React from 'react';
-import { MapPin, Phone, Mail, Clock, ArrowUpRight, ShieldCheck, ExternalLink, Globe, Share2 } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, ArrowUpRight, ShieldCheck, Share2, Globe } from 'lucide-react';
 import { companyDetails } from '../../data/company';
+import { soundFx } from '../../utils/sound';
+import logoImg from '../../assets/Logo_350x80-01.png';
 import './Footer.css';
 
 interface FooterProps {
-  onNavigate: (page: string) => void;
+  onNavigate: (page: string, targetId?: string) => void;
   onOpenProjectModal: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenProjectModal }) => {
   const currentYear = new Date().getFullYear();
+
+  const handleNav = (page: string, targetId?: string) => {
+    soundFx.playClick();
+    onNavigate(page, targetId);
+  };
 
   return (
     <footer className="site-footer">
@@ -18,133 +25,154 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenProjectModal }
         <div className="container-wide top-strip-inner">
           <div className="strip-item">
             <span className="strip-dot" />
-            <span>HEADQUARTERED IN CHENNAI, INDIA</span>
+            <span>CHENNAI HQ & INTEGRATION LAB: SHOLINGANALLUR, OMR CORRIDOR</span>
           </div>
           <div className="strip-item">
-            <ShieldCheck size={16} className="text-cyan" />
-            <span>CERTIFIED CTS-D & CTS-I SYSTEM INTEGRATION</span>
+            <ShieldCheck size={15} className="text-cyan" />
+            <span>CERTIFIED AVIXA CTS-D & CTS-I SYSTEM INTEGRATOR</span>
           </div>
           <div className="strip-item">
             <span className="strip-dot active" />
-            <span>24/7 MISSION-CRITICAL SLA SUPPORT</span>
+            <span>DIRECT OEM EQUIPMENT DISTRIBUTOR • 24/7 SLA SUPPORT</span>
           </div>
         </div>
       </div>
 
       <div className="container-wide footer-main">
-        <div className="footer-grid">
-          {/* Brand Identity & Mission */}
-          <div className="footer-col brand-col">
-            <div className="footer-brand-header">
-              <div className="brand-monogram">
-                <svg viewBox="0 0 40 40" className="brand-svg">
-                  <polygon points="6,34 20,6 34,34 26,34 20,22 14,34" fill="url(#footer-gradient)" />
-                  <circle cx="20" cy="15" r="2.5" fill="#00F0FF" />
-                  <defs>
-                    <linearGradient id="footer-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#00F0FF" />
-                      <stop offset="100%" stopColor="#0070F3" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
-              <div className="brand-text">
-                <span className="brand-name">AVN<span className="brand-highlight">.</span></span>
-                <span className="brand-sub">SOLUTIONS</span>
-              </div>
-            </div>
-
-            <p className="footer-mission-text">
-              Engineering experiences that people can see, hear and feel. We architect precision acoustic spaces, bezel-less fine-pitch video walls, certified hybrid meeting rooms, and intelligent automation for enterprise, education, and entertainment venues.
-            </p>
-
-            <div className="footer-cta-action">
-              <button
-                className="btn-primary"
-                onClick={onOpenProjectModal}
-                data-cursor="start"
-              >
-                <span>REQUEST SYSTEM DESIGN</span>
-                <ArrowUpRight size={16} />
-              </button>
-            </div>
+        {/* Brand & Descriptor Header Row */}
+        <div className="footer-brand-section">
+          <div className="footer-brand-left">
+            <button 
+              className="brand-logo-btn footer-logo-btn"
+              onClick={() => handleNav('home')}
+              data-cursor="explore"
+              aria-label="AVN Solutions Homepage"
+            >
+              <img src={logoImg} alt="AVN Solutions" className="brand-logo-img footer-logo-img" />
+            </button>
           </div>
 
-          {/* Solutions Column */}
+          <p className="footer-short-desc">
+            AVN Solutions designs, supplies, integrates, programs, and maintains turnkey audio-visual, acoustic, video conferencing, and smart automation systems for corporate, education, healthcare, hospitality, retail, government, and luxury residential clients across Tamil Nadu and India.
+          </p>
+
+          <button
+            className="btn-primary footer-quote-btn"
+            onClick={() => {
+              soundFx.playPowerChime();
+              onOpenProjectModal();
+            }}
+          >
+            <span>Get a Quote</span>
+            <ArrowUpRight size={15} />
+          </button>
+        </div>
+
+        {/* 6 Structured Columns Grid */}
+        <div className="footer-columns-grid">
+          {/* Col 1: Solutions */}
           <div className="footer-col">
-            <h4 className="footer-heading">SOLUTIONS</h4>
-            <ul className="footer-links">
-              <li><button onClick={() => onNavigate('solutions')}>Audio Architecture & DSP</button></li>
-              <li><button onClick={() => onNavigate('solutions')}>Direct-View MicroLED Walls</button></li>
-              <li><button onClick={() => onNavigate('solutions')}>MS Teams & Zoom Rooms</button></li>
-              <li><button onClick={() => onNavigate('solutions')}>Smart Touch Automation</button></li>
-              <li><button onClick={() => onNavigate('solutions')}>Auditorium Stage Acoustic</button></li>
-              <li><button onClick={() => onNavigate('solutions')}>AV-over-IP 10G Infrastructure</button></li>
+            <h4 className="footer-col-title">SOLUTIONS</h4>
+            <ul className="footer-links-list">
+              <li><button onClick={() => handleNav('solutions', 'corporate-av')}>Corporate AV</button></li>
+              <li><button onClick={() => handleNav('solutions', 'video-conferencing')}>Video Conferencing</button></li>
+              <li><button onClick={() => handleNav('solutions', 'professional-audio')}>Professional Audio</button></li>
+              <li><button onClick={() => handleNav('solutions', 'display-visual')}>LED & Video Walls</button></li>
+              <li><button onClick={() => handleNav('solutions', 'smart-automation')}>Smart Automation</button></li>
+              <li><button onClick={() => handleNav('solutions', 'home-cinema')}>Home Cinema</button></li>
+              <li><button onClick={() => handleNav('solutions', 'acoustics')}>Acoustic Solutions</button></li>
             </ul>
           </div>
 
-          {/* Company Column */}
+          {/* Col 2: Industries */}
           <div className="footer-col">
-            <h4 className="footer-heading">COMPANY</h4>
-            <ul className="footer-links">
-              <li><button onClick={() => onNavigate('about')}>About AVN Heritage</button></li>
-              <li><button onClick={() => onNavigate('industries')}>Industries & Sectors</button></li>
-              <li><button onClick={() => onNavigate('projects')}>Featured Deployments</button></li>
-              <li><button onClick={() => onNavigate('insights')}>AV Technology Insights</button></li>
-              <li><button onClick={() => onNavigate('contact')}>Contact & Inquiry</button></li>
-              <li><button onClick={onOpenProjectModal}>Project Configurator</button></li>
+            <h4 className="footer-col-title">INDUSTRIES</h4>
+            <ul className="footer-links-list">
+              <li><button onClick={() => handleNav('industries')}>Corporate Workplaces</button></li>
+              <li><button onClick={() => handleNav('industries')}>Education & Universities</button></li>
+              <li><button onClick={() => handleNav('industries')}>Healthcare & Hospitals</button></li>
+              <li><button onClick={() => handleNav('industries')}>Hospitality & Hotels</button></li>
+              <li><button onClick={() => handleNav('industries')}>Retail Showrooms</button></li>
+              <li><button onClick={() => handleNav('industries')}>Government & Defense</button></li>
+              <li><button onClick={() => handleNav('industries')}>Luxury Residential</button></li>
             </ul>
           </div>
 
-          {/* Verified Contact & Location Column */}
+          {/* Col 3: Products */}
+          <div className="footer-col">
+            <h4 className="footer-col-title">PRODUCTS</h4>
+            <ul className="footer-links-list">
+              <li><button onClick={() => handleNav('products')}>Direct-View MicroLED</button></li>
+              <li><button onClick={() => handleNav('products')}>4K Laser Projectors</button></li>
+              <li><button onClick={() => handleNav('products')}>Beamforming Mic Arrays</button></li>
+              <li><button onClick={() => handleNav('products')}>Dante DSP Processors</button></li>
+              <li><button onClick={() => handleNav('products')}>Crestron 4-Series Core</button></li>
+              <li><button onClick={() => handleNav('products')}>AV-over-IP 10G Switches</button></li>
+              <li><button onClick={() => handleNav('brands')}>Partner Brand Catalog</button></li>
+            </ul>
+          </div>
+
+          {/* Col 4: Services */}
+          <div className="footer-col">
+            <h4 className="footer-col-title">SERVICES</h4>
+            <ul className="footer-links-list">
+              <li><button onClick={() => handleNav('services')}>AV Design & Consulting</button></li>
+              <li><button onClick={() => handleNav('services')}>System Engineering</button></li>
+              <li><button onClick={() => handleNav('services')}>Equipment Supply</button></li>
+              <li><button onClick={() => handleNav('services')}>Installation & Commissioning</button></li>
+              <li><button onClick={() => handleNav('services')}>Control Programming</button></li>
+              <li><button onClick={() => handleNav('services')}>Annual Maintenance (AMC)</button></li>
+              <li><button onClick={() => handleNav('services')}>Acoustic Surveys</button></li>
+            </ul>
+          </div>
+
+          {/* Col 5: Company */}
+          <div className="footer-col">
+            <h4 className="footer-col-title">COMPANY</h4>
+            <ul className="footer-links-list">
+              <li><button onClick={() => handleNav('about')}>About AVN Solutions</button></li>
+              <li><button onClick={() => handleNav('projects')}>Enterprise Portfolio</button></li>
+              <li><button onClick={() => handleNav('insights')}>Engineering Insights</button></li>
+              <li><button onClick={() => handleNav('tools')}>Design Your Space (Tools)</button></li>
+              <li><button onClick={() => handleNav('contact')}>Contact Facility</button></li>
+            </ul>
+          </div>
+
+          {/* Col 6: Chennai Office Contact */}
           <div className="footer-col contact-col">
-            <h4 className="footer-heading">CHENNAI HEADQUARTERS</h4>
-            <div className="contact-details-list">
-              <div className="contact-item">
-                <MapPin size={18} className="contact-icon" />
+            <h4 className="footer-col-title">CHENNAI HQ</h4>
+            <div className="footer-contact-details">
+              <div className="f-contact-item">
+                <MapPin size={15} className="text-cyan" />
+                <span>{companyDetails.address.line1}, {companyDetails.address.area}, Chennai, TN {companyDetails.address.pincode}</span>
+              </div>
+
+              <div className="f-contact-item">
+                <Phone size={15} className="text-cyan" />
                 <div>
-                  <p className="contact-text-primary">10, MGR Rd, Ezhil Nagar, Ganesh Nagar,</p>
-                  <p className="contact-text-secondary">Sholinganallur, Chennai, Tamil Nadu 600119</p>
+                  <a href="tel:04424501688" className="f-link">{companyDetails.phone.display}</a>
+                  <small className="f-subtext">+91 98401 23890 (WhatsApp)</small>
                 </div>
               </div>
 
-              <div className="contact-item">
-                <Phone size={18} className="contact-icon" />
-                <div>
-                  <a href="tel:04424501688" className="contact-link">
-                    044 2450 1688
-                  </a>
-                  <span className="contact-sub-badge">Direct Line</span>
-                </div>
+              <div className="f-contact-item">
+                <Mail size={15} className="text-cyan" />
+                <a href="mailto:contact@avnsolutions.in" className="f-link">{companyDetails.email.general}</a>
               </div>
 
-              <div className="contact-item">
-                <Mail size={18} className="contact-icon" />
-                <div>
-                  <a href="mailto:contact@avnsolutions.in" className="contact-link">
-                    contact@avnsolutions.in
-                  </a>
-                </div>
-              </div>
-
-              <div className="contact-item">
-                <Clock size={18} className="contact-icon" />
-                <div>
-                  <p className="contact-text-primary">Mon – Sat: 9:30 AM – 6:30 PM</p>
-                  <p className="contact-text-secondary">Emergency SLA: 24/7 Dispatch</p>
-                </div>
+              <div className="f-contact-item">
+                <Clock size={15} className="text-cyan" />
+                <span>{companyDetails.businessHours.weekdays}</span>
               </div>
             </div>
 
-            <div className="social-links-row">
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="social-btn" aria-label="LinkedIn">
-                <Share2 size={16} />
+            {/* Social Icons */}
+            <div className="footer-social-row">
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="social-icon-btn" aria-label="LinkedIn">
+                <Share2 size={15} />
               </a>
-              <a href="https://avnsolutions.in" target="_blank" rel="noreferrer" className="social-btn" aria-label="Global Web Portal">
-                <Globe size={16} />
-              </a>
-              <a href={companyDetails.mapUrl} target="_blank" rel="noreferrer" className="social-btn" aria-label="Google Maps Location">
-                <ExternalLink size={16} />
+              <a href="https://avnsolutions.in" target="_blank" rel="noreferrer" className="social-icon-btn" aria-label="Global Web Portal">
+                <Globe size={15} />
               </a>
             </div>
           </div>
@@ -155,12 +183,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenProjectModal }
           <div className="bottom-left">
             <span>© {currentYear} AVN Solutions. All Rights Reserved.</span>
             <span className="bullet-sep">•</span>
-            <span className="tagline-text">From Sound → Vision → Intelligence</span>
+            <span className="tagline-text">Audio Visual • Automation • Integration</span>
           </div>
 
           <div className="bottom-right">
-            <span>Audio Visual Equipment Supplier & AV System Integrator</span>
-            <span className="location-pill">Chennai, India</span>
+            <span>Audio Visual Equipment Supplier & AV Integrator in Chennai, Tamil Nadu</span>
           </div>
         </div>
       </div>

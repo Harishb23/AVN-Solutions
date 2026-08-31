@@ -6,13 +6,14 @@ import './ContactModal.css';
 interface ContactModalProps {
   isOpen: boolean;
   onClose: () => void;
+  initialData?: { subject?: string; message?: string; scope?: string } | null;
 }
 
-export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
-  const [step, setStep] = useState(1);
+export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, initialData }) => {
+  const [step, setStep] = useState(initialData ? 4 : 1);
   const [formData, setFormData] = useState({
-    spaceType: 'Corporate Boardroom / HQ',
-    services: ['Audio Architecture', 'Video Conferencing'],
+    spaceType: initialData?.scope || 'Corporate Boardroom / HQ',
+    services: ['Audio Architecture', 'Video Conferencing', 'Smart Automation & Touch Control'],
     roomSize: 'Medium Space (15-30 People)',
     timeline: 'Within 3 Months',
     name: '',
@@ -20,7 +21,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
     email: '',
     phone: '',
     location: 'Chennai',
-    notes: ''
+    notes: initialData?.message || ''
   });
   const [submitted, setSubmitted] = useState(false);
 

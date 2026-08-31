@@ -1,53 +1,47 @@
 import React from 'react';
-import { companyStats } from '../../data/company';
+import { quickStatsData, companyDetails } from '../../data/company';
 import { AnimatedCounter } from '../../components/AnimatedCounter/AnimatedCounter';
-import { ShieldCheck, Activity, Users, Award, Radio } from 'lucide-react';
+import { Clock, CheckCircle2, Handshake, LayoutGrid, MapPin } from 'lucide-react';
 import './StatsSection.css';
 
 export const StatsSection: React.FC = () => {
-  const statIcons = [Activity, ShieldCheck, Users, Award];
+  const statIcons = [Clock, CheckCircle2, Handshake, LayoutGrid];
 
   return (
-    <section className="stats-telemetry-section" id="stats">
+    <section className="stats-strip-section" id="stats">
       <div className="container-wide">
-        <div className="stats-hud-console glass-panel">
-          {/* Top Telemetry Header Bar */}
-          <div className="stats-console-top">
-            <div className="top-telemetry-left">
-              <div className="hud-status-node">
-                <Radio size={14} className="radar-icon text-cyan" />
-                <span className="telemetry-tag">VERIFIED TELEMETRY METRICS</span>
-              </div>
-              <span className="telemetry-code">SYS-VERIFIED // TAMIL NADU & PAN INDIA</span>
+        <div className="stats-strip-card">
+          {/* Location & Status Tag */}
+          <div className="stats-strip-header">
+            <div className="stats-loc-pill">
+              <MapPin size={13} className="text-cyan" />
+              <span className="stats-loc-text">{companyDetails.trustStatement}</span>
             </div>
-
-            <div className="top-telemetry-right">
-              <span className="live-telemetry-badge">
-                <span className="pulse-circle" />
-                ACTIVE DEPLOYMENTS MONITORED 24/7
-              </span>
+            <div className="stats-live-indicator">
+              <span className="stats-live-dot" />
+              <span>AVIXA CTS-D & CTS-I CERTIFIED ENGINEERING</span>
             </div>
           </div>
 
-          {/* 4-Card Telemetry Grid */}
-          <div className="stats-metrics-grid">
-            {companyStats.map((stat, idx) => {
-              const Icon = statIcons[idx] || Activity;
+          {/* Quick Stats Grid */}
+          <div className="stats-strip-grid">
+            {quickStatsData.map((stat, idx) => {
+              const Icon = statIcons[idx] || CheckCircle2;
               return (
-                <div key={idx} className="stat-metric-card" data-cursor="explore">
-                  <div className="stat-card-header">
-                    <span className="stat-index-num">0{idx + 1}</span>
-                    <div className="stat-icon-wrap">
+                <div key={idx} className="stats-item-cell">
+                  <div className="stats-icon-row">
+                    <div className="stats-icon-bubble">
                       <Icon size={18} className="text-cyan" />
                     </div>
+                    <span className="stats-seq">0{idx + 1}</span>
                   </div>
 
-                  <div className="stat-number-display">
+                  <div className="stats-number-row">
                     <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                   </div>
 
-                  <h3 className="stat-main-label">{stat.label}</h3>
-                  <p className="stat-description-text">{stat.description}</p>
+                  <h3 className="stats-label">{stat.label}</h3>
+                  <p className="stats-desc">{stat.description}</p>
                 </div>
               );
             })}

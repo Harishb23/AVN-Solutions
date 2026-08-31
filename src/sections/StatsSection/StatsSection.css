@@ -1,186 +1,147 @@
-.stats-telemetry-section {
+.stats-strip-section {
   position: relative;
-  padding: 4rem 0;
-  background-color: #f8fafc;
+  padding: 1.5rem 0 3.5rem;
+  background: var(--bg-primary);
+  z-index: 10;
 }
 
-.stats-hud-console {
-  background: #ffffff;
-  border: 1.5px solid rgba(15, 23, 42, 0.08);
-  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.06), 0 0 25px rgba(2, 132, 199, 0.05);
+.stats-strip-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
-  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-/* Console Top Header */
-.stats-console-top {
+.stats-strip-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.25rem 2.25rem;
-  background: #f1f5f9;
-  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-color);
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
-.top-telemetry-left {
-  display: flex;
+.stats-loc-pill {
+  display: inline-flex;
   align-items: center;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-}
-
-.hud-status-node {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.radar-icon {
-  animation: pulse 2s infinite;
-}
-
-.telemetry-tag {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 800;
-  color: #0284c7;
-  letter-spacing: 0.1em;
-}
-
-.telemetry-code {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
+  gap: 0.45rem;
+  padding: 0.35rem 0.85rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
   font-weight: 600;
-  color: var(--text-tertiary);
-  background: #ffffff;
-  padding: 0.2rem 0.6rem;
-  border-radius: var(--radius-xs);
-  border: 1px solid rgba(15, 23, 42, 0.08);
+  color: var(--text-primary);
 }
 
-.live-telemetry-badge {
+.stats-live-indicator {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  color: var(--emerald-status);
-  background: rgba(5, 150, 105, 0.08);
-  padding: 0.25rem 0.75rem;
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(5, 150, 105, 0.25);
+  color: var(--blue-primary);
 }
 
-.pulse-circle {
+.stats-live-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: var(--emerald-status);
   box-shadow: 0 0 8px var(--emerald-status);
-  animation: ping 2s infinite;
+  animation: telemetryPulse 2s infinite ease-in-out;
 }
 
-/* 4-Card Metrics Grid */
-.stats-metrics-grid {
+.stats-strip-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
 }
 
-.stat-metric-card {
-  padding: 2.5rem 2rem;
+.stats-item-cell {
   display: flex;
   flex-direction: column;
-  border-right: 1px solid rgba(15, 23, 42, 0.08);
-  background: #ffffff;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
+  gap: 0.4rem;
+  padding: 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  transition: all 0.25s ease;
 }
 
-.stat-metric-card:last-child {
-  border-right: none;
-}
-
-.stat-metric-card:hover {
-  background: #f8fafc;
+.stats-item-cell:hover {
+  background: var(--bg-card);
+  border-color: var(--blue-primary);
   transform: translateY(-2px);
-  box-shadow: inset 0 -3px 0 #0284c7;
+  box-shadow: var(--shadow-card);
 }
 
-.stat-card-header {
+.stats-icon-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.4rem;
 }
 
-.stat-index-num {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--text-tertiary);
-}
-
-.stat-icon-wrap {
+.stats-icon-bubble {
   width: 36px;
   height: 36px;
   border-radius: var(--radius-sm);
-  background: rgba(2, 132, 199, 0.08);
-  border: 1px solid rgba(2, 132, 199, 0.2);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.stat-number-display {
-  font-family: var(--font-display);
-  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-  font-weight: 900;
-  color: #0f172a;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  margin-bottom: 0.75rem;
+.stats-seq {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
 }
 
-.stat-main-label {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
+.stats-number-row {
+  font-family: var(--font-heading);
+  font-size: 2.35rem;
   font-weight: 800;
-  color: #090d16;
-  margin-bottom: 0.4rem;
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-.stat-description-text {
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
+.stats-label {
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 0.2rem;
+}
+
+.stats-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.45;
 }
 
 @media (max-width: 1024px) {
-  .stats-metrics-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .stat-metric-card:nth-child(2) {
-    border-right: none;
-  }
-  .stat-metric-card:nth-child(1),
-  .stat-metric-card:nth-child(2) {
-    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  .stats-strip-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 640px) {
-  .stats-metrics-grid {
+  .stats-strip-grid {
     grid-template-columns: 1fr;
   }
-  .stat-metric-card {
-    border-right: none;
-    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-    padding: 2rem 1.5rem;
-  }
-  .stat-metric-card:last-child {
-    border-bottom: none;
+  .stats-strip-card {
+    padding: 1.25rem;
   }
 }

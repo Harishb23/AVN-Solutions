@@ -1,7 +1,7 @@
 import React from 'react';
-import { MapPin, ShieldCheck, CheckCircle2, ArrowRight } from 'lucide-react';
-import { timelineMilestones } from '../../data/company';
 import { SectionHeading } from '../../components/SectionHeading/SectionHeading';
+import { ShieldCheck, MapPin, Award, CheckCircle2, ArrowRight } from 'lucide-react';
+import { timelineMilestones, companyDetails } from '../../data/company';
 import './AboutSection.css';
 
 interface AboutSectionProps {
@@ -10,95 +10,94 @@ interface AboutSectionProps {
 }
 
 export const AboutSection: React.FC<AboutSectionProps> = ({ onStartProject, onContact }) => {
-  const engineeringDisciplines = [
-    'Acoustic Consultation & RT60 Modeling',
-    'Full-Scope System CAD Schematic Design',
-    'Tier-1 OEM Direct Equipment Supply',
-    'Architectural Rigging & Physical Installation',
-    'DSP Gain Structure & Video EDID Integration',
-    'End-User Executive & Operator Training',
-    '24/7 Remote Telemetry & Preventative Maintenance'
+  const values = [
+    { title: 'Physics-Based Acoustics', desc: 'Every space modeled in 3D for optimal STIPA speech intelligibility and RT60 decay.' },
+    { title: 'Bezel-Free Visual Standards', desc: 'Direct-view fine-pitch MicroLED canvas engineering calibrated for high ambient lux environments.' },
+    { title: 'Zero-Latency AV-over-IP', desc: '10G uncompressed video and multi-channel Dante audio transport over enterprise fiber backbones.' },
+    { title: 'One-Touch Intelligent Automation', desc: 'Custom Crestron and Extron logic consolidating lighting, HVAC, shades, and video switching.' }
   ];
 
   return (
     <section className="section-spacing about-section" id="about">
       <div className="container-wide">
         <SectionHeading
-          badge="OUR ENGINEERING HERITAGE"
-          title="MORE THAN AV. WE ENGINEER POSSIBILITIES."
-          subtitle="AVN Solutions is Chennai's dedicated Audio Visual technology engineering firm. We bridge the critical gap between architectural design and complex electronic hardware."
+          badge="COMPANY HERITAGE & CAPABILITY"
+          title="ENGINEERING TRUST ACROSS INDIA"
+          subtitle="AVN Solutions bridges spatial architecture, acoustic physics, and enterprise IT networks to deliver mission-critical AV infrastructure."
         />
 
-        <div className="about-main-grid">
-          {/* Left Column: Mission & Core Competency */}
-          <div className="about-narrative-card glass-panel">
-            <div className="card-top-tag">
-              <ShieldCheck size={16} className="text-cyan" />
-              <span>THE AVN PHILOSOPHY</span>
-            </div>
-
-            <h3 className="narrative-heading text-gradient-white">
-              We Don't Sell Boxes. We Engineer Complete Spatial Experiences.
-            </h3>
-
-            <p className="narrative-p">
-              In commercial AV, the common failure point is treating audio-visual equipment as standalone appliances. A great microphone will sound terrible in a reverberant glass box, and a 4K display will look washed out under unmanaged daylight.
-            </p>
-
-            <p className="narrative-p">
-              At AVN Solutions, our engineers calculate physics first. We balance acoustic absorption coefficients, calibrate lux levels, script responsive room automation, and ensure that every attendee — remote or in-room — enjoys total equality of experience.
-            </p>
-
-            <div className="disciplines-checklist">
-              <span className="checklist-heading">FULL-LIFECYCLE INTEGRATION SCOPE:</span>
-              <div className="checklist-grid">
-                {engineeringDisciplines.map((item, idx) => (
-                  <div key={idx} className="discipline-check-item">
-                    <CheckCircle2 size={16} className="text-cyan" />
-                    <span>{item}</span>
-                  </div>
-                ))}
+        <div className="about-content-grid">
+          {/* Left Column: Purpose & Value Cards */}
+          <div className="about-values-col">
+            <div className="about-purpose-card glass-panel">
+              <div className="purpose-header-row">
+                <ShieldCheck size={24} className="text-cyan" />
+                <span className="purpose-badge">AVIXA CTS CERTIFIED INTEGRATOR</span>
               </div>
+              <h3 className="purpose-title text-gradient-white">
+                We Build Spaces That Sound Intelligible, Look Impactful, and Work Reliably.
+              </h3>
+              <p className="purpose-text">
+                With a primary engineering and staging facility in Sholinganallur, Chennai, AVN Solutions delivers turnkey commercial audio-visual, unified communications, and intelligent automation systems.
+              </p>
             </div>
 
-            <div className="about-actions-row">
-              <button className="btn-primary" onClick={onStartProject} data-cursor="start">
-                <span>START A PROJECT</span>
-                <ArrowRight size={16} />
-              </button>
-
-              <button className="btn-secondary" onClick={onContact} data-cursor="explore">
-                <span>VISIT CHENNAI SHOWROOM</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Right Column: Verified Milestone Timeline */}
-          <div className="about-timeline-card glass-panel">
-            <h4 className="timeline-card-heading">EVOLUTION & ARCHITECTURAL HERITAGE</h4>
-
-            <div className="timeline-nodes-track">
-              {timelineMilestones.map((m, idx) => (
-                <div key={idx} className="timeline-entry">
-                  <div className="timeline-marker">
-                    <div className="marker-dot" />
-                    <div className="marker-line" />
+            <div className="values-2x2-grid">
+              {values.map((v, idx) => (
+                <div key={idx} className="value-mini-card glass-panel">
+                  <div className="val-top">
+                    <CheckCircle2 size={16} className="text-cyan" />
+                    <span className="val-num">0{idx + 1}</span>
                   </div>
-                  <div className="timeline-content">
-                    <span className="timeline-year-tag">{m.year}</span>
-                    <h5 className="timeline-title">{m.title}</h5>
-                    <p className="timeline-description">{m.description}</p>
-                  </div>
+                  <h4 className="val-title">{v.title}</h4>
+                  <p className="val-desc">{v.desc}</p>
                 </div>
               ))}
             </div>
 
-            {/* Chennai Verified Location Badge */}
-            <div className="chennai-hq-badge">
-              <MapPin size={18} className="text-cyan" />
-              <div className="hq-text">
-                <span className="hq-title">SHOLINGANALLUR, CHENNAI</span>
-                <span className="hq-desc">10, MGR Rd, Ezhil Nagar, Ganesh Nagar, Tamil Nadu 600119</span>
+            <div className="about-cta-row">
+              <button className="btn-primary" onClick={onStartProject} data-cursor="start">
+                <span>REQUEST SYSTEM AUDIT</span>
+                <ArrowRight size={16} />
+              </button>
+              <button className="btn-secondary" onClick={onContact} data-cursor="explore">
+                <span>CONNECT WITH CHENNAI DESK</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Right Column: Milestones & Verified Location */}
+          <div className="about-milestones-col">
+            <div className="milestones-timeline-card glass-panel">
+              <div className="milestone-card-head">
+                <Award size={20} className="text-cyan" />
+                <span className="milestone-label">ENGINEERING TIMELINE</span>
+              </div>
+
+              <div className="timeline-items-list">
+                {timelineMilestones.map((m: { year: string; title: string; description: string }, idx: number) => (
+                  <div key={idx} className="timeline-node">
+                    <div className="node-marker">
+                      <span className="marker-dot" />
+                      {idx < timelineMilestones.length - 1 && <span className="marker-line" />}
+                    </div>
+                    <div className="node-content">
+                      <span className="node-year">{m.year}</span>
+                      <h4 className="node-title">{m.title}</h4>
+                      <p className="node-desc">{m.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="hq-verify-box">
+                <MapPin size={18} className="text-cyan" />
+                <div>
+                  <span className="hq-label">INTEGRATION FACILITY & SHOWROOM</span>
+                  <p className="hq-address">
+                    {companyDetails.address.line1}, {companyDetails.address.area}, Chennai, TN {companyDetails.address.pincode}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

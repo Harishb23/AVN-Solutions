@@ -27,9 +27,8 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onSelectProject, onS
             <Cpu size={14} className="text-cyan" />
             <span>CASE STUDIES & PORTFOLIO</span>
           </div>
-          <h1 className="page-hero-title text-gradient-white">
-            SPACES TRANSFORMED BY<br />
-            <span className="text-gradient-cyan">AVN ENGINEERING</span>
+          <h1 className="page-hero-title">
+            Spaces Transformed By <span className="industries-title-cyan">AVN Engineering.</span>
           </h1>
           <p className="page-hero-subtitle">
             Explore verified audio, video wall, collaboration, and automation deployments engineered for India's leading organizations.

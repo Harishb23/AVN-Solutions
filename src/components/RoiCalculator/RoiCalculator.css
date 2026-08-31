@@ -1,0 +1,142 @@
+.roi-calculator-panel {
+  width: 100%;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.roi-heading {
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  margin-top: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.roi-sub {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.roi-body-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 2.25rem;
+}
+
+.roi-sliders-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.roi-slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.roi-label {
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.roi-val {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.roi-range-slider {
+  width: 100%;
+  accent-color: var(--cyan-primary);
+  height: 6px;
+  cursor: pointer;
+}
+
+.roi-summary-col {
+  padding: 1.75rem;
+  border: 1px solid var(--border-glow);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.roi-summary-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--cyan-primary);
+  letter-spacing: 0.05em;
+}
+
+.roi-big-num-box {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+
+.roi-big-symbol {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--cyan-primary);
+}
+
+.roi-big-num {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.roi-per-year {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+}
+
+.roi-stat-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.roi-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+}
+
+.stat-row-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+}
+
+.stat-row-val {
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+.roi-action-btn {
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  font-size: 0.88rem;
+}
+
+@media (max-width: 900px) {
+  .roi-body-grid {
+    grid-template-columns: 1fr;
+  }
+}

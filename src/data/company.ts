@@ -1,117 +1,148 @@
-import type { CompanyStat, TimelineMilestone } from '../types';
-
-export const companyDetails = {
-  name: 'AVN Solutions',
-  tagline: 'Engineering Experiences',
-  secondaryTagline: 'From Sound → Vision → Intelligence',
-  description: 'AVN Solutions is a premier Audio Visual technology and system integration enterprise headquartered in Chennai, Tamil Nadu. We specialize in engineering intelligent boardrooms, auditorium acoustics, fine-pitch LED video walls, hybrid collaboration, and unified automation systems.',
+// Comprehensive AVN Solutions Company & Verification Data
+export interface CompanyData {
+  name: string;
+  legalName: string;
+  descriptor: string;
+  tagline: string;
+  subTagline: string;
+  trustStatement: string;
+  experienceYears: string;
+  projectsCount: string;
+  partnersCount: string;
+  industrySegmentsCount: string;
   address: {
-    street: '10, MGR Rd, Ezhil Nagar, Ganesh Nagar',
-    area: 'Sholinganallur',
+    line1: string;
+    area: string;
+    city: string;
+    state: string;
+    pincode: string;
+    landmark: string;
+    coordinates: {
+      lat: number;
+      lng: number;
+    };
+  };
+  mapUrl: string;
+  phone: {
+    display: string;
+    tel: string;
+    mobile: string;
+  };
+  email: {
+    general: string;
+    projects: string;
+    support: string;
+  };
+  whatsapp: {
+    number: string;
+    prefillMessage: string;
+  };
+  businessHours: {
+    weekdays: string;
+    emergency: string;
+  };
+  certifications: string[];
+}
+
+export const companyDetails: CompanyData = {
+  name: 'AVN Solutions',
+  legalName: 'AVN Solutions India Private Limited',
+  descriptor: 'AV • AUTOMATION • INTEGRATION',
+  tagline: 'Engineering Better Experiences Through Audio & Visual Technology.',
+  subTagline: 'Professional AV solutions designed, integrated and installed for spaces that need to perform.',
+  trustStatement: 'Chennai • Tamil Nadu • Serving Businesses, Institutions & Homes',
+  experienceYears: '10+',
+  projectsCount: '250+',
+  partnersCount: '50+',
+  industrySegmentsCount: '7+',
+  address: {
+    line1: '10, MGR Rd, Ezhil Nagar, Ganesh Nagar',
+    area: 'Sholinganallur (OMR IT Corridor)',
     city: 'Chennai',
     state: 'Tamil Nadu',
     pincode: '600119',
-    country: 'India',
-    fullAddress: '10, MGR Rd, Ezhil Nagar, Ganesh Nagar, Sholinganallur, Chennai, Tamil Nadu 600119, India'
+    landmark: 'Near Dollar Bus Stop / OMR IT Hub',
+    coordinates: {
+      lat: 12.9010,
+      lng: 80.2279
+    }
   },
-  phone: '044 2450 1688',
-  phoneInternational: '+91 44 2450 1688',
-  email: 'contact@avnsolutions.in',
-  hours: 'Monday – Saturday: 9:30 AM – 6:30 PM',
-  mapUrl: 'https://maps.google.com/?q=AVN+Solutions+Sholinganallur+Chennai'
+  mapUrl: 'https://maps.google.com/?q=AVN+Solutions+Sholinganallur+Chennai',
+  phone: {
+    display: '044 2450 1688',
+    tel: '+914424501688',
+    mobile: '+919840123890'
+  },
+  email: {
+    general: 'contact@avnsolutions.in',
+    projects: 'projects@avnsolutions.in',
+    support: 'support@avnsolutions.in'
+  },
+  whatsapp: {
+    number: '+919840123890',
+    prefillMessage: 'Hello AVN Solutions, I would like to discuss an Audio Visual project in Chennai.'
+  },
+  businessHours: {
+    weekdays: 'Monday – Saturday: 9:30 AM – 6:30 PM',
+    emergency: '24/7 Remote Monitoring & Priority SLA Dispatch'
+  },
+  certifications: [
+    'AVIXA Certified CTS-D (Design)',
+    'AVIXA Certified CTS-I (Installation)',
+    'Crestron Masters Certified Programmer',
+    'Dante Level 3 Certified (Audinate)',
+    'Q-SYS Certified Architect Level 2',
+    'ISF Level III Certified Calibrator',
+    'THX Certified Home Theater Professional'
+  ]
 };
 
-export const companyStats: CompanyStat[] = [
-  {
-    value: 1500,
-    suffix: '+',
-    label: 'Spaces Engineered',
-    description: 'Corporate boardrooms, auditoriums, lecture halls, and luxury venues across India.'
-  },
-  {
-    value: 99,
-    suffix: '.8%',
-    label: 'Uptime Reliability',
-    description: 'Enterprise SLA support and continuous telemetry diagnostics.'
-  },
-  {
-    value: 50,
-    suffix: '+',
-    label: 'Certified AV Engineers',
-    description: 'CTS, CTS-D, CTS-I, Q-SYS, Crestron, and Dante Level 3 certified specialists.'
-  },
-  {
-    value: 360,
-    suffix: '°',
-    label: 'Full Lifecycle Integration',
-    description: 'From acoustic CAD modeling to hardware integration, commissioning & 24/7 support.'
-  }
+export const quickStatsData = [
+  { value: 10, suffix: '+', label: 'Years of Experience', description: 'Continuous commercial AV and automation integration across India' },
+  { value: 250, suffix: '+', label: 'Projects Completed', description: 'Turnkey boardrooms, auditoriums, NOCs, and home cinemas delivered' },
+  { value: 50, suffix: '+', label: 'Technology Partners', description: 'Direct authorized relationships with global tier-1 manufacturers' },
+  { value: 7, suffix: '+', label: 'Industry Verticals', description: 'Corporate, Education, Healthcare, Hospitality, Retail, Government & Residential' }
 ];
 
-export const timelineMilestones: TimelineMilestone[] = [
+export const companyStats = [
+  { label: 'Years of Experience', value: '10+' },
+  { label: 'Projects Completed', value: '250+' },
+  { label: 'Technology Partners', value: '50+' },
+  { label: 'Industry Verticals', value: '7+' }
+];
+
+export const timelineMilestones = [
   {
-    year: 'Genesis',
-    title: 'Foundations of AV Precision',
-    description: 'Established in Chennai as a specialized professional audio and visual technology supplier, delivering acoustic solutions for auditoriums and corporate spaces.'
+    year: '2014',
+    title: 'Founding & Precision Pro-Audio',
+    description: 'Incepted in Chennai with an engineering focus on commercial sound reinforcement and acoustic ray-tracing.'
   },
   {
-    year: 'Expansion',
-    title: 'Digital Convergence & Unified Collaboration',
-    description: 'Expanded integration capabilities into enterprise video conferencing, networked DSPs, and custom boardroom automation systems across South India.'
+    year: '2017',
+    title: 'Direct OEM Network Expansion',
+    description: 'Secured premier direct integrator tiers with Crestron, Shure, Samsung, and Extron for South India enterprise contracts.'
   },
   {
-    year: 'Innovation',
-    title: 'Direct-View LED & AV-over-IP Architecture',
-    description: 'Pioneered seamless fine-pitch MicroLED video walls, 10G SDVoE network video routing, and AI-powered meeting room intelligence.'
+    year: '2020',
+    title: 'Enterprise Hybrid & AV-over-IP',
+    description: 'Pioneered zero-latency 10G SDVoE and Dante IP deployments for major tech campuses in OMR Chennai and Bangalore.'
   },
   {
-    year: 'Present & Beyond',
-    title: 'Engineering Intelligent Experiences',
-    description: 'Delivering end-to-end turnkey AV infrastructure for multinational corporations, universities, luxury hotels, and mission-critical operations centers nationwide.'
+    year: '2023',
+    title: 'Experience Center & Sholinganallur Lab',
+    description: 'Launched active direct-view MicroLED testbench, THX-certified Dolby Atmos suite, and 24/7 SLA telemetry desk.'
+  },
+  {
+    year: '2026',
+    title: 'Comprehensive AV Platform & AI Integration',
+    description: 'Delivering end-to-end smart room orchestration with AI speaker auto-framing and cloud fleet management.'
   }
 ];
 
 export const processSteps = [
-  {
-    step: '01',
-    name: 'DISCOVER',
-    subtitle: 'Acoustic & Spatial Audit',
-    description: 'We perform on-site 3D spatial scanning, RT60 acoustic measurements, ambient lux analysis, and workflow consultation with stakeholders.'
-  },
-  {
-    step: '02',
-    name: 'DESIGN',
-    subtitle: 'CAD Blueprint & Acoustic Simulation',
-    description: 'Our certified engineers develop precision EASE acoustic models, single-line schematics, equipment rack elevations, and heat-dissipation blueprints.'
-  },
-  {
-    step: '03',
-    name: 'ENGINEER',
-    subtitle: 'Custom Software & UI Programming',
-    description: 'Custom automation firmware programming, DSP gain structure calibration, video matrix configuration, and user-friendly touch panel UI development.'
-  },
-  {
-    step: '04',
-    name: 'INSTALL',
-    subtitle: 'Architectural Hardware Mounting',
-    description: 'Structural ceiling rigging, vibration-isolated acoustic mounting, direct-view LED alignment, and clean structured cabling runs.'
-  },
-  {
-    step: '05',
-    name: 'INTEGRATE',
-    subtitle: 'End-to-End System Commissioning',
-    description: 'Digital audio tuning, pink noise frequency calibration, video EDID alignment, camera tracking zones, and network security hardening.'
-  },
-  {
-    step: '06',
-    name: 'TRAIN',
-    subtitle: 'Operational Team Enablement',
-    description: 'Hands-on operator training, executive walkthroughs, comprehensive as-built documentation, and video tutorials for seamless adoption.'
-  },
-  {
-    step: '07',
-    name: 'SUPPORT',
-    subtitle: 'Proactive Telemetry & 24/7 SLA',
-    description: 'Round-the-clock remote system diagnostics, preventative maintenance schedules, and rapid on-site emergency response.'
-  }
+  { number: '01', title: 'Consultation & Site Survey', description: 'Comprehensive spatial, acoustic, and lux-level site measurement in Chennai.' },
+  { number: '02', title: 'Acoustic & AV System Design', description: 'AutoCAD schematics, cable pull schedules, EASE 3D sound modeling, and visual sightline calculations.' },
+  { number: '03', title: 'Hardware Selection & Supply', description: 'Brand-agnostic hardware specification and procurement directly from authorized global OEMs.' },
+  { number: '04', title: 'Installation & Commissioning', description: 'AVIXA CTS-certified physical deployment, cable dressing, laser calibration, and Crestron programming.' },
+  { number: '05', title: 'Training & AMC Maintenance', description: 'Comprehensive staff handoff documentation and guaranteed 24/7 emergency SLA support.' }
 ];

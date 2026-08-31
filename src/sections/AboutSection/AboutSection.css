@@ -1,126 +1,181 @@
+/* ==========================================================================
+   AVN SOLUTIONS - ABOUT SECTION COMPONENT
+   ========================================================================== */
+
 .about-section {
   position: relative;
-  background-color: #f8fafc;
+  background-color: var(--bg-primary);
+  overflow: hidden;
 }
 
-.about-main-grid {
+.about-content-grid {
   display: grid;
-  grid-template-columns: 1.25fr 1fr;
-  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
   align-items: start;
 }
 
-/* Left Narrative Card */
-.about-narrative-card {
-  padding: 3rem;
-  background: #ffffff;
-  border: 1px solid rgba(15, 23, 42, 0.1);
-  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.05);
-  border-radius: var(--radius-xl);
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.card-top-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #0284c7;
-  letter-spacing: 0.1em;
-}
-
-.narrative-heading {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
-  font-weight: 800;
-  line-height: 1.15;
-  color: #090d16;
-}
-
-.narrative-p {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: var(--text-secondary);
-}
-
-.disciplines-checklist {
-  background: #f8fafc;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 1.5rem;
-}
-
-.checklist-heading {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #0284c7;
-  letter-spacing: 0.08em;
-  margin-bottom: 1rem;
-}
-
-.checklist-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.7rem;
-}
-
-.discipline-check-item {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 0.9rem;
-  color: var(--text-primary);
-}
-
-.about-actions-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-top: 1rem;
-}
-
-/* Right Timeline Card */
-.about-timeline-card {
-  padding: 3rem 2.5rem;
-  background: #ffffff;
-  border: 1px solid rgba(15, 23, 42, 0.1);
-  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.05);
-  border-radius: var(--radius-xl);
-  display: flex;
-  flex-direction: column;
-}
-
-.timeline-card-heading {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: #0284c7;
-  margin-bottom: 2rem;
-}
-
-.timeline-nodes-track {
+/* Left Column: Purpose & Values */
+.about-values-col {
   display: flex;
   flex-direction: column;
   gap: 1.75rem;
-  position: relative;
-  margin-bottom: 2.5rem;
 }
 
-.timeline-entry {
+.about-purpose-card {
+  padding: 2.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: relative;
+}
+
+.purpose-header-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.purpose-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--cyan-bright);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.purpose-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.28;
+  letter-spacing: -0.015em;
+}
+
+.purpose-text {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+/* 2x2 Values Grid */
+.values-2x2-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.value-mini-card {
+  padding: 1.6rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.value-mini-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-cyan-active);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.3), 0 0 20px var(--cyan-soft);
+}
+
+.val-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.val-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--text-dim);
+  background: var(--bg-primary);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-xs);
+}
+
+.val-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.val-desc {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.about-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+/* Right Column: Milestones & Facility */
+.about-milestones-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.milestones-timeline-card {
+  padding: 2.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+}
+
+.milestone-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.milestone-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--cyan-bright);
+  text-transform: uppercase;
+}
+
+.timeline-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2.25rem;
+  position: relative;
+}
+
+.timeline-node {
   display: flex;
   gap: 1.25rem;
   position: relative;
 }
 
-.timeline-marker {
+.node-marker {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -131,81 +186,94 @@
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: #ffffff;
-  border: 3px solid #0284c7;
-  box-shadow: 0 0 10px rgba(2, 132, 199, 0.4);
+  background: var(--bg-primary);
+  border: 3px solid var(--cyan-bright);
+  box-shadow: 0 0 12px var(--cyan-bright);
   z-index: 2;
 }
 
 .marker-line {
   position: absolute;
   top: 14px;
-  bottom: -1.75rem;
+  bottom: -1.5rem;
   width: 2px;
-  background: rgba(15, 23, 42, 0.1);
+  background: var(--border-color);
   z-index: 1;
 }
 
-.timeline-entry:last-child .marker-line {
-  display: none;
-}
-
-.timeline-content {
+.node-content {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
 
-.timeline-year-tag {
+.node-year {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  font-weight: 700;
-  color: #0284c7;
+  font-weight: 800;
+  color: var(--cyan-bright);
 }
 
-.timeline-title {
-  font-family: var(--font-display);
+.node-title {
+  font-family: var(--font-heading);
   font-size: 1.05rem;
-  font-weight: 700;
-  color: #0f172a;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.3;
 }
 
-.timeline-description {
+.node-desc {
   font-size: 0.85rem;
   color: var(--text-secondary);
   line-height: 1.5;
 }
 
-.chennai-hq-badge {
+.hq-verify-box {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  background: #f8fafc;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
+  align-items: flex-start;
+  gap: 0.85rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
   padding: 1.25rem;
   margin-top: auto;
 }
 
-.hq-text {
-  display: flex;
-  flex-direction: column;
+.hq-verify-box svg {
+  color: var(--cyan-bright);
+  margin-top: 3px;
+  flex-shrink: 0;
 }
 
-.hq-title {
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #0f172a;
+.hq-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--cyan-bright);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
 }
 
-.hq-desc {
-  font-size: 0.75rem;
+.hq-address {
+  font-size: 0.82rem;
   color: var(--text-secondary);
+  line-height: 1.45;
 }
 
 @media (max-width: 1024px) {
-  .about-main-grid {
+  .about-content-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .values-2x2-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-purpose-card,
+  .milestones-timeline-card {
+    padding: 1.75rem;
   }
 }
