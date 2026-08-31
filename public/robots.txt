@@ -1,0 +1,30 @@
+# ==============================================================================
+# AVN SOLUTIONS (CHENNAI) - ROBOTS.TXT
+# Web: https://avnsolutions.in
+# Audio Visual Equipment Supplier & AV Integrator in Chennai, Tamil Nadu
+# ==============================================================================
+
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /public/
+Disallow: /private/
+Disallow: /api/
+
+# Crawler Host & Sitemap Location
+Host: https://avnsolutions.in
+Sitemap: https://avnsolutions.in/sitemap.xml
+
+# Specific Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /assets/
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.svg$
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1

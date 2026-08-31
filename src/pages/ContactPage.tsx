@@ -145,8 +145,9 @@ export const ContactPage: React.FC = () => {
                     <span className="card-micro-tag">HEAD OFFICE & STAGING LAB</span>
                     <h3 className="card-heading">Chennai Integration Center</h3>
                     <p className="card-text">
-                      10, MGR Rd, Ezhil Nagar, Ganesh Nagar,<br />
-                      Sholinganallur, Chennai, Tamil Nadu 600119
+                      No.10A, Ground Floor, Dr. MGR Street,<br />
+                      Sholinganallur, Chennai - 600119,<br />
+                      Tamil Nadu, India.
                     </p>
                     <a
                       href={companyDetails.mapUrl}
@@ -169,7 +170,7 @@ export const ContactPage: React.FC = () => {
                     <span className="card-micro-tag">TELEPHONE & HOTLINE</span>
                     <h3 className="card-heading">Engineering & Sales Desk</h3>
                     <a href="tel:04424501688" className="phone-highlight-number">
-                      044 2450 1688
+                      044-24501688
                     </a>
                     <p className="card-subtext">
                       Mon – Sat, 9:30 AM – 6:30 PM IST (Emergency 24/7 SLA Active)

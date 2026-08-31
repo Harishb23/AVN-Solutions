@@ -16,6 +16,7 @@ export interface CompanyData {
     city: string;
     state: string;
     pincode: string;
+    country?: string;
     landmark: string;
     coordinates: {
       lat: number;
@@ -56,20 +57,21 @@ export const companyDetails: CompanyData = {
   partnersCount: '50+',
   industrySegmentsCount: '7+',
   address: {
-    line1: '10, MGR Rd, Ezhil Nagar, Ganesh Nagar',
-    area: 'Sholinganallur (OMR IT Corridor)',
+    line1: 'No.10A, Ground Floor, Dr. MGR Street',
+    area: 'Sholinganallur',
     city: 'Chennai',
     state: 'Tamil Nadu',
     pincode: '600119',
-    landmark: 'Near Dollar Bus Stop / OMR IT Hub',
+    country: 'India',
+    landmark: 'Sholinganallur OMR Tech Corridor',
     coordinates: {
       lat: 12.9010,
       lng: 80.2279
     }
   },
-  mapUrl: 'https://maps.google.com/?q=AVN+Solutions+Sholinganallur+Chennai',
+  mapUrl: 'https://maps.google.com/?q=No.10A+Dr+MGR+Street+Sholinganallur+Chennai+600119',
   phone: {
-    display: '044 2450 1688',
+    display: '044-24501688',
     tel: '+914424501688',
     mobile: '+919840123890'
   },

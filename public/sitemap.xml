@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- 1. Home Page -->
+  <url>
+    <loc>https://avnsolutions.in/</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://avnsolutions.in/logo.png</image:loc>
+      <image:title>AVN Solutions - Audio Visual Equipment Supplier &amp; AV Integrator Chennai</image:title>
+      <image:caption>AVN Solutions India Private Limited - Chennai Headquarters &amp; Experience Lab</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 2. AV Solutions -->
+  <url>
+    <loc>https://avnsolutions.in/solutions</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 3. Specialized Industries -->
+  <url>
+    <loc>https://avnsolutions.in/industries</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 4. AV Products & Hardware -->
+  <url>
+    <loc>https://avnsolutions.in/products</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 5. End-to-End AV Services & SLA -->
+  <url>
+    <loc>https://avnsolutions.in/services</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 6. Enterprise Project Portfolio -->
+  <url>
+    <loc>https://avnsolutions.in/projects</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 7. About AVN Solutions -->
+  <url>
+    <loc>https://avnsolutions.in/about</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 8. Engineering Insights & Articles -->
+  <url>
+    <loc>https://avnsolutions.in/insights</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 9. Contact & Chennai Showroom -->
+  <url>
+    <loc>https://avnsolutions.in/contact</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+</urlset>
