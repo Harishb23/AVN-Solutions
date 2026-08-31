@@ -5,7 +5,6 @@ import { SolutionsExplorer } from '../sections/SolutionsExplorer/SolutionsExplor
 import { SmartSpaceSim } from '../sections/SmartSpaceSim/SmartSpaceSim';
 import { WhyChooseUs } from '../sections/WhyChooseUs/WhyChooseUs';
 import { FeaturedCaseStudy } from '../sections/FeaturedCaseStudy/FeaturedCaseStudy';
-import { TestimonialsSection } from '../sections/TestimonialsSection/TestimonialsSection';
 import { FaqSection } from '../sections/FaqSection/FaqSection';
 import { ArrowRight, PhoneCall, Sparkles, MapPin, CheckCircle2 } from 'lucide-react';
 import { soundFx } from '../utils/sound';
@@ -61,10 +60,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         onStartProject={onOpenProjectModal}
       />
 
-      {/* 7. Verified Client Testimonials */}
-      <TestimonialsSection />
-
-      {/* 8. Structured AV FAQs Accordion */}
+      {/* 7. Structured AV FAQs Accordion */}
       <FaqSection
         onStartProject={onOpenProjectModal}
       />
