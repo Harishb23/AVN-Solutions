@@ -1,15 +1,7 @@
 import React from 'react';
-import { 
-  Compass, 
-  Scale, 
-  Layers, 
-  Cpu, 
-  MapPin, 
-  TrendingUp, 
-  CheckCircle2, 
-  ArrowRight 
-} from 'lucide-react';
+import { ArrowRight, Compass, PencilRuler, Wrench, Headphones } from 'lucide-react';
 import { soundFx } from '../../utils/sound';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 import './WhyChooseUs.css';
 
 interface WhyChooseUsProps {
@@ -17,105 +9,90 @@ interface WhyChooseUsProps {
 }
 
 export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onStartProject }) => {
-  const reasons = [
+  const { ref, isRevealed } = useScrollReveal<HTMLElement>({ threshold: 0.15 });
+
+  const processStages = [
     {
       num: '01',
-      title: 'Engineering First',
-      description: 'Solutions designed around real spatial, acoustic geometry, and technical requirements rather than cookie-cutter templates.',
-      icon: Compass,
-      highlights: ['Custom RT60 ray-tracing', 'Snellen visual acuity sizing', 'Thermal & power load planning']
+      title: 'DISCOVER',
+      tagline: 'Spatial & Workflow Discovery',
+      description: 'Understand your space, users and requirements through comprehensive on-site acoustic and sightline audits in Chennai.',
+      icon: Compass
     },
     {
       num: '02',
-      title: 'Brand-Agnostic Advice',
-      description: 'We recommend hardware strictly based on performance, room ergonomics, and your application—not vendor bias.',
-      icon: Scale,
-      highlights: ['Certified across 50+ OEMs', 'Best-of-breed component pairing', 'Transparent comparative BOQs']
+      title: 'DESIGN',
+      tagline: 'Engineering & Schematics',
+      description: 'Engineer the right AV and automation architecture with AutoCAD line schematics, 3D EASE acoustic raytracing and transparent BOQs.',
+      icon: PencilRuler
     },
     {
       num: '03',
-      title: 'End-to-End Delivery',
-      description: 'Design, direct supply, precision installation, custom Crestron programming, and local maintenance under one roof.',
-      icon: Layers,
-      highlights: ['Single point of accountability', 'Direct OEM warranties', 'Zero contractor finger-pointing']
+      title: 'INTEGRATE',
+      tagline: 'Turnkey Commissioning',
+      description: 'Install, program and commission the complete system by AVIXA CTS-certified engineers and certified Crestron logic programmers.',
+      icon: Wrench
     },
     {
       num: '04',
-      title: 'Experienced Integration',
-      description: 'Professional convergence across pro-audio, 4K/8K video, control processors, DALI lighting, and enterprise IT networks.',
-      icon: Cpu,
-      highlights: ['AVIXA CTS-D / CTS-I certified team', 'Dante Level 3 certified audio', 'Crestron Master certified logic']
-    },
-    {
-      num: '05',
-      title: 'Local Chennai Support',
-      description: 'Chennai-based headquarters, local staging lab, standby hardware inventory, and guaranteed 2-hour SLA response.',
-      icon: MapPin,
-      highlights: ['Sholinganallur HQ & Demo Lab', 'Emergency spare units in stock', 'Dedicated Tamil Nadu engineers']
-    },
-    {
-      num: '06',
-      title: 'Future-Ready Architecture',
-      description: 'Open-standard IP topology (Dante, AES67, SDVoE) engineered to scale seamlessly as your business grows.',
-      icon: TrendingUp,
-      highlights: ['10G Cat6A & Fiber backbone', 'Cloud firmware & health telemetry', 'Modular expansion capability']
+      title: 'SUPPORT',
+      tagline: 'Lifecycle Performance',
+      description: 'Maintain performance and provide ongoing support with guaranteed 24/7 SLA telemetry, remote diagnostics, and dedicated local spares.',
+      icon: Headphones
     }
   ];
 
   return (
-    <section className="why-choose-us-section" id="why-us">
+    <section 
+      ref={ref}
+      className={`editorial-process-section section-spacing ${isRevealed ? 'is-revealed' : ''} reveal-on-scroll`} 
+      id="why-us"
+    >
       <div className="container-wide">
         {/* Section Heading */}
-        <div className="section-head-center">
-          <div className="section-eyebrow-pill">
-            <span className="eyebrow-dot" />
-            <span className="eyebrow-title">ENGINEERING CREDENTIALS</span>
+        <div className="section-head-left">
+          <div className="section-eyebrow">
+            <span className="eyebrow-accent-line" />
+            <span>OUR METHODOLOGY</span>
           </div>
           <h2 className="section-grand-title">
-            Why Businesses <span className="title-highlight">Choose AVN Solutions.</span>
+            From concept <br />
+            <span className="title-highlight">to installation.</span>
           </h2>
           <p className="section-lead-desc">
-            We bridge the gap between architectural aesthetics, acoustic science, and enterprise IT networks to deliver spaces that perform flawlessly.
+            A disciplined engineering process ensuring predictable delivery, seamless integration, and long-term system reliability.
           </p>
         </div>
 
-        {/* 6 Value Cards Grid */}
-        <div className="why-us-grid">
-          {reasons.map((r, idx) => {
-            const Icon = r.icon;
+        {/* 4-Stage Horizontal Process Grid */}
+        <div className="process-horizontal-grid stagger-container">
+          {processStages.map((stage, idx) => {
+            const Icon = stage.icon;
             return (
-              <div key={idx} className="why-card" data-cursor="explore">
-                <div className="why-card-top">
-                  <div className="why-icon-wrap">
-                    <Icon size={20} className="text-cyan" />
+              <div key={idx} className="process-stage-card hover-card-lift">
+                <div className="stage-top-meta">
+                  <span className="stage-num-label number-reveal">{stage.num}</span>
+                  <div className="stage-icon-circle">
+                    <Icon size={18} className="text-emerald" />
                   </div>
-                  <span className="why-seq">{r.num}</span>
                 </div>
 
-                <h3 className="why-title">{r.title}</h3>
-                <p className="why-desc">{r.description}</p>
-
-                <div className="why-highlights-list">
-                  {r.highlights.map((h, i) => (
-                    <div key={i} className="why-hl-item">
-                      <CheckCircle2 size={12} className="text-cyan" />
-                      <span>{h}</span>
-                    </div>
-                  ))}
-                </div>
+                <h3 className="stage-heading">{stage.title}</h3>
+                <h4 className="stage-tagline">{stage.tagline}</h4>
+                <p className="stage-detail">{stage.description}</p>
               </div>
             );
           })}
         </div>
 
-        {/* Bottom Fast Action */}
-        <div className="why-bottom-box">
-          <div className="why-bottom-text">
-            <h4>Ready to discuss your facility's AV architecture?</h4>
-            <p>Schedule a complimentary site survey with our CTS-certified solutions engineers in Chennai.</p>
+        {/* Bottom Fast Action Banner */}
+        <div className="process-bottom-banner hover-card-lift">
+          <div className="banner-text-side">
+            <h4 className="banner-title">Planning a new facility in Chennai or South India?</h4>
+            <p className="banner-desc">Book an initial space consultation and architectural review with our senior engineering team.</p>
           </div>
           <button
-            className="btn-primary why-action-btn"
+            className="btn-primary banner-action-btn"
             onClick={() => {
               soundFx.playPowerChime();
               onStartProject();

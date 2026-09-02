@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
 import { 
-  Building, 
+  Building2, 
   GraduationCap, 
   HeartPulse, 
   Utensils, 
   ShoppingBag, 
   Landmark, 
   Home, 
-  Theater, 
-  Sparkles, 
-  Building2,
-  CheckCircle2, 
   ArrowRight,
-  Sliders
+  CheckCircle2
 } from 'lucide-react';
-import { industriesData } from '../../data/industries';
 import { soundFx } from '../../utils/sound';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 import './Industries.css';
 
 interface IndustriesProps {
@@ -23,139 +19,187 @@ interface IndustriesProps {
   onNavigateIndustries?: () => void;
 }
 
+interface IndustryItem {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  image: string;
+  icon: any;
+  spaces: string[];
+}
+
 export const Industries: React.FC<IndustriesProps> = ({ onStartProject, onNavigateIndustries }) => {
-  const [selectedId, setSelectedId] = useState<string>(industriesData[0].id);
+  const { ref, isRevealed } = useScrollReveal<HTMLElement>({ threshold: 0.15 });
 
-  const iconMap: Record<string, any> = {
-    corporate: Building,
-    education: GraduationCap,
-    healthcare: HeartPulse,
-    hospitality: Utensils,
-    retail: ShoppingBag,
-    government: Landmark,
-    residential: Home,
-    entertainment: Theater,
-    worship: Sparkles,
-    commercial: Building2
-  };
+  const industries: IndustryItem[] = [
+    {
+      id: 'corporate',
+      name: 'Corporate',
+      tagline: 'Technology for productive workplaces.',
+      description: 'Executive boardrooms, hybrid Microsoft Teams & Zoom rooms, and all-hands townhall spaces engineered for modern enterprises.',
+      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=85',
+      icon: Building2,
+      spaces: ['Executive Boardrooms', 'Hybrid Meeting Spaces', 'Townhall Presentation Auditoriums']
+    },
+    {
+      id: 'education',
+      name: 'Education',
+      tagline: 'Engaging systems for modern learning.',
+      description: 'Active learning classrooms, tier-1 lecture halls, distance education lecture capture, and campus digital signage.',
+      image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=85',
+      icon: GraduationCap,
+      spaces: ['Smart Tiered Lecture Halls', 'HyFlex Hybrid Classrooms', 'Campus-Wide PA & Broadcasting']
+    },
+    {
+      id: 'healthcare',
+      name: 'Healthcare',
+      tagline: 'Precision AV for clinical environments.',
+      description: 'Medical training auditoriums, surgical telemedicine displays, patient room infotainment, and hospital command centers.',
+      image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1600&q=85',
+      icon: HeartPulse,
+      spaces: ['Surgical Suites & Telemedicine', 'Medical Seminar Auditoriums', 'Healthcare Control Centers']
+    },
+    {
+      id: 'hospitality',
+      name: 'Hospitality',
+      tagline: 'Memorable guest & venue experiences.',
+      description: 'Luxury hotel ballrooms, multi-zone background music distribution, architectural lighting control, and digital banquet displays.',
+      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=85',
+      icon: Utensils,
+      spaces: ['Grand Hotel Ballrooms', 'Multi-Zone Lounge Audio', 'Guest Arrival Displays']
+    },
+    {
+      id: 'retail',
+      name: 'Retail',
+      tagline: 'Dynamic visual impact for flagship stores.',
+      description: 'High-brightness storefront MicroLED video walls, interactive product selector kiosks, and zoned background audio.',
+      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=85',
+      icon: ShoppingBag,
+      spaces: ['Storefront Direct-View LED', 'Interactive Experience Kiosks', 'Zoned Commercial Sound']
+    },
+    {
+      id: 'government',
+      name: 'Government',
+      tagline: 'Mission-critical command & council spaces.',
+      description: 'Secure parliamentary discussion systems, emergency operations centers (NOC/EOC), and encrypted AV over IP.',
+      image: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1600&q=85',
+      icon: Landmark,
+      spaces: ['Council Chambers & Voting', '24/7 Command & Control NOCs', 'Secure Teleconference Suites']
+    },
+    {
+      id: 'residential',
+      name: 'Residential',
+      tagline: 'Immersive entertainment for luxury homes.',
+      description: 'Private THX-certified Dolby Atmos home cinemas, whole-home audio distribution, and integrated smart home automation.',
+      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85',
+      icon: Home,
+      spaces: ['Dolby Atmos Private Theatres', 'Whole-Villa Multiroom Audio', 'Curated Architectural Lighting']
+    }
+  ];
 
-  const current = industriesData.find(i => i.id === selectedId) || industriesData[0];
-  const CurrentIcon = iconMap[current.id] || Building;
+  const [selectedId, setSelectedId] = useState<string>(industries[0].id);
 
-  const handleSelect = (id: string) => {
+  const activeIndustry = industries.find(i => i.id === selectedId) || industries[0];
+
+  const handleSelectIndustry = (id: string) => {
     soundFx.playClick(900);
     setSelectedId(id);
   };
 
   return (
-    <section className="industries-explorer-section" id="industries">
+    <section 
+      ref={ref}
+      className={`editorial-industries-section section-spacing ${isRevealed ? 'is-revealed' : ''} reveal-on-scroll`} 
+      id="industries"
+    >
       <div className="container-wide">
-        {/* Section Heading */}
-        <div className="section-head-center">
-          <div className="section-eyebrow-pill">
-            <span className="eyebrow-dot" />
-            <span className="eyebrow-title">VERTICAL SECTOR EXPERTISE</span>
+        {/* Section Header */}
+        <div className="section-head-left">
+          <div className="section-eyebrow">
+            <span className="eyebrow-accent-line" />
+            <span>VERTICAL SECTOR EXPERTISE</span>
           </div>
           <h2 className="section-grand-title">
-            AV Solutions For <span className="title-highlight">Every Environment.</span>
+            Solutions for <br />
+            <span className="title-highlight">every environment.</span>
           </h2>
           <p className="section-lead-desc">
-            Every physical space presents unique acoustic geometry, illumination conditions, and operational workflows. We engineer specialized technology solutions across corporate, institutional, commercial, and residential sectors.
+            Every space presents unique acoustic geometry, lighting conditions and operational workflows.
           </p>
         </div>
 
-        {/* 10-Industry Selector Tabs */}
-        <div className="industry-pills-row">
-          {industriesData.map((ind) => {
-            const Icon = iconMap[ind.id] || Building;
+        {/* Clean Industry Selector Tabs */}
+        <div className="industry-clean-tabs">
+          {industries.map((ind) => {
+            const Icon = ind.icon;
             const isSelected = selectedId === ind.id;
-
             return (
               <button
                 key={ind.id}
-                className={`industry-selector-pill ${isSelected ? 'is-active' : ''}`}
-                onClick={() => handleSelect(ind.id)}
-                data-cursor="explore"
+                className={`industry-tab-btn ${isSelected ? 'active' : ''}`}
+                onClick={() => handleSelectIndustry(ind.id)}
               >
-                <Icon size={14} />
+                <Icon size={16} />
                 <span>{ind.name}</span>
               </button>
             );
           })}
         </div>
 
-        {/* Interactive Industry Showcase Stage */}
-        <div className="industry-showcase-stage">
-          <div className="stage-hero-image-wrap">
-            <img src={current.image} alt={current.name} className="stage-hero-img" key={current.id} />
-            <div className="stage-hero-gradient" />
-            
-            <div className="stage-hero-content">
-              <div className="stage-sector-tag">
-                <CurrentIcon size={14} className="text-cyan" />
-                <span>INDUSTRY 0{current.number} // {current.name.toUpperCase()}</span>
-              </div>
-              <h3 className="stage-headline">"{current.tagline}"</h3>
-              <p className="stage-body-text">{current.description}</p>
+        {/* Large Image + Typography Layout with Smooth Crossfade */}
+        <div className="industry-editorial-stage hover-card-lift">
+          <div className="stage-image-side">
+            {industries.map((ind) => (
+              <img
+                key={ind.id}
+                src={ind.image}
+                alt={ind.name}
+                className={`industry-large-photo image-crossfade ${ind.id === selectedId ? 'active-image' : ''}`}
+                loading="lazy"
+              />
+            ))}
+            <div className="stage-photo-tag">
+              <span>{activeIndustry.name.toUpperCase()} SECTOR</span>
             </div>
           </div>
 
-          <div className="stage-details-grid">
-            {/* Typical Spaces */}
-            <div className="industry-detail-card">
-              <div className="detail-card-head">
-                <Building2 size={16} className="text-cyan" />
-                <span className="detail-card-title">Typical Spaces</span>
-              </div>
-              <div className="spaces-pills-wrap">
-                {current.typicalSpaces.map((space, idx) => (
-                  <span key={idx} className="space-pill">
-                    {space}
-                  </span>
-                ))}
-              </div>
+          <div className="stage-content-side">
+            <div className="stage-eyebrow-line">
+              <activeIndustry.icon size={18} className="text-emerald" />
+              <span>{activeIndustry.name.toUpperCase()}</span>
             </div>
 
-            {/* Recommended Solutions */}
-            <div className="industry-detail-card">
-              <div className="detail-card-head">
-                <Sliders size={16} className="text-cyan" />
-                <span className="detail-card-title">Recommended AV Solutions</span>
-              </div>
-              <ul className="solutions-rec-list">
-                {current.recommendedSolutions.map((sol, idx) => (
-                  <li key={idx} className="solution-rec-item">
-                    <CheckCircle2 size={13} className="text-cyan" />
-                    <span>{sol}</span>
+            <h3 className="stage-headline">"{activeIndustry.tagline}"</h3>
+            <p className="stage-narrative">{activeIndustry.description}</p>
+
+            <div className="stage-spaces-box">
+              <span className="spaces-label">TYPICAL SPACES ENGINEERED:</span>
+              <ul className="spaces-list">
+                {activeIndustry.spaces.map((sp, idx) => (
+                  <li key={idx} className="space-item">
+                    <CheckCircle2 size={15} className="text-emerald" />
+                    <span>{sp}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Metric & CTA Box */}
-            <div className="industry-cta-card">
-              <div className="metric-callout">
-                <span className="metric-eyebrow">ENGINEERED IMPACT METRIC</span>
-                <span className="metric-text">{current.impactMetric}</span>
-              </div>
-
+            <div className="stage-actions-row">
               <button
-                className="btn-primary industry-action-btn"
+                className="btn-primary"
                 onClick={() => {
                   soundFx.playPowerChime();
                   onStartProject();
                 }}
               >
-                <span>{current.ctaText || `Design for ${current.name}`}</span>
+                <span>Design for {activeIndustry.name}</span>
                 <ArrowRight size={15} />
               </button>
 
               {onNavigateIndustries && (
-                <button
-                  className="btn-secondary industry-view-all-btn"
-                  onClick={onNavigateIndustries}
-                >
-                  <span>Explore All 10 Industry Verticals</span>
+                <button className="btn-secondary" onClick={onNavigateIndustries}>
+                  <span>View All Sectors →</span>
                 </button>
               )}
             </div>

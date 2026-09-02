@@ -1,289 +1,268 @@
-.smart-space-section {
-  position: relative;
-  padding: 5rem 0;
-  background: var(--bg-pure);
+/* ==========================================================
+   AVN SOLUTIONS - INTELLIGENT AUTOMATION (ANIMATED SEQUENCER)
+   ========================================================== */
+
+.automation-experience-section {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.simulation-console-card {
-  background: var(--bg-card);
+.automation-experience-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+/* LEFT: Visual Stage Card */
+.visual-stage-card {
+  background-color: var(--bg-muted);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-card);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  box-shadow: var(--shadow-card);
 }
 
-.console-action-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.5rem 2rem;
-  background: var(--bg-secondary);
-  border-bottom: 1px solid var(--border-color);
-  flex-wrap: wrap;
-  gap: 1.25rem;
+.visual-media-frame {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background-color: var(--bg-tertiary);
+  overflow: hidden;
 }
 
-.console-title-cluster {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+.visual-stage-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.sim-tag {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: var(--blue-primary);
-  letter-spacing: 0.1em;
-}
-
-.sim-name {
-  font-family: var(--font-heading);
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: var(--text-primary);
-}
-
-.console-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.start-sim-btn {
-  padding: 0.75rem 1.6rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  border-radius: var(--radius-md);
-  box-shadow: 0 4px 14px rgba(8, 119, 209, 0.3);
-}
-
-.sim-running-indicator {
+.visual-live-indicator {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.6rem 1.2rem;
-  background: var(--bg-card);
-  border: 1px solid var(--cyan-bright);
-  border-radius: var(--radius-md);
+  padding: 0.4rem 0.85rem;
+  background: rgba(7, 34, 26, 0.88);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-xs);
+  color: #FFFFFF;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  color: var(--blue-primary);
+  letter-spacing: 0.08em;
+  z-index: 2;
 }
 
-.sim-pulse-dot {
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--emerald-primary);
+}
+
+.visual-stage-footer {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: #FFFFFF;
+}
+
+.stage-step-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.stage-seq {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--emerald-primary);
+}
+
+.stage-step-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.stage-step-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* Trigger Controls */
+.stage-trigger-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.start-experience-btn {
+  padding: 0.85rem 1.6rem;
+  font-size: 0.92rem;
+}
+
+.experience-running-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--emerald-primary);
+  background-color: var(--emerald-light);
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 183, 117, 0.25);
+}
+
+.running-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--cyan-bright);
-  box-shadow: 0 0 10px var(--cyan-bright);
-  animation: telemetryPulse 1s infinite ease-in-out;
+  background-color: var(--emerald-primary);
+  animation: pulseDot 1s infinite alternate;
 }
 
-.reset-sim-btn {
-  padding: 0.65rem 1.2rem;
-  font-size: 0.82rem;
-  font-weight: 600;
-  border-radius: var(--radius-md);
-}
-
-/* Steps Grid */
-.sim-steps-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.25rem;
-  padding: 2rem;
-}
-
-.sim-device-card {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
-}
-
-.sim-device-card.is-pending {
-  opacity: 0.6;
-}
-
-.sim-device-card.is-activating {
-  background: rgba(8, 119, 209, 0.08);
-  border-color: var(--cyan-bright);
-  box-shadow: 0 0 20px rgba(0, 201, 245, 0.25);
-  transform: translateY(-2px);
-}
-
-.sim-device-card.is-active {
-  background: var(--bg-card);
-  border-color: var(--emerald-status);
-  box-shadow: var(--shadow-subtle);
-}
-
-.device-card-top {
+.experience-done-group {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 0.85rem;
+  flex-wrap: wrap;
 }
 
-.device-icon-wrap {
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-sm);
-  background: var(--bg-card);
+.reset-exp-btn {
+  padding: 0.75rem 1.2rem;
+  font-size: 0.88rem;
+}
+
+/* RIGHT: Steps List */
+.automation-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.automation-step-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  background-color: #FFFFFF;
   border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow: var(--shadow-subtle);
+  overflow: hidden;
+  transition: background-color var(--motion-fast) var(--ease-architectural),
+              border-color var(--motion-fast) var(--ease-architectural),
+              transform var(--motion-fast) var(--ease-architectural);
+}
+
+.automation-step-row:hover {
+  background-color: #FAFBFD;
+  border-color: #CBD2DC;
+  transform: translateX(3px);
+}
+
+.automation-step-row.is-active {
+  background-color: var(--emerald-light);
+  border-color: rgba(0, 183, 117, 0.35);
+  box-shadow: 0 4px 14px rgba(0, 183, 117, 0.08);
+}
+
+.automation-step-row.is-passed {
+  border-color: rgba(0, 183, 117, 0.25);
+}
+
+.step-num-col {
+  width: 28px;
+  flex-shrink: 0;
+}
+
+.step-num {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  transition: color var(--motion-fast) var(--ease-architectural);
+}
+
+.automation-step-row.is-active .step-num,
+.automation-step-row.is-passed .step-num {
+  color: var(--emerald-primary);
+}
+
+.step-icon-col {
+  flex-shrink: 0;
+}
+
+.step-icon-bubble {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-xs);
+  background-color: var(--bg-muted);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--blue-primary);
+  color: var(--text-tertiary);
+  transition: background-color var(--motion-fast) var(--ease-architectural),
+              color var(--motion-fast) var(--ease-architectural);
 }
 
-.sim-device-card.is-active .device-icon-wrap {
-  color: var(--emerald-status);
-  border-color: var(--emerald-status);
+.automation-step-row.is-active .step-icon-bubble {
+  background-color: var(--emerald-primary);
+  color: #FFFFFF;
 }
 
-.device-seq {
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  font-weight: 700;
-  color: var(--text-muted);
+.automation-step-row.is-passed .step-icon-bubble {
+  background-color: var(--emerald-light);
+  color: var(--emerald-primary);
 }
 
-.device-subsystem {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  font-weight: 700;
-  color: var(--blue-primary);
-  letter-spacing: 0.08em;
+.step-info-col {
+  flex: 1;
 }
 
-.device-name {
-  font-family: var(--font-heading);
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.3;
-}
-
-.device-status-badge {
-  margin-top: auto;
-  padding-top: 0.65rem;
-  border-top: 1px solid var(--border-color);
-  font-size: 0.72rem;
-}
-
-.status-standby {
-  color: var(--text-muted);
-}
-
-.status-activating {
-  color: var(--blue-primary);
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.spinner-mini {
-  width: 10px;
-  height: 10px;
-  border: 2px solid var(--border-color);
-  border-top-color: var(--cyan-bright);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-.status-ready {
-  color: var(--emerald-status);
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-/* Completion Banner */
-.sim-complete-banner {
-  margin: 0 2rem 2rem;
-  padding: 1.75rem 2rem;
-  background: linear-gradient(135deg, rgba(8, 119, 209, 0.08) 0%, rgba(0, 201, 245, 0.08) 100%);
-  border: 1px solid var(--cyan-bright);
-  border-radius: var(--radius-xl);
+.step-header-line {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  animation: fadeIn 0.4s ease;
+  margin-bottom: 0.15rem;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.complete-text-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.complete-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
+.step-subsystem {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 800;
-  color: var(--blue-primary);
+  font-size: 0.72rem;
+  font-weight: 700;
   letter-spacing: 0.08em;
-}
-
-.complete-title {
-  font-family: var(--font-heading);
-  font-size: 1.15rem;
-  font-weight: 800;
   color: var(--text-primary);
 }
 
-.complete-desc {
+.step-check-icon {
+  animation: scaleIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.step-desc-text {
   font-size: 0.82rem;
-  color: var(--text-muted);
-  max-width: 650px;
+  color: var(--text-secondary);
+  line-height: 1.4;
 }
 
-.complete-cta-btn {
-  padding: 0.8rem 1.6rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  border-radius: var(--radius-md);
-  white-space: nowrap;
-}
-
-@media (max-width: 640px) {
-  .console-action-bar {
-    padding: 1.25rem;
-  }
-  .sim-steps-grid {
+@media (max-width: 1024px) {
+  .automation-experience-layout {
     grid-template-columns: 1fr;
-    padding: 1.25rem;
-  }
-  .sim-complete-banner {
-    margin: 0 1.25rem 1.25rem;
-    padding: 1.25rem;
-  }
-  .start-sim-btn, .complete-cta-btn {
-    width: 100%;
-    justify-content: center;
   }
 }

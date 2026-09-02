@@ -1,153 +1,134 @@
 :root {
-  /* Brand Core Colors */
-  --navy-deep: #07101F;
-  --navy-dark: #0B1B32;
-  --navy-card: #0F223D;
-  --navy-light: #162C4E;
-  
-  --blue-primary: #0877D1;
-  --blue-hover: #0762ad;
-  --blue-deep: #0B1B32;
-  
-  --cyan-bright: #00C9F5;
-  --cyan-glow: rgba(0, 201, 245, 0.35);
-  --cyan-soft: rgba(0, 201, 245, 0.08);
-  
-  --bg-light: #F5F8FC;
-  --bg-pure: #FFFFFF;
-  --bg-card-light: #FFFFFF;
-  --text-muted: #667085;
-  --text-dark: #07101F;
-  --border-light: #DCE5EF;
-  --border-subtle: #E2E8F0;
-  
-  /* Status Colors */
-  --emerald-status: #10B981;
-  --amber-alert: #F59E0B;
-  --rose-accent: #EF4444;
+  /* ==========================================================
+     AVN SOLUTIONS - SIGNATURE ENTERPRISE ARCHITECTURAL PALETTE
+     Deep Slate Charcoal Canvas + Vivid Warm Orange / Tangerine Arc & Portal
+     ========================================================== */
 
-  /* Default Architectural Light Palette */
-  --bg-primary: #F5F8FC;
-  --bg-secondary: #EDF3FA;
-  --bg-tertiary: #E2EBF5;
+  /* Neutral Palette */
+  --bg-primary: #F5F5F2;
+  --bg-secondary: #FFFFFF;
+  --bg-pure: #F5F5F2;
   --bg-card: #FFFFFF;
-  --bg-card-hover: #F8FAFC;
-  --bg-glass: rgba(255, 255, 255, 0.92);
-  --bg-glass-strong: rgba(255, 255, 255, 0.98);
-  --bg-dark-accent: #07101F;
+  --bg-card-hover: #FAFAF8;
+  --bg-muted: #EEF0F3;
+  --bg-tertiary: #E6E9EE;
+  --bg-dark-accent: #1E293B;
+  --bg-dark-card: #243242;
 
-  /* Borders & Shadows */
-  --border-color: #DCE5EF;
-  --border-glass: rgba(8, 119, 209, 0.18);
-  --border-glow: rgba(0, 201, 245, 0.35);
-  --border-cyan-active: #0877D1;
+  /* Typography Colors */
+  --text-primary: #111318;
+  --text-secondary: #5A6069;
+  --text-tertiary: #848B96;
+  --text-dim: #A2A8B2;
+  --text-inverse: #FFFFFF;
+  --text-inverse-muted: #CBD5E1;
 
-  /* Accent Mappings */
-  --cyan-primary: #0877D1;
-  --blue-bright: #0877D1;
-  --indigo-tech: #0B1B32;
+  /* Signature Warm Coral / Tangerine / Electric Orange Palette */
+  --orange-primary: #FF5A1F;
+  --orange-vibrant: #FF6B35;
+  --orange-hover: #E64A12;
+  --orange-dark: #C83908;
+  --orange-light: #FFF1EB;
+  --orange-soft: rgba(255, 90, 31, 0.14);
+  --orange-gradient: linear-gradient(135deg, #FF6B35 0%, #FF5A1F 100%);
+  
+  /* Slate Canvas Palette for Hero & Deep Sections */
+  --slate-canvas-bg: #222F3E;
+  --slate-canvas-dark: #1A2532;
+  --slate-canvas-card: #2B3A4C;
+  --slate-hero-gradient: linear-gradient(145deg, #243343 0%, #1A2532 100%);
 
-  /* Typography */
-  --text-primary: #07101F;
-  --text-secondary: #475569;
-  --text-tertiary: #667085;
-  --text-dim: #94A3B8;
-  --text-cyan: #0877D1;
+  /* Primary Brand Color mapped cleanly */
+  --brand-primary: #FF5A1F;
+  --blue-primary: #FF5A1F;
+  --blue-hover: #E64A12;
+  --blue-deep: #1E293B;
+  --blue-light: #FFF1EB;
+  --blue-soft: rgba(255, 90, 31, 0.12);
 
-  /* Fonts */
-  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-heading: 'Plus Jakarta Sans', 'Sora', sans-serif;
-  --font-sans: 'Inter', 'Manrope', -apple-system, sans-serif;
+  /* Emerald / Status Palette */
+  --emerald-primary: #00B775;
+  --emerald-status: #00B775;
+  --amber-alert: #D97706;
+  --rose-accent: #DC2626;
+
+  /* Legacy Mappings */
+  --cyan-primary: #FF5A1F;
+  --cyan-bright: #FF6B35;
+  --cyan-glow: rgba(255, 90, 31, 0.2);
+  --cyan-soft: #FFF1EB;
+  --text-cyan: #FF5A1F;
+  --indigo-tech: #1E293B;
+  --blue-bright: #FF6B35;
+
+  /* Borders & Hairlines */
+  --border-color: #D9DDE3;
+  --border-subtle: #E2E6EC;
+  --border-light: #D9DDE3;
+  --border-dark: rgba(255, 255, 255, 0.12);
+  --border-active: #FF5A1F;
+  --border-glass: #D9DDE3;
+  --border-glow: #FF5A1F;
+  --border-cyan-active: #FF5A1F;
+
+  /* Modern Typography Scale */
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', 'Manrope', sans-serif;
+  --font-sans: 'Inter', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Radii */
+  /* Refined Enterprise Radii */
   --radius-xs: 4px;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
-  --radius-xl: 20px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
   --radius-full: 9999px;
+
+  /* Architectural Soft Shadows */
+  --shadow-subtle: 0 1px 3px rgba(17, 19, 24, 0.04), 0 1px 2px rgba(17, 19, 24, 0.02);
+  --shadow-card: 0 4px 20px -2px rgba(17, 19, 24, 0.04), 0 2px 6px -1px rgba(17, 19, 24, 0.02);
+  --shadow-card-hover: 0 12px 32px -4px rgba(17, 19, 24, 0.08), 0 4px 12px -2px rgba(17, 19, 24, 0.03);
+  --shadow-elevated: 0 20px 48px -8px rgba(17, 19, 24, 0.12);
+  --shadow-orange-card: 0 16px 40px -8px rgba(255, 90, 31, 0.3);
+  --shadow-dark-card: 0 16px 40px -6px rgba(15, 23, 42, 0.6);
+  --shadow-blue-subtle: 0 4px 16px rgba(255, 90, 31, 0.2);
+  --shadow-cyan-glow: 0 4px 16px rgba(255, 90, 31, 0.2);
 
   /* Transitions */
   --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
   --duration-fast: 160ms;
   --duration-normal: 280ms;
   --duration-slow: 450ms;
 
-  /* Shadows */
-  --shadow-subtle: 0 4px 20px rgba(7, 16, 31, 0.04);
-  --shadow-card: 0 10px 30px -4px rgba(7, 16, 31, 0.06), 0 2px 6px -1px rgba(7, 16, 31, 0.02);
-  --shadow-elevated: 0 20px 40px -8px rgba(7, 16, 31, 0.12);
-  --shadow-cyan-glow: 0 10px 30px -5px rgba(0, 201, 245, 0.25);
-  --shadow-blue-glow: 0 12px 35px -5px rgba(8, 119, 209, 0.28);
-
-  --container-max: 1380px;
-  --container-wide: 1600px;
+  /* Container Boundaries */
+  --container-max: 1320px;
+  --container-wide: 1480px;
   --header-height: 76px;
 }
 
-/* 1. DARK / HYBRID THEME (DEFAULT) */
+/* Light Mode is Default and Primary */
 :root,
-.theme-dark-active,
-.theme-hybrid-active {
-  --bg-pure: #050B15;
-  --bg-primary: #07101F;
-  --bg-secondary: #0B1B32;
-  --bg-tertiary: #102442;
-  --bg-card: rgba(11, 27, 50, 0.88);
-  --bg-card-hover: rgba(16, 36, 66, 0.95);
-  --bg-glass: rgba(7, 16, 31, 0.90);
-  --bg-glass-strong: rgba(11, 27, 50, 0.96);
-  --bg-dark-accent: #050B15;
-
-  --border-color: rgba(220, 229, 239, 0.12);
-  --border-glass: rgba(0, 201, 245, 0.22);
-  --border-glow: rgba(0, 201, 245, 0.45);
-  --border-cyan-active: #00C9F5;
-
-  --cyan-primary: #00C9F5;
-  --cyan-glow: rgba(0, 201, 245, 0.40);
-  --cyan-soft: rgba(0, 201, 245, 0.12);
-
-  --text-primary: #FFFFFF;
-  --text-secondary: #CBD5E1;
-  --text-tertiary: #94A3B8;
-  --text-dim: #64748B;
-  --text-cyan: #00C9F5;
-
-  --shadow-card: 0 14px 40px -5px rgba(0, 0, 0, 0.70);
-  --shadow-cyan-glow: 0 0 35px rgba(0, 201, 245, 0.35);
-}
-
-/* 2. ARCHITECTURAL LIGHT THEME */
-.theme-light-active {
-  --bg-pure: #FFFFFF;
-  --bg-primary: #F5F8FC;
-  --bg-secondary: #EDF3FA;
-  --bg-tertiary: #E2EBF5;
+.theme-light-active,
+.theme-hybrid-active,
+.theme-dark-active {
+  --bg-primary: #F5F5F2;
+  --bg-secondary: #FFFFFF;
+  --bg-pure: #F5F5F2;
   --bg-card: #FFFFFF;
-  --bg-card-hover: #F8FAFC;
-  --bg-glass: rgba(255, 255, 255, 0.92);
-  --bg-glass-strong: rgba(255, 255, 255, 0.98);
-  --bg-dark-accent: #07101F;
+  --bg-card-hover: #FAFAF8;
+  --bg-muted: #EEF0F3;
+  --bg-tertiary: #E6E9EE;
+  
+  --text-primary: #111318;
+  --text-secondary: #5A6069;
+  --text-tertiary: #848B96;
+  --text-dim: #A2A8B2;
 
-  --border-color: #DCE5EF;
-  --border-glass: rgba(8, 119, 209, 0.18);
-  --border-glow: rgba(0, 201, 245, 0.35);
-  --border-cyan-active: #0877D1;
-
-  --cyan-primary: #0877D1;
-  --cyan-glow: rgba(0, 201, 245, 0.25);
-  --cyan-soft: rgba(8, 119, 209, 0.08);
-
-  --text-primary: #07101F;
-  --text-secondary: #475569;
-  --text-tertiary: #667085;
-  --text-dim: #94A3B8;
-  --text-cyan: #0877D1;
-
-  --shadow-subtle: 0 4px 20px rgba(7, 16, 31, 0.04);
-  --shadow-card: 0 10px 30px -4px rgba(7, 16, 31, 0.06), 0 2px 6px -1px rgba(7, 16, 31, 0.02);
-  --shadow-cyan-glow: 0 10px 30px -5px rgba(0, 201, 245, 0.25);
+  --border-color: #D9DDE3;
+  --border-subtle: #E2E6EC;
+  --border-active: #FF5A1F;
 }

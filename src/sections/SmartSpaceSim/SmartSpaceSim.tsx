@@ -3,243 +3,279 @@ import {
   Play, 
   RotateCcw, 
   Lightbulb, 
-  Monitor, 
   Sliders, 
+  Monitor, 
   Camera, 
   Volume2, 
   Thermometer, 
   Laptop, 
   CheckCircle2, 
-  Sparkles,
-  ArrowRight
+  ArrowRight 
 } from 'lucide-react';
 import { soundFx } from '../../utils/sound';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 import './SmartSpaceSim.css';
 
 interface SmartSpaceSimProps {
   onStartProject: () => void;
 }
 
-interface StepItem {
-  id: string;
-  name: string;
+interface AutomationStep {
+  number: string;
   subsystem: string;
+  title: string;
+  description: string;
   icon: any;
-  statusText: string;
-  stateValue: string;
+  image: string;
+  statusBadge: string;
 }
 
 export const SmartSpaceSim: React.FC<SmartSpaceSimProps> = ({ onStartProject }) => {
-  const [isRunning, setIsRunning] = useState(false);
-  const [currentStepIndex, setCurrentStepIndex] = useState(-1);
-  const [isCompleted, setIsCompleted] = useState(false);
+  const { ref, isRevealed } = useScrollReveal<HTMLElement>({ threshold: 0.2 });
 
-  const sequenceSteps: StepItem[] = [
+  const steps: AutomationStep[] = [
     {
-      id: 'lighting',
-      name: 'Circadian DALI Lighting',
+      number: '01',
       subsystem: 'LIGHTING',
+      title: 'Lighting',
+      description: 'Workspace lighting adjusts automatically to optimal 4000K presentation preset.',
       icon: Lightbulb,
-      statusText: 'Dimming to 40% Executive Conference Preset...',
-      stateValue: '40% Lux (4000K Neutral)'
+      image: 'https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=1400&q=80',
+      statusBadge: 'Circadian DALI Active • 40% Lux'
     },
     {
-      id: 'shades',
-      name: 'Motorized Acoustic Curtains',
+      number: '02',
       subsystem: 'SHADING',
+      title: 'Shading',
+      description: 'Motorized curtains and acoustic blackout shades position themselves silently.',
       icon: Sliders,
-      statusText: 'Lowering motorized blackout acoustic blinds...',
-      stateValue: 'Closed (100% Blackout)'
+      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=80',
+      statusBadge: 'Acoustic Blinds Lowered • Zero Glare'
     },
     {
-      id: 'display',
-      name: '8K Direct-View MicroLED',
-      subsystem: 'VISUAL',
+      number: '03',
+      subsystem: 'DISPLAY',
+      title: 'Display',
+      description: 'Ultra-HD presentation video wall powers on with direct HDMI/IP matrix routing.',
       icon: Monitor,
-      statusText: 'Powering up display canvas with HDMI 2.1 matrix...',
-      stateValue: '8K HDR Active (1000 Nits)'
+      image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1400&q=80',
+      statusBadge: 'Direct-View MicroLED Active • 4K HDR'
     },
     {
-      id: 'camera',
-      name: 'AI Director PTZ Cameras',
+      number: '04',
       subsystem: 'CONFERENCING',
+      title: 'Conferencing',
+      description: 'Camera and meeting systems initialize optical auto-framing and voice tracking.',
       icon: Camera,
-      statusText: 'Initializing optical tracking & auto-framing engine...',
-      stateValue: 'Tracking Active (4K60)'
+      image: 'https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=1400&q=80',
+      statusBadge: 'AI Auto-Framing PTZ Online'
     },
     {
-      id: 'mics',
-      name: 'Ceiling Beamforming Array',
+      number: '05',
+      title: 'Audio',
       subsystem: 'AUDIO',
+      description: 'Microphones and speakers configure steerable beam lobes and echo cancellation.',
       icon: Volume2,
-      statusText: 'Activating 8 steerable acoustic lobes with AEC DSP...',
-      stateValue: 'Unmuted (IntelliMix DSP)'
+      image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1400&q=80',
+      statusBadge: 'Dante DSP Unmuted • AEC Active'
     },
     {
-      id: 'hvac',
-      name: 'HVAC & Environmental Core',
+      number: '06',
       subsystem: 'CLIMATE',
+      title: 'Climate',
+      description: 'Room temperature adjusts automatically for executive occupancy comfort.',
       icon: Thermometer,
-      statusText: 'Optimizing room temperature for 18 occupants...',
-      stateValue: '22°C (Eco-Adaptive Mode)'
+      image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1400&q=80',
+      statusBadge: 'HVAC Stabilized • 22°C Adaptive'
     },
     {
-      id: 'presentation',
-      name: 'Wireless BYOM & Teams MTR',
+      number: '07',
       subsystem: 'COLLABORATION',
+      title: 'Collaboration',
+      description: 'Wireless presentation and one-touch conferencing join become instantly available.',
       icon: Laptop,
-      statusText: 'Broadcasting Barco ClickShare & MS Teams calendar...',
-      stateValue: 'Ready for One-Touch Join'
+      image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1400&q=80',
+      statusBadge: 'One-Touch Join • BYOM Ready'
     }
   ];
 
-  const handleStartSequence = () => {
-    if (isRunning) return;
+  const [activeStepIndex, setActiveStepIndex] = useState<number>(0);
+  const [isPlayingSequence, setIsPlayingSequence] = useState<boolean>(false);
+  const [isCompleted, setIsCompleted] = useState<boolean>(false);
+  const hasAutoTriggeredRef = React.useRef<boolean>(false);
+
+  const currentStep = steps[activeStepIndex] || steps[0];
+
+  // Auto trigger sequence when entering viewport once
+  useEffect(() => {
+    if (isRevealed && !hasAutoTriggeredRef.current) {
+      hasAutoTriggeredRef.current = true;
+      const timeoutId = setTimeout(() => {
+        setIsPlayingSequence(true);
+      }, 300);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [isRevealed]);
+
+  const handleSelectStep = (idx: number) => {
+    soundFx.playClick(900 + idx * 30);
+    setIsPlayingSequence(false); // Pause sequence on manual click
+    setActiveStepIndex(idx);
+  };
+
+  const handleStartExperience = () => {
     soundFx.playPowerChime();
-    setIsRunning(true);
+    setIsPlayingSequence(true);
     setIsCompleted(false);
-    setCurrentStepIndex(0);
+    setActiveStepIndex(0);
   };
 
   const handleReset = () => {
     soundFx.playClick(800);
-    setIsRunning(false);
-    setCurrentStepIndex(-1);
+    setIsPlayingSequence(false);
     setIsCompleted(false);
+    setActiveStepIndex(0);
   };
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
-    if (isRunning && currentStepIndex >= 0 && currentStepIndex < sequenceSteps.length) {
+    if (isPlayingSequence && activeStepIndex < steps.length) {
       timer = setTimeout(() => {
-        soundFx.playClick(900 + currentStepIndex * 80);
-        if (currentStepIndex + 1 < sequenceSteps.length) {
-          setCurrentStepIndex(prev => prev + 1);
+        soundFx.playClick(950 + activeStepIndex * 40);
+        if (activeStepIndex + 1 < steps.length) {
+          setActiveStepIndex(prev => prev + 1);
         } else {
           setIsCompleted(true);
-          setIsRunning(false);
+          setIsPlayingSequence(false);
         }
-      }, 700);
+      }, 600); // 600ms per step as specified in requirements
     }
     return () => clearTimeout(timer);
-  }, [isRunning, currentStepIndex, sequenceSteps.length]);
+  }, [isPlayingSequence, activeStepIndex, steps.length]);
 
   return (
-    <section className="smart-space-section" id="smart-space">
+    <section 
+      ref={ref}
+      className={`automation-experience-section section-spacing ${isRevealed ? 'is-revealed' : ''} reveal-on-scroll`} 
+      id="smart-space"
+    >
       <div className="container-wide">
-        {/* Section Heading */}
-        <div className="section-head-center">
-          <div className="section-eyebrow-pill">
-            <span className="eyebrow-dot" />
-            <span className="eyebrow-title">INTELLIGENT ROOM ORCHESTRATION</span>
+        {/* Section Header */}
+        <div className="section-head-left">
+          <div className="section-eyebrow">
+            <span className="eyebrow-accent-line" />
+            <span>INTELLIGENT AUTOMATION</span>
           </div>
           <h2 className="section-grand-title">
-            Make Your Space <span className="title-highlight">Intelligent.</span>
+            One command. <br />
+            <span className="title-highlight">Everything ready.</span>
           </h2>
           <p className="section-lead-desc">
-            See how custom Crestron & DALI programming unifies lighting, curtains, climate, cameras, displays, and audio into seamless automated meeting presets.
+            See how intelligent automation prepares a meeting space before the first person enters.
           </p>
         </div>
 
-        {/* Interactive Simulation Console */}
-        <div className="simulation-console-card">
-          {/* Top Console Action Bar */}
-          <div className="console-action-bar">
-            <div className="console-title-cluster">
-              <span className="sim-tag">INTERACTIVE AUTOMATION TEST BENCH</span>
-              <h3 className="sim-name">Executive Boardroom Macro: "START MEETING"</h3>
-            </div>
-
-            <div className="console-controls">
-              {!isRunning && !isCompleted ? (
-                <button
-                  className="btn-primary start-sim-btn"
-                  onClick={handleStartSequence}
-                  data-cursor="start"
-                  data-cursor-text="EXECUTE"
-                >
-                  <Play size={15} fill="currentColor" />
-                  <span>START MEETING (TRIGGER MACRO)</span>
-                </button>
-              ) : isRunning ? (
-                <div className="sim-running-indicator">
-                  <span className="sim-pulse-dot" />
-                  <span>EXECUTING AUTOMATION MACRO...</span>
+        {/* 2-Column Room Experience Layout */}
+        <div className="automation-experience-layout">
+          {/* LEFT: Large Boardroom Visual Experience Canvas with Crossfading */}
+          <div className="automation-visual-stage">
+            <div className="visual-stage-card hover-card-lift">
+              <div className="visual-media-frame">
+                {steps.map((s, idx) => (
+                  <img
+                    key={s.number}
+                    src={s.image}
+                    alt={s.title}
+                    className={`visual-stage-img image-crossfade ${activeStepIndex === idx ? 'active-image' : ''}`}
+                    loading="lazy"
+                  />
+                ))}
+                
+                {/* Active Subsystem Indicator */}
+                <div className="visual-live-indicator">
+                  <span className="live-dot" />
+                  <span className="live-text">{currentStep.statusBadge}</span>
                 </div>
-              ) : (
-                <button className="btn-secondary reset-sim-btn" onClick={handleReset}>
-                  <RotateCcw size={14} className="text-cyan" />
-                  <span>Reset Room Simulation</span>
-                </button>
-              )}
+              </div>
+
+              <div className="visual-stage-footer">
+                <div className="stage-step-meta">
+                  <span className="stage-seq">STAGE {currentStep.number} OF 07</span>
+                  <h3 className="stage-step-title">{currentStep.subsystem}</h3>
+                  <p className="stage-step-desc">{currentStep.description}</p>
+                </div>
+
+                <div className="stage-trigger-controls">
+                  {!isPlayingSequence && !isCompleted ? (
+                    <button
+                      className="btn-primary start-experience-btn"
+                      onClick={handleStartExperience}
+                    >
+                      <Play size={15} fill="currentColor" />
+                      <span>See the experience</span>
+                    </button>
+                  ) : isPlayingSequence ? (
+                    <div className="experience-running-tag">
+                      <span className="running-dot" />
+                      <span>Synchronizing space ({activeStepIndex + 1}/7)...</span>
+                    </div>
+                  ) : (
+                    <div className="experience-done-group">
+                      <button className="btn-secondary reset-exp-btn" onClick={handleReset}>
+                        <RotateCcw size={14} />
+                        <span>Replay</span>
+                      </button>
+                      <button className="btn-primary" onClick={onStartProject}>
+                        <span>Automate Your Facility</span>
+                        <ArrowRight size={15} />
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Sequential Device Activation Grid */}
-          <div className="sim-steps-grid">
-            {sequenceSteps.map((step, idx) => {
+          {/* RIGHT: Sequential Steps */}
+          <div className="automation-steps-list">
+            {steps.map((step, idx) => {
               const Icon = step.icon;
-              const isPast = currentStepIndex > idx || isCompleted;
-              const isCurrent = currentStepIndex === idx && isRunning;
-              const isPending = currentStepIndex < idx && !isCompleted;
+              const isSelected = activeStepIndex === idx;
+              const isPassed = activeStepIndex >= idx || isCompleted;
 
               return (
                 <div
-                  key={step.id}
-                  className={`sim-device-card ${isCurrent ? 'is-activating' : ''} ${isPast ? 'is-active' : ''} ${isPending ? 'is-pending' : ''}`}
+                  key={step.number}
+                  className={`automation-step-row ${isSelected ? 'is-active is-active-indicator' : ''} ${isPassed ? 'is-passed' : ''}`}
+                  onClick={() => handleSelectStep(idx)}
+                  onMouseEnter={() => !isPlayingSequence && handleSelectStep(idx)}
+                  role="button"
+                  tabIndex={0}
                 >
-                  <div className="device-card-top">
-                    <div className="device-icon-wrap">
-                      <Icon size={18} />
-                    </div>
-                    <span className="device-seq">STEP 0{idx + 1}</span>
+                  {/* Subtle Vertical Indicator */}
+                  <span className="vertical-indicator-bar" aria-hidden="true" />
+
+                  <div className="step-num-col">
+                    <span className="step-num">{step.number}</span>
                   </div>
 
-                  <span className="device-subsystem">{step.subsystem}</span>
-                  <h4 className="device-name">{step.name}</h4>
+                  <div className="step-icon-col">
+                    <div className="step-icon-bubble">
+                      <Icon size={16} />
+                    </div>
+                  </div>
 
-                  <div className="device-status-badge">
-                    {isCurrent ? (
-                      <span className="status-activating">
-                        <span className="spinner-mini" /> {step.statusText}
-                      </span>
-                    ) : isPast ? (
-                      <span className="status-ready">
-                        <CheckCircle2 size={12} /> {step.stateValue}
-                      </span>
-                    ) : (
-                      <span className="status-standby">Standby (Awaiting Trigger)</span>
-                    )}
+                  <div className="step-info-col">
+                    <div className="step-header-line">
+                      <span className="step-subsystem">{step.subsystem}</span>
+                      {isPassed && <CheckCircle2 size={15} className="text-emerald step-check-icon" />}
+                    </div>
+                    <p className="step-desc-text">{step.description}</p>
                   </div>
                 </div>
               );
             })}
           </div>
-
-          {/* Completion Celebration Banner */}
-          {isCompleted && (
-            <div className="sim-complete-banner">
-              <div className="complete-text-wrap">
-                <div className="complete-badge">
-                  <Sparkles size={13} />
-                  <span>ROOM FULLY CONFIGURED IN UNDER 5 SECONDS</span>
-                </div>
-                <h4 className="complete-title">All 7 Subsystems Synchronized & Ready For Video Call</h4>
-                <p className="complete-desc">Participants can now walk in, plug in one USB-C cable or tap the touch glass to start high-impact collaboration.</p>
-              </div>
-
-              <button
-                className="btn-primary complete-cta-btn"
-                onClick={() => {
-                  soundFx.playPowerChime();
-                  onStartProject();
-                }}
-              >
-                <span>Automate Your Facility</span>
-                <ArrowRight size={15} />
-              </button>
-            </div>
-          )}
         </div>
       </div>
     </section>

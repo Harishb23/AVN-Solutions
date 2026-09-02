@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { brandsData } from '../../data/brands';
 import { soundFx } from '../../utils/sound';
-import { ShieldCheck, Award } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 import './Partners.css';
 
 interface PartnersProps {
@@ -9,6 +10,7 @@ interface PartnersProps {
 }
 
 export const Partners: React.FC<PartnersProps> = ({ onNavigateBrands }) => {
+  const { ref, isRevealed } = useScrollReveal<HTMLElement>({ threshold: 0.15 });
   const [activeCategory, setActiveCategory] = useState<string>('All');
 
   const categories = [
@@ -18,14 +20,12 @@ export const Partners: React.FC<PartnersProps> = ({ onNavigateBrands }) => {
     'Microphones',
     'Video Conferencing',
     'Control',
-    'Networking',
-    'Projection',
-    'Automation'
+    'Networking'
   ];
 
   const filteredBrands = activeCategory === 'All'
-    ? brandsData
-    : brandsData.filter(b => b.category === activeCategory);
+    ? brandsData.slice(0, 16)
+    : brandsData.filter(b => b.category === activeCategory).slice(0, 16);
 
   const handleFilter = (cat: string) => {
     soundFx.playClick(900);
@@ -33,28 +33,32 @@ export const Partners: React.FC<PartnersProps> = ({ onNavigateBrands }) => {
   };
 
   return (
-    <section className="partners-logo-section" id="brands">
+    <section 
+      ref={ref}
+      className={`editorial-partners-section section-spacing ${isRevealed ? 'is-revealed' : ''} reveal-on-scroll`} 
+      id="brands"
+    >
       <div className="container-wide">
-        {/* Section Heading */}
+        {/* Section Header */}
         <div className="section-head-center">
-          <div className="section-eyebrow-pill">
-            <span className="eyebrow-dot" />
-            <span className="eyebrow-title">OEM PARTNERSHIP NETWORK</span>
+          <div className="section-eyebrow">
+            <span className="eyebrow-accent-line" />
+            <span>TECHNOLOGY PARTNERS</span>
           </div>
           <h2 className="section-grand-title">
-            Technology From <span className="title-highlight">Brands You Trust.</span>
+            Built with <span className="title-highlight">trusted technology.</span>
           </h2>
           <p className="section-lead-desc">
-            We partner with and supply certified hardware from the world's most reputable audio, video, control, and networking manufacturers.
+            We work with leading technology manufacturers to deliver reliable, scalable and serviceable systems.
           </p>
         </div>
 
         {/* Category Tabs */}
-        <div className="brands-filter-row">
+        <div className="partners-filter-pills">
           {categories.map((cat) => (
             <button
               key={cat}
-              className={`brand-cat-btn ${activeCategory === cat ? 'active' : ''}`}
+              className={`partner-pill-btn ${activeCategory === cat ? 'active' : ''}`}
               onClick={() => handleFilter(cat)}
             >
               {cat}
@@ -62,46 +66,31 @@ export const Partners: React.FC<PartnersProps> = ({ onNavigateBrands }) => {
           ))}
         </div>
 
-        {/* Brands Logo Wall Grid */}
-        <div className="brands-logo-wall">
+        {/* Clean Grayscale Logo Wall Grid */}
+        <div className="partners-clean-grid stagger-container">
           {filteredBrands.map((brand) => (
-            <div key={brand.id} className="brand-logo-card" data-cursor="explore">
-              <div className="brand-card-top">
-                <span className="brand-category-pill">{brand.category}</span>
-                {brand.tier && (
-                  <span className="brand-tier-badge">
-                    <Award size={10} className="text-cyan" />
-                    <span>{brand.tier}</span>
-                  </span>
-                )}
+            <div key={brand.id} className="partner-brand-tile hover-card-lift">
+              <div className="brand-logo-area">
+                <span className="brand-logo-text">{brand.logoText}</span>
               </div>
-
-              {/* Monochrome to Vibrant Text Logo */}
-              <div className="brand-monochrome-logo">
-                <span className="brand-mono-text">{brand.logoText}</span>
+              <div className="brand-tile-info">
+                <span className="brand-name-sub">{brand.name}</span>
+                <span className="brand-cat-tag">{brand.category}</span>
               </div>
-
-              <h4 className="brand-official-name">{brand.name}</h4>
-              <p className="brand-summary-text">{brand.description}</p>
-
-              {brand.popularGear && (
-                <div className="brand-gear-chips">
-                  {brand.popularGear.map((gear, i) => (
-                    <span key={i} className="gear-chip">{gear}</span>
-                  ))}
-                </div>
-              )}
             </div>
           ))}
         </div>
 
-        {/* Trust Guarantee Note & CTA */}
-        <div className="brands-trust-note">
-          <ShieldCheck size={16} className="text-cyan" />
-          <span>All products supplied by AVN Solutions are 100% genuine with direct OEM manufacturer warranty and authorized technical support in Chennai.</span>
+        {/* Trust Guarantee Note & View Ecosystem */}
+        <div className="partners-footer-trust hover-card-lift">
+          <div className="trust-note-left">
+            <ShieldCheck size={18} className="text-emerald" />
+            <span>100% genuine hardware with authorized OEM warranties and Chennai-based local SLA support.</span>
+          </div>
+
           {onNavigateBrands && (
-            <button className="btn-secondary view-brands-cta" onClick={onNavigateBrands}>
-              <span>View Full Partner Ecosystem →</span>
+            <button className="btn-secondary view-ecosystem-btn" onClick={onNavigateBrands}>
+              <span>Explore All 50+ Partner Brands →</span>
             </button>
           )}
         </div>

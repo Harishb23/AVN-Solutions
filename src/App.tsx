@@ -103,71 +103,73 @@ export function App() {
         }}
       />
 
-      {/* Page Routing */}
-      {currentPage === 'home' && (
-        <HomePage
-          onNavigate={handleNavigate}
-          onOpenProjectModal={() => handleStartProjectWithData()}
-          onSelectProject={(p) => setSelectedProject(p)}
-          onSelectArticle={(a) => setSelectedArticle(a)}
-        />
-      )}
+      {/* Page Routing with Smooth Architectural Page Transition */}
+      <div key={currentPage} className="page-transition-enter">
+        {currentPage === 'home' && (
+          <HomePage
+            onNavigate={handleNavigate}
+            onOpenProjectModal={() => handleStartProjectWithData()}
+            onSelectProject={(p) => setSelectedProject(p)}
+            onSelectArticle={(a) => setSelectedArticle(a)}
+          />
+        )}
 
-      {currentPage === 'solutions' && (
-        <SolutionsPage
-          onStartProject={() => handleStartProjectWithData()}
-          initialSolutionId={initialSolutionId}
-        />
-      )}
+        {currentPage === 'solutions' && (
+          <SolutionsPage
+            onStartProject={() => handleStartProjectWithData()}
+            initialSolutionId={initialSolutionId}
+          />
+        )}
 
-      {currentPage === 'industries' && (
-        <IndustriesPage onStartProject={() => handleStartProjectWithData()} />
-      )}
+        {currentPage === 'industries' && (
+          <IndustriesPage onStartProject={() => handleStartProjectWithData()} />
+        )}
 
-      {currentPage === 'products' && (
-        <ProductsPage
-          onStartProject={(prodName) => handleStartProjectWithData(prodName ? { subject: `Quote Request: ${prodName}`, message: `Inquiry for ${prodName}` } : undefined)}
-        />
-      )}
+        {currentPage === 'products' && (
+          <ProductsPage
+            onStartProject={(prodName) => handleStartProjectWithData(prodName ? { subject: `Quote Request: ${prodName}`, message: `Inquiry for ${prodName}` } : undefined)}
+          />
+        )}
 
-      {currentPage === 'brands' && (
-        <BrandsPage
-          onStartProject={() => handleStartProjectWithData()}
-        />
-      )}
+        {currentPage === 'brands' && (
+          <BrandsPage
+            onStartProject={() => handleStartProjectWithData()}
+          />
+        )}
 
-      {currentPage === 'services' && (
-        <ServicesPage
-          onStartProject={() => handleStartProjectWithData()}
-        />
-      )}
+        {currentPage === 'services' && (
+          <ServicesPage
+            onStartProject={() => handleStartProjectWithData()}
+          />
+        )}
 
-      {currentPage === 'projects' && (
-        <ProjectsPage
-          onSelectProject={(p) => setSelectedProject(p)}
-          onStartProject={() => handleStartProjectWithData()}
-        />
-      )}
+        {currentPage === 'projects' && (
+          <ProjectsPage
+            onSelectProject={(p) => setSelectedProject(p)}
+            onStartProject={() => handleStartProjectWithData()}
+          />
+        )}
 
-      {currentPage === 'about' && (
-        <AboutPage
-          onStartProject={() => handleStartProjectWithData()}
-          onContact={() => handleNavigate('contact')}
-        />
-      )}
+        {currentPage === 'about' && (
+          <AboutPage
+            onStartProject={() => handleStartProjectWithData()}
+            onContact={() => handleNavigate('contact')}
+          />
+        )}
 
-      {currentPage === 'insights' && (
-        <InsightsPage onSelectArticle={(a) => setSelectedArticle(a)} />
-      )}
+        {currentPage === 'insights' && (
+          <InsightsPage onSelectArticle={(a) => setSelectedArticle(a)} />
+        )}
 
-      {currentPage === 'contact' && <ContactPage />}
+        {currentPage === 'contact' && <ContactPage />}
 
-      {currentPage === 'tools' && (
-        <ToolsPage
-          onStartProject={handleStartProjectWithData}
-          initialTab={initialToolTab}
-        />
-      )}
+        {currentPage === 'tools' && (
+          <ToolsPage
+            onStartProject={handleStartProjectWithData}
+            initialTab={initialToolTab}
+          />
+        )}
+      </div>
 
       {/* Enterprise Footer with Verified Chennai Details */}
       <Footer

@@ -24,6 +24,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onSelectProject, onS
       <section className="page-hero-banner">
         <div className="container-wide">
           <div className="page-badge">
+            <span className="badge-pulse-dot" />
             <Cpu size={14} className="text-cyan" />
             <span>CASE STUDIES & PORTFOLIO</span>
           </div>

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { MapPin, ArrowRight, CheckCircle2, SlidersHorizontal } from 'lucide-react';
+import { MapPin, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { projectsData } from '../../data/projects';
 import type { ProjectItem } from '../../types';
 import { soundFx } from '../../utils/sound';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 import './ProjectsGallery.css';
 
 interface ProjectsGalleryProps {
@@ -14,56 +15,56 @@ export const ProjectsGallery: React.FC<ProjectsGalleryProps> = ({
   onSelectProject,
   onViewAllProjects
 }) => {
-  const [activeCategory, setActiveCategory] = useState<string>('All');
+  const { ref, isRevealed } = useScrollReveal<HTMLElement>({ threshold: 0.15 });
+  const [activeFilter, setActiveFilter] = useState<string>('All');
 
-  const categories = [
-    'All',
-    'Corporate',
-    'Auditorium',
-    'Healthcare',
-    'Hospitality',
-    'Residential',
-    'Retail'
-  ];
+  const categories = ['All', 'Corporate', 'Auditorium', 'Healthcare', 'Hospitality', 'Residential'];
 
-  const filteredProjects = activeCategory === 'All'
+  const filtered = activeFilter === 'All'
     ? projectsData
-    : projectsData.filter(p => p.industry === activeCategory);
+    : projectsData.filter(p => p.industry === activeFilter);
 
-  const handleFilter = (cat: string) => {
-    soundFx.playClick(900);
-    setActiveCategory(cat);
+  // Large primary featured project
+  const featuredProject = filtered[0] || projectsData[0];
+  const secondaryProjects = filtered.slice(1, 5);
+
+  const handleSelect = (proj: ProjectItem) => {
+    soundFx.playClick(850);
+    onSelectProject(proj);
   };
 
   return (
-    <section className="projects-gallery-section" id="projects">
+    <section 
+      ref={ref}
+      className={`editorial-projects-section section-spacing ${isRevealed ? 'is-revealed' : ''} reveal-on-scroll`} 
+      id="projects"
+    >
       <div className="container-wide">
-        {/* Section Heading */}
-        <div className="section-head-center">
-          <div className="section-eyebrow-pill">
-            <span className="eyebrow-dot" />
-            <span className="eyebrow-title">VERIFIED CASE STUDIES</span>
+        {/* Section Header */}
+        <div className="projects-header-row">
+          <div className="section-head-left" style={{ marginBottom: 0 }}>
+            <div className="section-eyebrow">
+              <span className="eyebrow-accent-line" />
+              <span>SELECTED CASE STUDIES</span>
+            </div>
+            <h2 className="section-grand-title">
+              Work we've <span className="title-highlight">delivered.</span>
+            </h2>
+            <p className="section-lead-desc">
+              Explore turnkey boardrooms, auditoriums, video walls, and luxury private theatres delivered across Chennai & South India.
+            </p>
           </div>
-          <h2 className="section-grand-title">
-            Spaces We've Helped <span className="title-highlight">Perform Better.</span>
-          </h2>
-          <p className="section-lead-desc">
-            Explore turnkey boardrooms, auditoriums, video walls, and luxury private theatres delivered across Chennai, Tamil Nadu, and South India.
-          </p>
-        </div>
 
-        {/* Filter Buttons */}
-        <div className="projects-filter-row">
-          <div className="filter-icon-label">
-            <SlidersHorizontal size={14} className="text-cyan" />
-            <span>Filter by Sector:</span>
-          </div>
-          <div className="filter-buttons-list">
+          {/* Filter Pills */}
+          <div className="projects-filter-pills">
             {categories.map((cat) => (
               <button
                 key={cat}
-                className={`proj-filter-btn ${activeCategory === cat ? 'active' : ''}`}
-                onClick={() => handleFilter(cat)}
+                className={`proj-filter-btn ${activeFilter === cat ? 'active' : ''}`}
+                onClick={() => {
+                  soundFx.playClick(900);
+                  setActiveFilter(cat);
+                }}
               >
                 {cat}
               </button>
@@ -71,73 +72,93 @@ export const ProjectsGallery: React.FC<ProjectsGalleryProps> = ({
           </div>
         </div>
 
-        {/* Projects Grid */}
-        <div className="projects-grid-container">
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="project-display-card"
-              onClick={() => {
-                soundFx.playClick(850);
-                onSelectProject(project);
-              }}
-              data-cursor="view"
-              data-cursor-text="CASE STUDY"
-            >
-              {/* Media Wrap */}
-              <div className="project-card-image-wrap">
-                <img src={project.image} alt={project.title} className="project-card-img" loading="lazy" />
-                <div className="project-card-overlay" />
+        {/* Editorial Project Grid: 1 Large Featured + 4 Grid Items */}
+        <div className="projects-editorial-grid">
+          {/* Primary Featured Project Card */}
+          <div
+            className="featured-project-box image-hover-zoom hover-card-lift"
+            onClick={() => handleSelect(featuredProject)}
+            data-cursor="project"
+            data-cursor-text="VIEW PROJECT →"
+            role="button"
+            tabIndex={0}
+          >
+            <div className="featured-proj-img-wrap">
+              <img
+                src={featuredProject.image}
+                alt={featuredProject.title}
+                className="featured-proj-img"
+                loading="lazy"
+              />
+              <div className="featured-proj-overlay" />
+            </div>
 
-                <div className="project-card-top-tags">
-                  <span className="project-num-tag">0{project.number}</span>
-                  <span className="project-ind-tag">{project.industry}</span>
-                </div>
-
-                <div className="project-card-quick-meta">
-                  <div className="project-loc-tag">
-                    <MapPin size={12} className="text-cyan" />
-                    <span>{project.location}</span>
-                  </div>
-                  <span className="project-client-name">{project.clientType}</span>
+            <div className="featured-proj-content">
+              <div className="featured-proj-meta">
+                <span className="proj-category-badge">{featuredProject.industry.toUpperCase()}</span>
+                <div className="proj-location-badge">
+                  <MapPin size={13} />
+                  <span>{featuredProject.location}</span>
                 </div>
               </div>
 
-              {/* Card Body */}
-              <div className="project-card-body">
-                <h3 className="project-title-text">{project.title}</h3>
-                <p className="project-summary-text">{project.summary}</p>
+              <h3 className="featured-proj-title">{featuredProject.title}</h3>
+              <p className="featured-proj-summary">{featuredProject.summary}</p>
 
-                {/* Solutions Delivered */}
-                <div className="project-solutions-delivered">
-                  <span className="sol-label">SOLUTIONS DELIVERED:</span>
-                  <div className="sol-chips-row">
-                    {project.technologiesUsed.slice(0, 3).map((tech, i) => (
-                      <span key={i} className="sol-tech-chip">
-                        <CheckCircle2 size={11} className="text-cyan" />
-                        <span>{tech}</span>
-                      </span>
-                    ))}
-                  </div>
-                </div>
+              <div className="featured-proj-techs">
+                {featuredProject.technologiesUsed.slice(0, 3).join(' • ')}
+              </div>
 
-                {/* Card Action */}
-                <div className="project-card-footer">
-                  <span className="view-case-study-text">
-                    <span>View Case Study</span>
-                    <ArrowRight size={14} />
-                  </span>
-                </div>
+              <div className="featured-proj-action arrow-hover-glide">
+                <span className="proj-action-text">View Case Study</span>
+                <ArrowRight size={16} />
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Secondary Projects Grid (2x2) */}
+          <div className="secondary-projects-grid">
+            {secondaryProjects.map((proj) => (
+              <div
+                key={proj.id}
+                className="secondary-project-card image-hover-zoom hover-card-lift"
+                onClick={() => handleSelect(proj)}
+                data-cursor="project"
+                data-cursor-text="VIEW PROJECT →"
+                role="button"
+                tabIndex={0}
+              >
+                <div className="sec-img-wrap">
+                  <img src={proj.image} alt={proj.title} className="sec-proj-img" loading="lazy" />
+                  <div className="sec-tag-row">
+                    <span className="sec-category-tag">{proj.industry}</span>
+                  </div>
+                </div>
+
+                <div className="sec-proj-body">
+                  <div className="sec-loc-line">
+                    <MapPin size={12} className="text-emerald" />
+                    <span>{proj.location}</span>
+                  </div>
+
+                  <h4 className="sec-proj-title">{proj.title}</h4>
+                  
+                  <div className="sec-proj-footer arrow-hover-glide">
+                    <span className="sec-tech-snippet">
+                      {proj.technologiesUsed.slice(0, 2).join(' • ')}
+                    </span>
+                    <ArrowUpRight size={16} className="sec-arrow" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* View All Projects Button */}
-        <div className="projects-bottom-action">
-          <button className="btn-secondary view-all-projects-btn" onClick={onViewAllProjects}>
-            <span>View All Enterprise Case Studies</span>
-            <ArrowRight size={16} />
+        {/* View All Projects Action */}
+        <div className="projects-bottom-cta">
+          <button className="btn-secondary view-all-projects-button" onClick={onViewAllProjects}>
+            <span>View All Enterprise Case Studies →</span>
           </button>
         </div>
       </div>

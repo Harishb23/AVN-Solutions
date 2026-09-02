@@ -1,189 +1,152 @@
-.partners-logo-section {
-  position: relative;
-  padding: 5rem 0;
-  background: var(--bg-primary);
+/* ==========================================================
+   AVN SOLUTIONS - EDITORIAL TECHNOLOGY PARTNERS
+   ========================================================== */
+
+.editorial-partners-section {
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
 }
 
-.brands-filter-row {
+.partners-filter-pills {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
   justify-content: center;
-  margin-bottom: 2.5rem;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
 }
 
-.brand-cat-btn {
-  padding: 0.45rem 0.95rem;
-  background: var(--bg-card);
+.partner-pill-btn {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-sm);
+  background-color: #FFFFFF;
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-full);
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
-  font-weight: 600;
   color: var(--text-secondary);
-  cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.brand-cat-btn:hover {
-  border-color: var(--blue-primary);
-  color: var(--blue-primary);
-}
-
-.brand-cat-btn.active {
-  background: var(--blue-primary);
-  border-color: var(--blue-primary);
-  color: #FFFFFF;
-  box-shadow: 0 4px 12px rgba(8, 119, 209, 0.25);
-}
-
-/* Logo Wall Grid */
-.brands-logo-wall {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
-}
-
-.brand-logo-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
-  padding: 1.35rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  transition: all 0.25s ease;
-}
-
-.brand-logo-card:hover {
-  border-color: var(--blue-primary);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-elevated);
-}
-
-.brand-card-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.brand-category-pill {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-transform: uppercase;
-}
-
-.brand-tier-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  font-weight: 700;
-  color: var(--blue-primary);
-  background: var(--bg-secondary);
-  padding: 0.15rem 0.45rem;
-  border-radius: var(--radius-xs);
-}
-
-/* Monochrome to Color Logo */
-.brand-monochrome-logo {
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg-secondary);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-color);
-  margin: 0.25rem 0;
-  transition: all 0.3s ease;
-}
-
-.brand-mono-text {
-  font-family: var(--font-heading);
-  font-size: 1.15rem;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  color: #64748B;
-  transition: all 0.3s ease;
-}
-
-.brand-logo-card:hover .brand-monochrome-logo {
-  background: linear-gradient(135deg, rgba(8, 119, 209, 0.08) 0%, rgba(0, 201, 245, 0.08) 100%);
-  border-color: var(--cyan-bright);
-}
-
-.brand-logo-card:hover .brand-mono-text {
-  color: var(--blue-primary);
-  text-shadow: 0 0 12px var(--cyan-glow);
-}
-
-.brand-official-name {
-  font-family: var(--font-heading);
-  font-size: 0.95rem;
-  font-weight: 700;
+.partner-pill-btn:hover {
+  border-color: #CBD2DC;
   color: var(--text-primary);
 }
 
-.brand-summary-text {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  line-height: 1.45;
-  flex: 1;
+.partner-pill-btn.active {
+  background-color: var(--blue-primary);
+  border-color: var(--blue-primary);
+  color: #FFFFFF;
 }
 
-.brand-gear-chips {
+/* Grayscale Logo Grid */
+.partners-clean-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.partner-brand-tile {
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.25rem;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-  padding-top: 0.5rem;
-  border-top: 1px solid var(--border-color);
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  height: 120px;
+  box-shadow: var(--shadow-subtle);
+  transition: transform 0.25s var(--ease-smooth),
+              box-shadow 0.25s var(--ease-smooth),
+              border-color 0.25s var(--ease-smooth);
 }
 
-.gear-chip {
-  font-size: 0.68rem;
-  font-family: var(--font-mono);
-  padding: 0.15rem 0.45rem;
-  background: var(--bg-secondary);
-  border-radius: var(--radius-xs);
-  color: var(--text-secondary);
+.partner-brand-tile:hover {
+  transform: translateY(-2px);
+  border-color: var(--blue-primary);
+  box-shadow: 0 6px 20px rgba(17, 19, 24, 0.06);
 }
 
-.brands-trust-note {
+.brand-logo-area {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.65rem;
-  margin-top: 2.5rem;
-  padding: 1rem 1.5rem;
-  background: var(--bg-card);
+  margin-bottom: 0.5rem;
+}
+
+.brand-logo-text {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #475569;
+  filter: grayscale(100%);
+  opacity: 0.85;
+  transition: all 0.25s ease;
+}
+
+.partner-brand-tile:hover .brand-logo-text {
+  filter: grayscale(0%);
+  opacity: 1;
+  color: var(--blue-primary);
+}
+
+.brand-tile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.brand-name-sub {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.brand-cat-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+/* Footer Trust Note */
+.partners-footer-trust {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.75rem;
+  background-color: #FFFFFF;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  font-size: 0.82rem;
+  box-shadow: var(--shadow-subtle);
+  gap: 1.5rem;
+}
+
+.trust-note-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
-  text-align: center;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-@media (max-width: 1200px) {
-  .brands-logo-wall {
-    grid-template-columns: repeat(3, 1fr);
+.view-ecosystem-btn {
+  white-space: nowrap;
+  font-size: 0.88rem;
+  padding: 0.65rem 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .partners-footer-trust {
+    flex-direction: column;
+    text-align: center;
   }
-}
 
-@media (max-width: 800px) {
-  .brands-logo-wall {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 500px) {
-  .brands-logo-wall {
-    grid-template-columns: 1fr;
+  .trust-note-left {
+    flex-direction: column;
   }
 }
