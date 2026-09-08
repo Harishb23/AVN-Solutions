@@ -105,12 +105,24 @@ export const ProjectsGallery: React.FC<ProjectsGalleryProps> = ({
               <h3 className="featured-proj-title">{featuredProject.title}</h3>
               <p className="featured-proj-summary">{featuredProject.summary}</p>
 
+              {/* Visual Metrics Strip */}
+              {featuredProject.metrics && (
+                <div className="proj-metrics-strip">
+                  {featuredProject.metrics.map((m, mIdx) => (
+                    <div key={mIdx} className="proj-metric-chip">
+                      <span className="p-metric-val">{m.value}</span>
+                      <span className="p-metric-lbl">{m.label}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
               <div className="featured-proj-techs">
                 {featuredProject.technologiesUsed.slice(0, 3).join(' • ')}
               </div>
 
               <div className="featured-proj-action arrow-hover-glide">
-                <span className="proj-action-text">View Case Study</span>
+                <span className="proj-action-text">Inspect Case Study</span>
                 <ArrowRight size={16} />
               </div>
             </div>
@@ -133,6 +145,11 @@ export const ProjectsGallery: React.FC<ProjectsGalleryProps> = ({
                   <div className="sec-tag-row">
                     <span className="sec-category-tag">{proj.industry}</span>
                   </div>
+                  {proj.metrics && proj.metrics[0] && (
+                    <div className="sec-quick-metric-badge">
+                      <span>{proj.metrics[0].value}</span>
+                    </div>
+                  )}
                 </div>
 
                 <div className="sec-proj-body">

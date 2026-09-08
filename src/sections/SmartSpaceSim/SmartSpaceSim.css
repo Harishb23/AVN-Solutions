@@ -40,6 +40,31 @@
   object-fit: cover;
 }
 
+/* Subsystem Segment Progress Strip */
+.subsystem-progress-strip {
+  display: flex;
+  gap: 3px;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 4px;
+}
+
+.subsystem-segment {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.1);
+  transition: background-color 0.25s ease;
+}
+
+.subsystem-segment.done {
+  background: var(--emerald-primary);
+}
+
+.subsystem-segment.active {
+  background: #0284C7;
+  box-shadow: 0 0 8px rgba(2, 132, 199, 0.5);
+}
+
 .visual-live-indicator {
   position: absolute;
   top: 1.25rem;
@@ -57,6 +82,44 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   z-index: 2;
+}
+
+.macro-preset-badge {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.95rem;
+  background: rgba(11, 19, 29, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+  color: #E2E8F0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  z-index: 2;
+}
+
+.stage-step-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+}
+
+.stage-bus-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #0284C7;
+  background: rgba(2, 132, 199, 0.08);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
 }
 
 .live-dot {

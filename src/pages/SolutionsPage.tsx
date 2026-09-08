@@ -56,12 +56,25 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({ onStartProject, in
                 <span className="solution-pill-tag">DISCIPLINE {activeSolution.number}</span>
                 <h2 className="solution-headline text-gradient-white">{activeSolution.title}</h2>
                 <h3 className="solution-quote">"{activeSolution.tagline}"</h3>
+
+                {/* Visual Spec Badges Strip */}
+                {activeSolution.specs && (
+                  <div className="sol-page-specs-strip">
+                    {activeSolution.specs.map((sp, idx) => (
+                      <div key={idx} className="sol-page-spec-chip">
+                        <span className="sol-spec-lbl">{sp.label}</span>
+                        <span className="sol-spec-val">{sp.value}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
                 <p className="solution-long-desc">{activeSolution.description}</p>
 
                 {/* Technical Features */}
                 <div className="solution-features-list">
                   {activeSolution.features.map((feat, idx) => (
-                    <div key={idx} className="feat-row">
+                    <div key={idx} className="feat-row hover-card-lift">
                       <div className="feat-icon-box">
                         <CheckCircle2 size={16} className="text-cyan" />
                       </div>

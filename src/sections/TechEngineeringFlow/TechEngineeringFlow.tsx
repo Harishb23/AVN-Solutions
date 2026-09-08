@@ -20,52 +20,62 @@ export const TechEngineeringFlow: React.FC = () => {
   const capabilities = [
     {
       title: 'AV System Design',
-      desc: 'AutoCAD schematics, cable pull schedules, conduit planning and sightline calculations.',
+      desc: 'AutoCAD single-line schematics and sightline engineering.',
+      techBadge: 'AutoCAD .DWG',
       icon: PencilRuler
     },
     {
       title: 'Acoustic Engineering',
-      desc: 'Scientific RT60 room impulse measurement, raytracing, and bespoke acoustic paneling.',
+      desc: 'Scientific RT60 room impulse measurement and acoustic modeling.',
+      techBadge: 'EASE 3D Raytracing',
       icon: Waves
     },
     {
       title: 'Networked AV',
-      desc: 'Dante, AES67, and 10G SDVoE uncompressed zero-latency IP media distribution.',
+      desc: 'Dante, AES67, and 10G SDVoE zero-latency IP media distribution.',
+      techBadge: 'Dante IP / AES67',
       icon: Network
     },
     {
       title: 'Room Automation',
-      desc: 'Centralized Crestron and Extron processors unifying lighting, HVAC, shades and display presets.',
+      desc: 'Centralized processors unifying lighting, HVAC, and display presets.',
+      techBadge: 'Crestron & Extron',
       icon: Cpu
     },
     {
       title: 'Lighting Control',
-      desc: 'DALI-2 addressable fixtures, tunable white circadian curves and architectural scene control.',
+      desc: 'DALI-2 addressable fixtures and circadian rhythm curves.',
+      techBadge: 'DALI-2 / KNX Bus',
       icon: SunMedium
     },
     {
       title: 'Digital Signage',
-      desc: 'Enterprise CMS deployment, content scheduling and multi-screen corporate lobby video walls.',
+      desc: 'Enterprise CMS scheduling and lobby multi-screen canvases.',
+      techBadge: '24/7 Cloud CMS',
       icon: Tv
     },
     {
       title: 'Video Conferencing',
-      desc: 'Certified Microsoft Teams Rooms and Zoom Rooms with AI speaker tracking and BYOM support.',
+      desc: 'Native Microsoft Teams & Zoom Rooms with AI speaker tracking.',
+      techBadge: 'Teams MTR / Zoom',
       icon: Video
     },
     {
       title: 'System Programming',
-      desc: 'Custom Crestron SIMPL/C#, Q-SYS Lua scripting and HTML5 touch glass user interfaces.',
+      desc: 'Custom Crestron SIMPL/C# and Q-SYS Lua touch interfaces.',
+      techBadge: 'SIMPL# & Lua GUI',
       icon: Code2
     },
     {
-      title: 'Installation & Commissioning',
-      desc: 'AVIXA CTS-certified rack dressing, laser display calibration and gain-staging alignment.',
+      title: 'Turnkey Commissioning',
+      desc: 'AVIXA CTS-certified rack dressing and gain-staging calibration.',
+      techBadge: 'AVIXA CTS-D / CTS-I',
       icon: Wrench
     },
     {
       title: 'Maintenance & Support',
-      desc: '24/7 remote device health telemetry, guaranteed 2-hour SLA response and local spare units.',
+      desc: '24/7 remote device health monitoring and 2-hour SLA response.',
+      techBadge: '24/7 SLA Telemetry',
       icon: ShieldCheck
     }
   ];
@@ -98,8 +108,11 @@ export const TechEngineeringFlow: React.FC = () => {
             const Icon = cap.icon;
             return (
               <div key={idx} className="expertise-tile hover-card-lift">
-                <div className="tile-icon-box">
-                  <Icon size={20} className="text-emerald" />
+                <div className="tile-top-row">
+                  <div className="tile-icon-box">
+                    <Icon size={18} className="text-emerald" />
+                  </div>
+                  <span className="tile-tech-badge">{cap.techBadge}</span>
                 </div>
                 <h3 className="tile-title">{cap.title}</h3>
                 <p className="tile-desc">{cap.desc}</p>

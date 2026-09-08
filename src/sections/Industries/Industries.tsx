@@ -27,6 +27,7 @@ interface IndustryItem {
   image: string;
   icon: any;
   spaces: string[];
+  techHighlights: string[];
 }
 
 export const Industries: React.FC<IndustriesProps> = ({ onStartProject, onNavigateIndustries }) => {
@@ -37,19 +38,21 @@ export const Industries: React.FC<IndustriesProps> = ({ onStartProject, onNaviga
       id: 'corporate',
       name: 'Corporate',
       tagline: 'Technology for productive workplaces.',
-      description: 'Executive boardrooms, hybrid Microsoft Teams & Zoom rooms, and all-hands townhall spaces engineered for modern enterprises.',
+      description: 'Executive boardrooms, hybrid Teams & Zoom rooms, and all-hands townhalls engineered for modern enterprises.',
       image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=85',
       icon: Building2,
-      spaces: ['Executive Boardrooms', 'Hybrid Meeting Spaces', 'Townhall Presentation Auditoriums']
+      techHighlights: ['0.9mm MicroLED', 'Dante Ceiling Arrays', 'Crestron One-Touch'],
+      spaces: ['Executive Boardrooms', 'Hybrid Meeting Spaces', 'Townhall Auditoriums']
     },
     {
       id: 'education',
       name: 'Education',
       tagline: 'Engaging systems for modern learning.',
-      description: 'Active learning classrooms, tier-1 lecture halls, distance education lecture capture, and campus digital signage.',
+      description: 'Active learning classrooms, tier-1 lecture halls, distance education capture, and campus digital signage.',
       image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=85',
       icon: GraduationCap,
-      spaces: ['Smart Tiered Lecture Halls', 'HyFlex Hybrid Classrooms', 'Campus-Wide PA & Broadcasting']
+      techHighlights: ['HyFlex Lecture Capture', 'Tiered Column Audio', 'Wireless BYOD'],
+      spaces: ['Smart Tiered Lecture Halls', 'HyFlex Classrooms', 'Campus-Wide PA']
     },
     {
       id: 'healthcare',
@@ -58,25 +61,28 @@ export const Industries: React.FC<IndustriesProps> = ({ onStartProject, onNaviga
       description: 'Medical training auditoriums, surgical telemedicine displays, patient room infotainment, and hospital command centers.',
       image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1600&q=85',
       icon: HeartPulse,
-      spaces: ['Surgical Suites & Telemedicine', 'Medical Seminar Auditoriums', 'Healthcare Control Centers']
+      techHighlights: ['Zero-Latency Displays', 'Medical Telepresence', 'OR Control Glass'],
+      spaces: ['Surgical Suites', 'Medical Auditoriums', 'Hospital NOCs']
     },
     {
       id: 'hospitality',
       name: 'Hospitality',
       tagline: 'Memorable guest & venue experiences.',
-      description: 'Luxury hotel ballrooms, multi-zone background music distribution, architectural lighting control, and digital banquet displays.',
+      description: 'Luxury hotel ballrooms, multi-zone background music distribution, architectural lighting, and banquet displays.',
       image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=85',
       icon: Utensils,
-      spaces: ['Grand Hotel Ballrooms', 'Multi-Zone Lounge Audio', 'Guest Arrival Displays']
+      techHighlights: ['Multi-Zone Matrix BGM', 'Ballroom LED Walls', 'DALI Lighting'],
+      spaces: ['Grand Ballrooms', 'Lounge Audio Zones', 'Guest Displays']
     },
     {
       id: 'retail',
       name: 'Retail',
       tagline: 'Dynamic visual impact for flagship stores.',
-      description: 'High-brightness storefront MicroLED video walls, interactive product selector kiosks, and zoned background audio.',
+      description: 'High-brightness storefront MicroLED video walls, interactive selector kiosks, and zoned background audio.',
       image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=85',
       icon: ShoppingBag,
-      spaces: ['Storefront Direct-View LED', 'Interactive Experience Kiosks', 'Zoned Commercial Sound']
+      techHighlights: ['High-Lux Direct-View LED', 'Interactive Kiosks', 'Directional Sound'],
+      spaces: ['Storefront Direct LED', 'Experience Kiosks', 'Zoned Commercial Sound']
     },
     {
       id: 'government',
@@ -85,16 +91,18 @@ export const Industries: React.FC<IndustriesProps> = ({ onStartProject, onNaviga
       description: 'Secure parliamentary discussion systems, emergency operations centers (NOC/EOC), and encrypted AV over IP.',
       image: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1600&q=85',
       icon: Landmark,
-      spaces: ['Council Chambers & Voting', '24/7 Command & Control NOCs', 'Secure Teleconference Suites']
+      techHighlights: ['Encrypted AV-Over-IP', 'NOC Video Processors', 'Council Voting Systems'],
+      spaces: ['Council Chambers', '24/7 Command NOCs', 'Secure Teleconference']
     },
     {
       id: 'residential',
       name: 'Residential',
       tagline: 'Immersive entertainment for luxury homes.',
-      description: 'Private THX-certified Dolby Atmos home cinemas, whole-home audio distribution, and integrated smart home automation.',
+      description: 'Private THX-certified Dolby Atmos home cinemas, whole-home audio, and integrated architectural automation.',
       image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85',
       icon: Home,
-      spaces: ['Dolby Atmos Private Theatres', 'Whole-Villa Multiroom Audio', 'Curated Architectural Lighting']
+      techHighlights: ['Dolby Atmos 9.4.6', 'Trinnov 3D Tuning', 'Starlight Ceilings'],
+      spaces: ['Dolby Atmos Theatres', 'Multiroom Audio', 'Architectural Lighting']
     }
   ];
 
@@ -162,12 +170,21 @@ export const Industries: React.FC<IndustriesProps> = ({ onStartProject, onNaviga
             <div className="stage-photo-tag">
               <span>{activeIndustry.name.toUpperCase()} SECTOR</span>
             </div>
+
+            {/* Floating Tech Highlights Bar */}
+            <div className="industry-tech-pills-bar">
+              {activeIndustry.techHighlights.map((tech, tIdx) => (
+                <span key={tIdx} className="ind-tech-chip">
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
 
           <div className="stage-content-side">
             <div className="stage-eyebrow-line">
               <activeIndustry.icon size={18} className="text-emerald" />
-              <span>{activeIndustry.name.toUpperCase()}</span>
+              <span>{activeIndustry.name.toUpperCase()} ARCHITECTURE</span>
             </div>
 
             <h3 className="stage-headline">"{activeIndustry.tagline}"</h3>
@@ -175,14 +192,14 @@ export const Industries: React.FC<IndustriesProps> = ({ onStartProject, onNaviga
 
             <div className="stage-spaces-box">
               <span className="spaces-label">TYPICAL SPACES ENGINEERED:</span>
-              <ul className="spaces-list">
+              <div className="spaces-cards-grid">
                 {activeIndustry.spaces.map((sp, idx) => (
-                  <li key={idx} className="space-item">
-                    <CheckCircle2 size={15} className="text-emerald" />
+                  <div key={idx} className="space-card-item">
+                    <CheckCircle2 size={14} className="text-emerald" />
                     <span>{sp}</span>
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
 
             <div className="stage-actions-row">

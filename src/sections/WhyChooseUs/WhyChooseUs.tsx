@@ -15,30 +15,34 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onStartProject }) => {
     {
       num: '01',
       title: 'DISCOVER',
-      tagline: 'Spatial & Workflow Discovery',
-      description: 'Understand your space, users and requirements through comprehensive on-site acoustic and sightline audits in Chennai.',
-      icon: Compass
+      tagline: 'Spatial & Workflow Audit',
+      description: 'Comprehensive acoustic and sightline audits on-site in Chennai.',
+      icon: Compass,
+      deliverables: ['RT60 Acoustic Survey', 'Sightline Modeling', 'Workflow Blueprint']
     },
     {
       num: '02',
       title: 'DESIGN',
       tagline: 'Engineering & Schematics',
-      description: 'Engineer the right AV and automation architecture with AutoCAD line schematics, 3D EASE acoustic raytracing and transparent BOQs.',
-      icon: PencilRuler
+      description: 'AutoCAD line schematics, EASE 3D raytracing and transparent BOQs.',
+      icon: PencilRuler,
+      deliverables: ['AutoCAD Single-Line DWG', 'EASE 3D Raytracing', 'Equipment BOQ']
     },
     {
       num: '03',
       title: 'INTEGRATE',
       tagline: 'Turnkey Commissioning',
-      description: 'Install, program and commission the complete system by AVIXA CTS-certified engineers and certified Crestron logic programmers.',
-      icon: Wrench
+      description: 'Installed and programmed by AVIXA CTS-certified engineers.',
+      icon: Wrench,
+      deliverables: ['CTS-D Rack Dressing', 'Crestron C# Programming', 'DSP Gain-Staging']
     },
     {
       num: '04',
       title: 'SUPPORT',
       tagline: 'Lifecycle Performance',
-      description: 'Maintain performance and provide ongoing support with guaranteed 24/7 SLA telemetry, remote diagnostics, and dedicated local spares.',
-      icon: Headphones
+      description: 'Guaranteed 24/7 SLA telemetry, remote health diagnostics, and local spares.',
+      icon: Headphones,
+      deliverables: ['24/7 Cloud Telemetry', '2-Hour SLA Response', 'On-Site Spares Pool']
     }
   ];
 
@@ -80,6 +84,18 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onStartProject }) => {
                 <h3 className="stage-heading">{stage.title}</h3>
                 <h4 className="stage-tagline">{stage.tagline}</h4>
                 <p className="stage-detail">{stage.description}</p>
+
+                {/* Visual Deliverables Pills */}
+                <div className="stage-deliverables-strip">
+                  <span className="stage-deliv-header">ENGINEERING DELIVERABLES:</span>
+                  <div className="stage-deliv-pills">
+                    {stage.deliverables.map((deliv, dIdx) => (
+                      <span key={dIdx} className="deliv-chip">
+                        {deliv}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             );
           })}

@@ -66,23 +66,30 @@ export const IndustriesPage: React.FC<IndustriesPageProps> = ({ onStartProject, 
                 <span className="solution-pill-tag">SECTOR {activeIndustry.number}</span>
                 <h2 className="solution-headline text-gradient-white">{activeIndustry.name}</h2>
                 <h3 className="solution-quote">"{activeIndustry.tagline}"</h3>
+
+                {/* Visual Impact Metric Badge */}
+                {activeIndustry.impactMetric && (
+                  <div className="ind-impact-badge">
+                    <Activity size={15} className="text-cyan" />
+                    <span>VERIFIED IMPACT: {activeIndustry.impactMetric}</span>
+                  </div>
+                )}
+
                 <p className="solution-long-desc">{activeIndustry.description}</p>
 
                 {/* Recommended Engineering Solutions Checklist */}
                 <div className="solution-features-list">
-                  <h4 className="services-box-title" style={{ marginBottom: '0.25rem' }}>
+                  <h4 className="services-box-title" style={{ marginBottom: '0.5rem' }}>
                     RECOMMENDED ENGINEERING ARCHITECTURES:
                   </h4>
-                  {activeIndustry.recommendedSolutions.map((sol, idx) => (
-                    <div key={idx} className="feat-row">
-                      <div className="feat-icon-box">
-                        <CheckCircle2 size={16} className="text-cyan" />
+                  <div className="ind-solutions-chips-grid">
+                    {activeIndustry.recommendedSolutions.map((sol, idx) => (
+                      <div key={idx} className="ind-sol-chip hover-card-lift">
+                        <CheckCircle2 size={14} className="text-cyan" />
+                        <span>{sol}</span>
                       </div>
-                      <div className="feat-text">
-                        <h4 className="feat-title">{sol}</h4>
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
 
                 <div className="solution-cta-row">

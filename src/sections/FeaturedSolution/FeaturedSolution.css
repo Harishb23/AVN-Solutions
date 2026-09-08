@@ -61,6 +61,123 @@
   background-color: #34D399;
 }
 
+/* Hotspots Overlay Layer */
+.hotspots-overlay-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.visual-hotspot-item {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.hotspot-trigger-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #0284C7;
+  border: 2px solid #FFFFFF;
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+  transition: transform 0.25s ease, background-color 0.25s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.visual-hotspot-item:hover .hotspot-trigger-circle,
+.visual-hotspot-item.is-active .hotspot-trigger-circle {
+  transform: scale(1.18);
+  background: #38BDF8;
+}
+
+.hotspot-pulse-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid #38BDF8;
+  opacity: 0.8;
+  animation: hotspotPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes hotspotPing {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.9;
+  }
+  80%, 100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.hotspot-popover-card {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: rgba(11, 19, 29, 0.92);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: var(--radius-xs);
+  padding: 0.55rem 0.85rem;
+  white-space: nowrap;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.visual-hotspot-item:hover .hotspot-popover-card,
+.visual-hotspot-item.is-active .hotspot-popover-card {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.hotspot-popover-title {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.hotspot-popover-sub {
+  font-size: 0.72rem;
+  color: #94A3B8;
+  margin-top: 0.1rem;
+}
+
+.hotspot-hint-bar {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  background: rgba(11, 19, 29, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-full);
+  padding: 0.35rem 0.95rem;
+  font-size: 0.75rem;
+  color: #E2E8F0;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  z-index: 4;
+}
+
 /* Content Column */
 .featured-solution-content-col {
   padding: clamp(2.5rem, 5vw, 4rem);
@@ -80,7 +197,7 @@
   letter-spacing: 0.1em;
   color: var(--blue-primary);
   text-transform: uppercase;
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
 
 .featured-heading {
@@ -89,14 +206,38 @@
   font-weight: 700;
   line-height: 1.15;
   color: var(--text-primary);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
-.featured-description {
-  font-size: 1.05rem;
+/* Visual Performance Metrics Bar */
+.featured-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  margin: 0.5rem 0 1.75rem 0;
+  padding: 0.85rem 1rem;
+  background: rgba(2, 132, 199, 0.04);
+  border: 1px solid rgba(2, 132, 199, 0.18);
+  border-radius: var(--radius-sm);
+}
+
+.featured-metric-tile {
+  display: flex;
+  flex-direction: column;
+}
+
+.feat-m-val {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0284C7;
+  line-height: 1.2;
+}
+
+.feat-m-lbl {
+  font-size: 0.74rem;
   color: var(--text-secondary);
-  line-height: 1.65;
-  margin-bottom: 2rem;
+  font-weight: 500;
 }
 
 /* Capabilities Grid */
@@ -104,8 +245,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
-  margin-bottom: 2.5rem;
-  padding-top: 1.75rem;
+  margin-bottom: 2rem;
+  padding-top: 1.5rem;
   border-top: 1px solid var(--border-color);
 }
 

@@ -459,17 +459,105 @@
   letter-spacing: -0.02em;
 }
 
-.center-paragraphs-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.75rem;
-  margin-top: 0.25rem;
+/* Visual-First Interactive Stage Card */
+.hero-visual-stage-card {
+  position: relative;
+  background: rgba(14, 25, 38, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+  transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
-.center-p {
-  font-size: 0.94rem;
-  line-height: 1.65;
+.hero-visual-stage-card:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: translateY(-2px);
+}
+
+.hero-visual-stage-img-wrap {
+  position: relative;
+  width: 100%;
+  height: clamp(170px, 20vw, 220px);
+  overflow: hidden;
+}
+
+.hero-visual-stage-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-visual-stage-card:hover .hero-visual-stage-img {
+  transform: scale(1.04);
+}
+
+.hero-visual-stage-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 19, 29, 0.25) 0%,
+    rgba(11, 19, 29, 0.5) 50%,
+    rgba(11, 19, 29, 0.95) 100%
+  );
+}
+
+.hero-visual-status-pill {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(11, 19, 29, 0.82);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: var(--radius-full);
+  padding: 0.25rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #38BDF8;
+  backdrop-filter: blur(8px);
+}
+
+.hero-visual-highlights-bar {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.85rem;
+  right: 0.85rem;
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  z-index: 2;
+}
+
+.hero-visual-highlight-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(14, 25, 38, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-full);
+  padding: 0.2rem 0.65rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #E2E8F0;
+  backdrop-filter: blur(8px);
+}
+
+.hero-visual-stage-meta {
+  padding: 0.75rem 1.15rem 0.85rem;
+  background: rgba(11, 19, 29, 0.9);
+}
+
+.hero-visual-one-liner {
+  font-size: 0.88rem;
+  line-height: 1.5;
   color: #CBD5E1;
+  font-weight: 500;
 }
 
 /* Micro-Metrics Bar */

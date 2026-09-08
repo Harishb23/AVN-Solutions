@@ -100,10 +100,28 @@
   gap: 0.1rem;
 }
 
+.brand-title-tier-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .brand-name-sub {
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--text-primary);
+}
+
+.brand-partner-tier {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #0284C7;
+  background: rgba(2, 132, 199, 0.08);
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
 }
 
 .brand-cat-tag {

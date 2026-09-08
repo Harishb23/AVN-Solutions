@@ -1,30 +1,63 @@
 # ==============================================================================
-# AVN SOLUTIONS (CHENNAI) - ROBOTS.TXT
-# Web: https://avnsolutions.in
-# Audio Visual Equipment Supplier & AV Integrator in Chennai, Tamil Nadu
+# AVN SOLUTIONS | Audio Visual Equipment Supplier & AV Integrator Chennai
+# Website: https://avnsolutions.in
+# Contact: contact@avnsolutions.in | +91 44 2450 1688
 # ==============================================================================
 
+# Standard Web Crawlers
 User-agent: *
 Allow: /
 Allow: /assets/
 Allow: /public/
 Disallow: /private/
 Disallow: /api/
+Disallow: /*?*sort=
+Disallow: /*?*filter=
 
-# Crawler Host & Sitemap Location
-Host: https://avnsolutions.in
-Sitemap: https://avnsolutions.in/sitemap.xml
-
-# Specific Search Engine Crawlers
+# Googlebot Main Crawler
 User-agent: Googlebot
 Allow: /
-
-User-agent: Googlebot-Image
-Allow: /assets/
+Allow: /*.js$
+Allow: /*.css$
 Allow: /*.png$
 Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.webp$
 Allow: /*.svg$
 
+# Googlebot Image Crawler for Rich Google Visual Search
+User-agent: Googlebot-Image
+Allow: /
+Allow: /assets/
+Allow: /hero-bg.jpg
+Allow: /logo.png
+Allow: /favicon.png
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.webp$
+Allow: /*.svg$
+
+# Googlebot Mobile Crawler
+User-agent: Googlebot-Mobile
+Allow: /
+
+# Bingbot Crawler
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Applebot & Yandex
+User-agent: Applebot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Sitemap Index Specification
+Sitemap: https://avnsolutions.in/sitemap.xml
+Host: https://avnsolutions.in

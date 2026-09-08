@@ -249,6 +249,18 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onStartProject }) =>
                       ))}
                     </div>
 
+                    {/* Visual Engineering Tools Badges */}
+                    {svc.toolsUsed && svc.toolsUsed.length > 0 && (
+                      <div className="service-tools-row">
+                        <Wrench size={12} className="text-cyan" />
+                        <div className="service-tools-pills">
+                          {svc.toolsUsed.map((tool, tIdx) => (
+                            <span key={tIdx} className="service-tool-chip">{tool}</span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
                     {/* Card Footer */}
                     <div className="service-card-footer">
                       <div className="service-timeline-wrap">

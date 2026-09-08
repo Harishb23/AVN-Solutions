@@ -74,7 +74,10 @@ export const Partners: React.FC<PartnersProps> = ({ onNavigateBrands }) => {
                 <span className="brand-logo-text">{brand.logoText}</span>
               </div>
               <div className="brand-tile-info">
-                <span className="brand-name-sub">{brand.name}</span>
+                <div className="brand-title-tier-row">
+                  <span className="brand-name-sub">{brand.name}</span>
+                  {brand.tier && <span className="brand-partner-tier">{brand.tier}</span>}
+                </div>
                 <span className="brand-cat-tag">{brand.category}</span>
               </div>
             </div>

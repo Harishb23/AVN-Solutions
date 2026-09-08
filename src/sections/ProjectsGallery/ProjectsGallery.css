@@ -150,6 +150,52 @@
   color: var(--text-secondary);
 }
 
+/* Visual Metrics Strip */
+.proj-metrics-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+  padding: 0.75rem;
+  background: rgba(2, 132, 199, 0.05);
+  border: 1px solid rgba(2, 132, 199, 0.18);
+  border-radius: var(--radius-xs);
+}
+
+.proj-metric-chip {
+  display: flex;
+  flex-direction: column;
+}
+
+.p-metric-val {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #0284C7;
+  line-height: 1.2;
+}
+
+.p-metric-lbl {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-tertiary);
+  margin-top: 0.1rem;
+}
+
+.sec-quick-metric-badge {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  background: rgba(11, 19, 29, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: var(--radius-full);
+  padding: 0.2rem 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #38BDF8;
+  backdrop-filter: blur(8px);
+}
+
 .featured-proj-techs {
   font-family: var(--font-mono);
   font-size: 0.78rem;

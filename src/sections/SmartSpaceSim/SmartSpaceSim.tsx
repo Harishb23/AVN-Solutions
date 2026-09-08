@@ -10,7 +10,8 @@ import {
   Thermometer, 
   Laptop, 
   CheckCircle2, 
-  ArrowRight 
+  ArrowRight,
+  Sparkles
 } from 'lucide-react';
 import { soundFx } from '../../utils/sound';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
@@ -180,6 +181,21 @@ export const SmartSpaceSim: React.FC<SmartSpaceSimProps> = ({ onStartProject }) 
           {/* LEFT: Large Boardroom Visual Experience Canvas with Crossfading */}
           <div className="automation-visual-stage">
             <div className="visual-stage-card hover-card-lift">
+              {/* Top Subsystem Segment Bar */}
+              <div className="subsystem-progress-strip">
+                {steps.map((s, sIdx) => {
+                  const isDone = activeStepIndex > sIdx || isCompleted;
+                  const isCur = activeStepIndex === sIdx;
+                  return (
+                    <div
+                      key={s.number}
+                      className={`subsystem-segment ${isDone ? 'done' : ''} ${isCur ? 'active' : ''}`}
+                      title={s.subsystem}
+                    />
+                  );
+                })}
+              </div>
+
               <div className="visual-media-frame">
                 {steps.map((s, idx) => (
                   <img
@@ -196,11 +212,20 @@ export const SmartSpaceSim: React.FC<SmartSpaceSimProps> = ({ onStartProject }) 
                   <span className="live-dot" />
                   <span className="live-text">{currentStep.statusBadge}</span>
                 </div>
+
+                {/* Automation Macro Badge */}
+                <div className="macro-preset-badge">
+                  <Sparkles size={13} className="text-cyan" />
+                  <span>PRESET: EXECUTIVE HYBRID MEETING READY</span>
+                </div>
               </div>
 
               <div className="visual-stage-footer">
                 <div className="stage-step-meta">
-                  <span className="stage-seq">STAGE {currentStep.number} OF 07</span>
+                  <div className="stage-step-eyebrow">
+                    <span className="stage-seq">SUBSYSTEM {currentStep.number} OF 07</span>
+                    <span className="stage-bus-tag">CRESTRON BUS SYNCED</span>
+                  </div>
                   <h3 className="stage-step-title">{currentStep.subsystem}</h3>
                   <p className="stage-step-desc">{currentStep.description}</p>
                 </div>
@@ -212,12 +237,12 @@ export const SmartSpaceSim: React.FC<SmartSpaceSimProps> = ({ onStartProject }) 
                       onClick={handleStartExperience}
                     >
                       <Play size={15} fill="currentColor" />
-                      <span>See the experience</span>
+                      <span>Simulate Room Automation</span>
                     </button>
                   ) : isPlayingSequence ? (
                     <div className="experience-running-tag">
                       <span className="running-dot" />
-                      <span>Synchronizing space ({activeStepIndex + 1}/7)...</span>
+                      <span>Synchronizing subsystems ({activeStepIndex + 1}/7)...</span>
                     </div>
                   ) : (
                     <div className="experience-done-group">
@@ -226,7 +251,7 @@ export const SmartSpaceSim: React.FC<SmartSpaceSimProps> = ({ onStartProject }) 
                         <span>Replay</span>
                       </button>
                       <button className="btn-primary" onClick={onStartProject}>
-                        <span>Automate Your Facility</span>
+                        <span>Automate Your Space</span>
                         <ArrowRight size={15} />
                       </button>
                     </div>

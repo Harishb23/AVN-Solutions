@@ -56,12 +56,32 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onStartProject, onContact 
             <div className="story-left glass-panel">
               <span className="story-badge">OUR PURPOSE</span>
               <h2 className="story-heading text-gradient-white">Engineering Environments That Inspire</h2>
-              <p className="story-p">
-                Headquartered in Sholinganallur, Chennai, AVN Solutions was founded on a simple engineering realization: enterprise AV is not an equipment shopping list — it is a spatial discipline requiring deep acoustic physics, optical calculation, and ergonomic automation design.
-              </p>
-              <p className="story-p">
-                Over the years, we have grown into one of South India's most capable pro-AV systems integrators, executing turnkey projects for multinational tech campuses, state-of-the-art auditoriums, university smart classrooms, and 24/7 mission-critical operations centers.
-              </p>
+              
+              {/* Visual Facility Showcase Card */}
+              <div className="about-visual-facility-card">
+                <div className="about-facility-img-wrap">
+                  <img
+                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"
+                    alt="AVN Solutions Chennai Experience Center"
+                    className="about-facility-img"
+                  />
+                  <div className="about-facility-overlay" />
+                  <div className="about-facility-badge">
+                    <MapPin size={12} className="text-cyan" />
+                    <span>CHENNAI INTEGRATION LAB & EXPERIENCE CENTER</span>
+                  </div>
+                </div>
+                <div className="about-facility-info">
+                  <p className="about-one-liner">
+                    Headquartered in Sholinganallur, Chennai — bridging acoustic physics, optical calculation, and ergonomic automation design for enterprise workplaces.
+                  </p>
+                  <div className="about-capability-pills">
+                    <span className="about-pill">AVIXA CTS-D & CTS-I</span>
+                    <span className="about-pill">50+ OEM Partners</span>
+                    <span className="about-pill">24/7 SLA Support</span>
+                  </div>
+                </div>
+              </div>
 
               <div className="story-credentials-grid">
                 {credentials.map((c, idx) => (

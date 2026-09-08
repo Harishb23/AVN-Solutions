@@ -27,11 +27,13 @@ interface SolutionDetail {
   id: string;
   tag: string;
   title: string;
-  p1: string;
-  p2: string;
+  oneLiner: string;
+  image: string;
+  liveBadge: string;
   techTags: string[];
   metrics: { value: string; label: string }[];
   pillars: { icon: any; name: string; sub: string }[];
+  highlights: string[];
 }
 
 export const Hero: React.FC<HeroProps> = ({ onExplore, onStartProject }) => {
@@ -54,8 +56,10 @@ export const Hero: React.FC<HeroProps> = ({ onExplore, onStartProject }) => {
       id: 'corporate-av',
       tag: 'ENTERPRISE INTEGRATION OVERVIEW',
       title: 'Engineering intelligent environments for modern workplaces & premium spaces.',
-      p1: 'AVN Solutions designs, engineers and deploys high-performance audio-visual systems, acoustic architectures, and automated smart spaces across Chennai and South India.',
-      p2: 'From executive boardrooms to 1,000-seat auditoriums, we combine AVIXA CTS-certified engineering, direct tier-1 OEM hardware, and 24/7 SLA telemetry for uncompromising reliability.',
+      oneLiner: 'Turnkey audio-visual architectures designed for executive decision-making, high-impact boardrooms, and connected workplaces.',
+      image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=80',
+      liveBadge: 'BOARDROOM ARCHITECTURE ONLINE',
+      highlights: ['0.9mm Bezel-less MicroLED', '360° Ceiling Mic Arrays', 'One-Touch Crestron Presets'],
       techTags: ['Crestron NVX', 'Shure Microflex', 'Biamp Tesira', 'Cisco Webex'],
       metrics: [
         { value: '99.98%', label: 'Meeting Room Uptime' },
@@ -72,8 +76,10 @@ export const Hero: React.FC<HeroProps> = ({ onExplore, onStartProject }) => {
       id: 'video-conferencing',
       tag: 'HYBRID WORKPLACE • NATIVE ROOMS',
       title: 'Certified Microsoft Teams & Zoom Rooms engineered for frictionless collaboration.',
-      p1: 'Deploy intelligent meeting spaces with 4K auto-framing AI cameras, smart speaker acoustic fencing, and one-touch join consoles for effortless hybrid meetings.',
-      p2: 'Native room compute integrations ensure enterprise encryption, remote cloud telemetry management, and seamless interoperability across SIP and H.323 standards.',
+      oneLiner: 'Intelligent meeting spaces with 4K auto-framing AI cameras, smart acoustic fencing, and one-touch join consoles.',
+      image: 'https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=1200&q=80',
+      liveBadge: 'TEAMS & ZOOM ROOMS CERTIFIED',
+      highlights: ['AI Speaker Auto-Framing', 'Dual-Display Hybrid Layout', 'BYOM Wireless Presentation'],
       techTags: ['Microsoft Teams MTR', 'Zoom Rooms', 'Poly Studio', 'Logitech Rally'],
       metrics: [
         { value: '1-Touch', label: 'Instant Meeting Join' },
@@ -90,8 +96,10 @@ export const Hero: React.FC<HeroProps> = ({ onExplore, onStartProject }) => {
       id: 'professional-audio',
       tag: 'ACOUSTIC ARCHITECTURE • NETWORKED SOUND',
       title: 'Concert-grade acoustic engineering and networked Dante distribution.',
-      p1: 'High-intelligibility audio reinforcement for auditoriums, seminar complexes, and enterprise campuses with EASE 3D electro-acoustic raytracing.',
-      p2: 'Zero-compromise beamforming microphone arrays, digital signal processors (DSP), and redundant IP-based Dante audio routing ensure studio-quality clarity.',
+      oneLiner: 'Scientific RT60 room reverberation optimization, steerable line arrays, and zero-compromise DSP routing.',
+      image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=80',
+      liveBadge: 'DANTE IP MATRIX ACTIVE',
+      highlights: ['EASE 3D Acoustic Raytracing', 'Dante AES67 Gigabit Audio', 'AEC Noise Cancellation'],
       techTags: ['Dante IP Audio', 'Bose Professional', 'Q-SYS Ecosystem', 'Sennheiser TeamConnect'],
       metrics: [
         { value: '> 0.68', label: 'STI Speech Clarity' },
@@ -108,8 +116,10 @@ export const Hero: React.FC<HeroProps> = ({ onExplore, onStartProject }) => {
       id: 'display-visual',
       tag: 'VISUAL CANVASES • FINE-PITCH LED',
       title: 'Seamless fine-pitch Direct-View MicroLED and high-lumen 4K projection.',
-      p1: 'Transform enterprise lobbies, command & control rooms, and executive auditoriums with bezel-less MicroLED canvases delivering breathtaking dynamic contrast.',
-      p2: 'Hardware video wall processors provide multi-window 4K windowing, HDR10+ calibration, and redundant power supplies for 24/7 mission-critical operation.',
+      oneLiner: 'Bezel-less direct-view MicroLED displays and multi-window processors delivering breathtaking contrast and 24/7 reliability.',
+      image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80',
+      liveBadge: 'FINE-PITCH MICROLED NOC ACTIVE',
+      highlights: ['0.9mm Ultra-Fine Pitch', 'HDR10+ Calibration', 'Multi-Window 4K Matrix'],
       techTags: ['0.9mm MicroLED', 'Christie 4K Laser', 'Barco ClickShare', 'Analog Way'],
       metrics: [
         { value: '0.9mm', label: 'Ultra-Fine Pixel Pitch' },
@@ -126,8 +136,10 @@ export const Hero: React.FC<HeroProps> = ({ onExplore, onStartProject }) => {
       id: 'smart-automation',
       tag: 'CENTRALIZED CONTROL • IOT ARCHITECTURE',
       title: 'Unified touch management of lighting, climate, shades, and media matrices.',
-      p1: 'Orchestrate whole-facility environments with intuitive custom-branded touch panels that configure entire boardrooms or auditoriums with a single button tap.',
-      p2: 'Integrate DALI-2 architectural lighting, motorized shading schedules, occupancy sensors, and HVAC to drastically reduce corporate power consumption.',
+      oneLiner: 'Custom touch glass interfaces that configure complex boardrooms, lighting curves, and HVAC with single-tap elegance.',
+      image: 'https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=1200&q=80',
+      liveBadge: 'UNIFIED CRESTRON BUS ONLINE',
+      highlights: ['Custom HTML5 Touch Glass UI', 'DALI-2 Architectural Lighting', 'Occupancy Power Saving'],
       techTags: ['Crestron Home', 'Extron Control', 'Lutron Homeworks', 'KNX Protocol'],
       metrics: [
         { value: 'Single-Tap', label: 'Macro Preset Execution' },
@@ -144,8 +156,10 @@ export const Hero: React.FC<HeroProps> = ({ onExplore, onStartProject }) => {
       id: 'home-cinema',
       tag: 'BESPOKE RESIDENTIAL • IMMERSIVE CINEMA',
       title: 'Private residential screening rooms featuring Dolby Atmos 9.4.6 acoustic mastery.',
-      p1: 'We craft bespoke luxury home cinemas engineered to DCI theater mastering standards, featuring laser anamorphic projection and concealed architectural speakers.',
-      p2: 'Multi-tiered acoustic room conditioning, calibrated subwoofer arrays, and starlight acoustic ceilings deliver an unmatched private cinema experience.',
+      oneLiner: 'Bespoke luxury private theatres engineered to DCI mastering standards with laser projection and concealed architectural speakers.',
+      image: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80',
+      liveBadge: 'DOLBY ATMOS 9.4.6 REFERENCE',
+      highlights: ['Trinnov 3D Room Optimizer', 'Acoustic Woven 4K Screen', 'Fiber-Optic Starlight Ceiling'],
       techTags: ['Dolby Atmos 9.4.6', 'Trinnov Altitude', 'JBL Synthesis', 'Sony 4K HDR'],
       metrics: [
         { value: '9.4.6', label: 'Immersive Atmos Layout' },
@@ -286,9 +300,37 @@ export const Hero: React.FC<HeroProps> = ({ onExplore, onStartProject }) => {
                 {currentSolution.title}
               </h2>
 
-              <div className="center-paragraphs-grid hero-content-swap">
-                <p className="center-p">{currentSolution.p1}</p>
-                <p className="center-p">{currentSolution.p2}</p>
+              {/* Visual-First Interactive Stage Card */}
+              <div className="hero-visual-stage-card hero-content-swap">
+                <div className="hero-visual-stage-img-wrap">
+                  <img
+                    src={currentSolution.image}
+                    alt={currentSolution.title}
+                    className="hero-visual-stage-img"
+                    loading="lazy"
+                  />
+                  <div className="hero-visual-stage-overlay" />
+                  
+                  {/* Live Status Pill Overlay */}
+                  <div className="hero-visual-status-pill">
+                    <span className="telemetry-dot-pulsing" />
+                    <span>{currentSolution.liveBadge}</span>
+                  </div>
+
+                  {/* Highlights Floating Bar */}
+                  <div className="hero-visual-highlights-bar">
+                    {currentSolution.highlights.map((item, hIdx) => (
+                      <span key={hIdx} className="hero-visual-highlight-chip">
+                        <Sparkles size={11} className="text-cyan" />
+                        <span>{item}</span>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="hero-visual-stage-meta">
+                  <p className="hero-visual-one-liner">{currentSolution.oneLiner}</p>
+                </div>
               </div>
 
               {/* Dynamic Solution Micro-Metrics Bar */}

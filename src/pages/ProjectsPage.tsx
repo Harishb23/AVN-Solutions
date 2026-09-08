@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { projectsData } from '../data/projects';
 import type { ProjectItem } from '../types';
-import { MapPin, Cpu, ArrowUpRight, Filter } from 'lucide-react';
+import { MapPin, Cpu, ArrowUpRight, Filter, Sparkles } from 'lucide-react';
 import './Pages.css';
 
 interface ProjectsPageProps {
@@ -77,6 +77,12 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onSelectProject, onS
                     <span className="proj-num">0{project.number}</span>
                     <span className="proj-ind">{project.industry}</span>
                   </div>
+                  {project.metrics && project.metrics.length > 0 && (
+                    <div className="proj-metric-badge">
+                      <Sparkles size={11} className="text-cyan" />
+                      <span>{project.metrics[0].label}: {project.metrics[0].value}</span>
+                    </div>
+                  )}
                 </div>
 
                 <div className="proj-body">
