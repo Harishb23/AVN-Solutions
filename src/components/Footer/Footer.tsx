@@ -57,12 +57,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenProjectModal }
           <div className="footer-nav-col">
             <h4 className="footer-col-title">SOLUTIONS</h4>
             <ul className="footer-links-list">
-              <li><a href="/solutions" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'corporate-av'); }}>Corporate AV</a></li>
-              <li><a href="/solutions" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'video-conferencing'); }}>Video Collaboration</a></li>
-              <li><a href="/solutions" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'professional-audio'); }}>Professional Audio</a></li>
-              <li><a href="/solutions" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'display-visual'); }}>Visual Systems</a></li>
+              <li><a href="/solutions/boardroom-av" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'corporate-av'); }}>Boardroom &amp; Conference AV</a></li>
+              <li><a href="/solutions/video-conferencing" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'video-conferencing'); }}>Video Conferencing Solutions</a></li>
+              <li><a href="/solutions/auditorium-av" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'professional-audio'); }}>Auditorium AV &amp; Sound</a></li>
+              <li><a href="/solutions" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'display-visual'); }}>Visual Systems &amp; Video Walls</a></li>
               <li><a href="/solutions" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'smart-automation'); }}>Smart Automation</a></li>
-              <li><a href="/solutions" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'home-cinema'); }}>Home Cinema</a></li>
+              <li><a href="/solutions" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'home-cinema'); }}>Home Cinema &amp; Acoustics</a></li>
             </ul>
           </div>
 
@@ -70,12 +70,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenProjectModal }
           <div className="footer-nav-col">
             <h4 className="footer-col-title">INDUSTRIES</h4>
             <ul className="footer-links-list">
-              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries'); }}>Corporate</a></li>
-              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries'); }}>Education</a></li>
-              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries'); }}>Healthcare</a></li>
-              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries'); }}>Hospitality</a></li>
-              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries'); }}>Retail</a></li>
-              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries'); }}>Residential</a></li>
+              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries'); }}>Corporate Enterprise</a></li>
+              <li><a href="/solutions/smart-classroom-av" onClick={(e) => { e.preventDefault(); handleNav('solution-smart-classroom-av'); }}>Smart Classrooms &amp; Education</a></li>
+              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries'); }}>Healthcare &amp; Medical</a></li>
+              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries'); }}>Hospitality Venues</a></li>
+              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries'); }}>Retail &amp; Experience Centers</a></li>
+              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries'); }}>Luxury Residential</a></li>
             </ul>
           </div>
 

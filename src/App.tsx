@@ -23,7 +23,7 @@ import { ToolsPage } from './pages/ToolsPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 // SEO Architecture
-import { getRouteByPath } from './seo/siteRoutes';
+import { getRouteByPath, getRouteById } from './seo/siteRoutes';
 import { useSEO } from './seo/useSEO';
 
 import type { ProjectItem, InsightArticle } from './types';
@@ -42,10 +42,17 @@ export function App() {
     return 'home';
   });
 
+  const [initialSolutionId, setInitialSolutionId] = useState<string | undefined>(() => {
+    if (typeof window !== 'undefined') {
+      const route = getRouteByPath(window.location.pathname);
+      return route.targetSolutionId;
+    }
+    return undefined;
+  });
+
   // Dynamic SEO management: updates document.title, meta descriptions, canonical URLs, OG, Twitter & JSON-LD schema
   useSEO(currentPage);
 
-  const [initialSolutionId, setInitialSolutionId] = useState<string | undefined>(undefined);
   const [initialToolTab, setInitialToolTab] = useState<string | undefined>(undefined);
   
   // Theme state with local persistence (default dark)
@@ -71,6 +78,9 @@ export function App() {
     const handlePopState = () => {
       const route = getRouteByPath(window.location.pathname);
       setCurrentPage(route.id);
+      if (route.targetSolutionId) {
+        setInitialSolutionId(route.targetSolutionId);
+      }
     };
 
     window.addEventListener('popstate', handlePopState);
@@ -83,20 +93,30 @@ export function App() {
   }, [currentPage]);
 
   const handleNavigate = (page: string, targetId?: string) => {
+    let resolvedPage = page;
+
     if (page === 'solutions' && targetId) {
       setInitialSolutionId(targetId);
+      if (targetId === 'corporate-av') {
+        resolvedPage = 'solution-boardroom-av';
+      } else if (targetId === 'video-conferencing') {
+        resolvedPage = 'solution-video-conferencing';
+      } else if (targetId === 'professional-audio') {
+        resolvedPage = 'solution-auditorium-av';
+      }
     } else if (page === 'tools' && targetId) {
       setInitialToolTab(targetId);
     }
-    setCurrentPage(page);
+    setCurrentPage(resolvedPage);
 
     // Synchronize browser history and URL for SEO and direct bookmarking
-    const targetPath = page === 'home' ? '/' : `/${page}`;
+    const route = getRouteById(resolvedPage);
+    const targetPath = route.path;
     if (typeof window !== 'undefined' && window.location.pathname !== targetPath) {
-      window.history.pushState({ page, targetId }, '', targetPath);
+      window.history.pushState({ page: resolvedPage, targetId }, '', targetPath);
     }
 
-    if (targetId && page === 'home') {
+    if (targetId && resolvedPage === 'home') {
       setTimeout(() => {
         const el = document.getElementById(targetId);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -147,10 +167,15 @@ export function App() {
           />
         )}
 
-        {currentPage === 'solutions' && (
+        {(currentPage === 'solutions' || currentPage.startsWith('solution-')) && (
           <SolutionsPage
             onStartProject={() => handleStartProjectWithData()}
-            initialSolutionId={initialSolutionId}
+            initialSolutionId={
+              initialSolutionId ||
+              (currentPage === 'solution-boardroom-av' ? 'corporate-av' :
+               currentPage === 'solution-video-conferencing' ? 'video-conferencing' :
+               currentPage === 'solution-auditorium-av' ? 'professional-audio' : undefined)
+            }
           />
         )}
 

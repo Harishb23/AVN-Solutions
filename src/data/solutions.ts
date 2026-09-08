@@ -4,14 +4,14 @@ export const solutionsData: SolutionItem[] = [
   {
     id: 'corporate-av',
     number: '01',
-    title: 'Corporate AV',
-    tagline: 'Boardrooms, meeting rooms, collaboration spaces and executive offices.',
-    description: 'We combine AV engineering, video conferencing codecs, beamforming acoustics, and smart automation to build high-performance executive boardrooms and agile workspaces designed for modern enterprise workflows.',
+    title: 'Boardroom & Conference Room AV',
+    tagline: 'Turnkey conference room AV solutions, meeting spaces and executive boardrooms.',
+    description: 'We deliver turnkey conference room AV solutions and executive boardroom audio-visual systems in Chennai. Combining beamforming microphone arrays, fine-pitch LED display walls, Microsoft Teams & Zoom Room certified codecs, and single-touch automation macros for high-performing workplaces.',
     heroImage: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80',
     typicalEnvironments: [
       'Executive Boardrooms',
       'High-Impact Video Conference Suites',
-      'Agile Huddle Rooms',
+      'Agile Meeting Rooms',
       'All-Hands Townhall Areas',
       'Training & Innovation Labs'
     ],
@@ -52,9 +52,9 @@ export const solutionsData: SolutionItem[] = [
   {
     id: 'video-conferencing',
     number: '02',
-    title: 'Video Conferencing',
-    tagline: 'Microsoft Teams / Zoom / hybrid meeting environments and wireless collaboration.',
-    description: 'Native Microsoft Teams Rooms (MTR), Zoom Rooms, and Cisco Webex spaces engineered with multi-camera AI speaker tracking, intelligent framing, beamforming audio, and effortless wireless screen sharing.',
+    title: 'Video Conferencing Solutions',
+    tagline: 'Microsoft Teams, Zoom and hybrid meeting room video conferencing systems in Chennai.',
+    description: 'Enterprise video conferencing solutions in Chennai for modern boardrooms and meeting spaces. Native Microsoft Teams Rooms (MTR), Zoom Rooms, and Cisco Webex environments engineered with multi-camera AI speaker tracking, intelligent framing, beamforming audio, and effortless wireless screen sharing.',
     heroImage: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1600&q=80',
     typicalEnvironments: [
       'Microsoft Teams Rooms (MTR)',
@@ -100,9 +100,9 @@ export const solutionsData: SolutionItem[] = [
   {
     id: 'professional-audio',
     number: '03',
-    title: 'Professional Audio',
-    tagline: 'PA systems, distributed audio, conference audio, microphones and DSP.',
-    description: 'Acoustically modeled sound reinforcement systems, Dante/AES67 digital network audio, multi-zone public address, and high-SPL performance audio engineered for clarity and uniform coverage.',
+    title: 'Auditorium AV & Sound Systems',
+    tagline: 'Auditorium AV solutions, PA systems, Dante network audio and stage acoustic modeling.',
+    description: 'High-intelligibility auditorium AV solutions and sound systems engineered for universities, corporate seminar halls, and large convention venues. Featuring EASE 3D acoustic ray-tracing simulations, Dante/AES67 digital network audio, and high-SPL line array loudspeakers for uniform coverage.',
     heroImage: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1600&q=80',
     typicalEnvironments: [
       'Auditoriums & Large Seminar Halls',

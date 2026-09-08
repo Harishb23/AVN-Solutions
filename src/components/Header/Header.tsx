@@ -92,20 +92,23 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Center Navigation Dock */}
           <nav className="desktop-nav" aria-label="Main Navigation">
-            {navLinks.map((item) => (
-              <a
-                key={item.page}
-                href={`/${item.page}`}
-                className={`nav-link ${currentPage === item.page ? 'active' : ''}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleLinkClick(item.page);
-                }}
-              >
-                <span>{item.label}</span>
-                {currentPage === item.page && <span className="nav-active-pill" aria-hidden="true" />}
-              </a>
-            ))}
+            {navLinks.map((item) => {
+              const isActive = currentPage === item.page || (item.page === 'solutions' && currentPage.startsWith('solution-'));
+              return (
+                <a
+                  key={item.page}
+                  href={`/${item.page}`}
+                  className={`nav-link ${isActive ? 'active' : ''}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleLinkClick(item.page);
+                  }}
+                >
+                  <span>{item.label}</span>
+                  {isActive && <span className="nav-active-pill" aria-hidden="true" />}
+                </a>
+              );
+            })}
           </nav>
 
           {/* Right-Side Action Controls & CTA */}
@@ -202,21 +205,24 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="mobile-nav-num">00</span>
               <span className="mobile-nav-title">Home</span>
             </a>
-            {navLinks.map((item, idx) => (
-              <a
-                key={item.page}
-                href={`/${item.page}`}
-                className={`mobile-nav-link ${currentPage === item.page ? 'active' : ''}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleLinkClick(item.page);
-                }}
-              >
-                <span className="mobile-nav-num">0{idx + 1}</span>
-                <span className="mobile-nav-title">{item.label}</span>
-                <ArrowRight size={16} className="mobile-nav-arrow" />
-              </a>
-            ))}
+            {navLinks.map((item, idx) => {
+              const isActive = currentPage === item.page || (item.page === 'solutions' && currentPage.startsWith('solution-'));
+              return (
+                <a
+                  key={item.page}
+                  href={`/${item.page}`}
+                  className={`mobile-nav-link ${isActive ? 'active' : ''}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleLinkClick(item.page);
+                  }}
+                >
+                  <span className="mobile-nav-num">0{idx + 1}</span>
+                  <span className="mobile-nav-title">{item.label}</span>
+                  <ArrowRight size={16} className="mobile-nav-arrow" />
+                </a>
+              );
+            })}
           </div>
 
           <div className="mobile-menu-footer">

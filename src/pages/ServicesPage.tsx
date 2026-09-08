@@ -111,12 +111,12 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onStartProject }) =>
           </div>
 
           <h1 className="services-hero-title">
-            End-to-End AV Engineering.{' '}
-            <span className="services-title-gradient">Design, Supply & 24/7 SLA.</span>
+            AV Integration & AV Installation Services{' '}
+            <span className="services-title-gradient">in Chennai.</span>
           </h1>
 
           <p className="services-hero-subtitle">
-            From acoustic RT60 decay simulations and AutoCAD single-line schematics to authorized OEM hardware distribution, CTS-certified physical deployment, Crestron/Q-SYS programming, and guaranteed 2-hour Chennai on-site SLA response.
+            Professional AV integration services, precision physical AV installation, acoustic RT60 simulations, AutoCAD schematics, Crestron &amp; Q-SYS automation programming, and guaranteed 2-hour Chennai on-site SLA maintenance.
           </p>
 
           {/* Quick Stats Grid */}

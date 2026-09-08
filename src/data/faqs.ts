@@ -66,5 +66,29 @@ export const faqsData: FaqItem[] = [
     question: 'How do I request an AV quotation?',
     answer: 'You can submit your room dimensions and requirements through our online "Request a Quote" form, book a site survey, call our Chennai engineering desk at 044 2450 1688, or reach us via WhatsApp. Our solutions architects will review your requirements and provide a preliminary design and BOQ within 24–48 hours.',
     category: 'Pricing'
+  },
+  {
+    id: 'faq-12',
+    question: 'What is AV integration and why is it important for businesses in Chennai?',
+    answer: 'AV integration is the process of unifying heterogeneous audio, visual, lighting, control, and IT network subsystems into a single, intuitive ecosystem. In Chennai\'s fast-growing IT corridors (OMR, Guindy, Sholinganallur), professional AV integration eliminates meeting delays, ensures pristine hybrid audio/video clarity, and automates boardroom workflows through custom touch screen controls.',
+    category: 'Solutions'
+  },
+  {
+    id: 'faq-13',
+    question: 'What equipment is included in a turnkey conference room or boardroom AV solution?',
+    answer: 'A comprehensive conference room AV solution typically includes: direct-view fine-pitch LED display or 4K commercial monitor, steerable ceiling beamforming microphone array (e.g. Shure MXA920), digital signal processor (DSP) with acoustic echo cancellation, native Microsoft Teams or Zoom Room codec, 4K optical PTZ camera with AI auto-framing, tabletop touch automation panel, and under-table BYOM wireless presentation connectivity.',
+    category: 'Solutions'
+  },
+  {
+    id: 'faq-14',
+    question: 'How do video conferencing solutions differ from consumer webcams?',
+    answer: 'Enterprise video conferencing systems integrate optical PTZ cameras with multi-camera AI speaker tracking, ceiling beamforming microphone arrays that eliminate background HVAC noise, dedicated room compute appliances running certified Teams/Zoom OS, and commercial displays designed for continuous 24/7 operation with 1-touch calendar join.',
+    category: 'Solutions'
+  },
+  {
+    id: 'faq-15',
+    question: 'What AV solutions and sound systems do you engineer for auditoriums in Chennai?',
+    answer: 'Auditorium AV solutions require scientific acoustic design: EASE 3D ray-tracing simulations to achieve Speech Transmission Index (STI ≥ 0.70), Dante digital network audio routing, line array loudspeakers for uniform front-to-back SPL distribution, high-lumen 4K laser projection or seamless microLED stage backdrops, multi-channel wireless mic systems, and motorized stage lighting.',
+    category: 'Solutions'
   }
 ];

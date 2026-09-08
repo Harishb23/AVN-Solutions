@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { getRouteById, type RouteSEOConfig, SITE_URL } from './siteRoutes';
 import { companyDetails } from '../data/company';
+import { faqsData } from '../data/faqs';
 
 /**
  * Helper to update or create an HTML meta tag
@@ -74,6 +75,20 @@ function generateSchemaForRoute(route: RouteSEOConfig) {
   };
 
   if (route.id === 'home') {
+    // Generate FAQPage schema from actual questions
+    const faqSchema = {
+      '@type': 'FAQPage',
+      '@id': `${SITE_URL}/#faq`,
+      'mainEntity': faqsData.slice(0, 6).map(f => ({
+        '@type': 'Question',
+        'name': f.question,
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': f.answer
+        }
+      }))
+    };
+
     return {
       '@context': 'https://schema.org',
       '@graph': [
@@ -85,7 +100,8 @@ function generateSchemaForRoute(route: RouteSEOConfig) {
           'name': 'AVN Solutions',
           'description': route.description,
           'publisher': { '@id': `${SITE_URL}/#organization` }
-        }
+        },
+        faqSchema
       ]
     };
   }
@@ -118,7 +134,7 @@ function generateSchemaForRoute(route: RouteSEOConfig) {
   };
 
   if (route.schemaType === 'Service') {
-    pageSchema['serviceType'] = 'Audio Visual System Integration & Engineering';
+    pageSchema['serviceType'] = route.primaryKeyword;
     pageSchema['areaServed'] = 'Chennai, Tamil Nadu, India';
   }
 
@@ -146,7 +162,11 @@ export function useSEO(routeId: string) {
     // 2. Primary Meta Tags
     setMetaTag('name', 'title', route.metaTitle);
     setMetaTag('name', 'description', route.description);
-    setMetaTag('name', 'keywords', route.keywords);
+    
+    // Combine primary and secondary keywords
+    const allKeywords = [route.primaryKeyword, ...route.secondaryKeywords].join(', ');
+    setMetaTag('name', 'keywords', allKeywords);
+    
     setMetaTag('name', 'robots', is404 ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
 
     // 3. Canonical Tag

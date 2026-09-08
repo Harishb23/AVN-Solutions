@@ -171,14 +171,14 @@ export const SolutionsExplorer: React.FC<SolutionsExplorerProps> = ({
         <div className="section-head-left">
           <div className="section-eyebrow">
             <span className="eyebrow-accent-line" />
-            <span>OUR SOLUTIONS</span>
+            <span>AUDIO VISUAL SOLUTIONS</span>
           </div>
           <h2 className="section-grand-title">
-            Technology designed around <br />
-            <span className="title-highlight">the way you work.</span>
+            Enterprise AV Solutions for <br />
+            <span className="title-highlight">Boardrooms, Auditoriums & Workplaces.</span>
           </h2>
           <p className="section-lead-desc">
-            From collaboration spaces to immersive environments, we design systems around how people use each space.
+            From conference room AV solutions and video conferencing systems to auditorium sound reinforcement and smart automation, we design custom AV systems built for performance.
           </p>
         </div>
 

@@ -26,26 +26,74 @@
   </url>
 
   <url>
-    <loc>https://avnsolutions.in/solutions</loc>
-    <lastmod>2026-09-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-    <image:image>
-      <image:loc>https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</image:loc>
-      <image:title>Corporate Boardroom &amp; Conference AV Solutions Chennai</image:title>
-      <image:caption>Turnkey AV solutions for enterprise meeting rooms, auditoriums and video walls</image:caption>
-    </image:image>
-  </url>
-
-  <url>
     <loc>https://avnsolutions.in/services</loc>
     <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
     <image:image>
       <image:loc>https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</image:loc>
-      <image:title>AV Installation, Acoustic Design &amp; Maintenance Chennai</image:title>
+      <image:title>AV Installation &amp; Turnkey AV Integration Services Chennai</image:title>
       <image:caption>Comprehensive AV consulting, design, acoustic engineering and 24/7 SLA support</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://avnsolutions.in/solutions</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</image:loc>
+      <image:title>Turnkey Audio Visual Solutions Chennai</image:title>
+      <image:caption>Enterprise AV systems for meeting rooms, auditoriums and video walls</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://avnsolutions.in/solutions/boardroom-av</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</image:loc>
+      <image:title>Conference Room &amp; Executive Boardroom AV Solutions Chennai</image:title>
+      <image:caption>Fine-pitch LED walls, beamforming mics, and Crestron touch automation</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://avnsolutions.in/solutions/video-conferencing</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</image:loc>
+      <image:title>Video Conferencing Solutions Chennai - Microsoft Teams &amp; Zoom Rooms</image:title>
+      <image:caption>AI multi-camera speaker tracking, AEC audio DSP, and wireless presentation</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://avnsolutions.in/solutions/auditorium-av</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</image:loc>
+      <image:title>Auditorium AV Solutions &amp; High-Performance Sound Systems</image:title>
+      <image:caption>Dante line array audio distribution, EASE acoustic simulations, and stage lighting</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://avnsolutions.in/solutions/smart-classroom-av</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</image:loc>
+      <image:title>Smart Classroom Solutions &amp; Education AV Systems</image:title>
+      <image:caption>Interactive displays, lecture capture streaming, and university auditorium acoustics</image:caption>
     </image:image>
   </url>
 
@@ -56,7 +104,7 @@
     <priority>0.90</priority>
     <image:image>
       <image:loc>https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</image:loc>
-      <image:title>Audio Visual Equipment &amp; Commercial Hardware Chennai</image:title>
+      <image:title>Commercial Audio Visual Equipment Supplier Chennai</image:title>
       <image:caption>Commercial LED display walls, 4K laser projectors, beamforming mic arrays, and digital DSP processors</image:caption>
     </image:image>
   </url>

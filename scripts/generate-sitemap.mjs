@@ -8,8 +8,9 @@ const __dirname = path.dirname(__filename);
 const SITE_URL = 'https://avnsolutions.in';
 const TODAY = new Date().toISOString().split('T')[0];
 
-// All 11 public indexable pages
+// Verified public indexable pages
 const SITEMAP_ENTRIES = [
+  // 1. Home
   {
     loc: `${SITE_URL}/`,
     lastmod: TODAY,
@@ -28,19 +29,7 @@ const SITEMAP_ENTRIES = [
       }
     ]
   },
-  {
-    loc: `${SITE_URL}/solutions`,
-    lastmod: TODAY,
-    changefreq: 'weekly',
-    priority: '0.95',
-    images: [
-      {
-        loc: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80',
-        title: 'Corporate Boardroom & Conference AV Solutions Chennai',
-        caption: 'Turnkey AV solutions for enterprise meeting rooms, auditoriums and video walls'
-      }
-    ]
-  },
+  // 2. Services: AV Integration & Installation Services Chennai
   {
     loc: `${SITE_URL}/services`,
     lastmod: TODAY,
@@ -49,11 +38,82 @@ const SITEMAP_ENTRIES = [
     images: [
       {
         loc: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
-        title: 'AV Installation, Acoustic Design & Maintenance Chennai',
+        title: 'AV Installation & Turnkey AV Integration Services Chennai',
         caption: 'Comprehensive AV consulting, design, acoustic engineering and 24/7 SLA support'
       }
     ]
   },
+  // 3. Solutions Overview
+  {
+    loc: `${SITE_URL}/solutions`,
+    lastmod: TODAY,
+    changefreq: 'weekly',
+    priority: '0.95',
+    images: [
+      {
+        loc: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80',
+        title: 'Turnkey Audio Visual Solutions Chennai',
+        caption: 'Enterprise AV systems for meeting rooms, auditoriums and video walls'
+      }
+    ]
+  },
+  // 4. Conference Room & Boardroom AV Solutions
+  {
+    loc: `${SITE_URL}/solutions/boardroom-av`,
+    lastmod: TODAY,
+    changefreq: 'weekly',
+    priority: '0.95',
+    images: [
+      {
+        loc: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
+        title: 'Conference Room & Executive Boardroom AV Solutions Chennai',
+        caption: 'Fine-pitch LED walls, beamforming mics, and Crestron touch automation'
+      }
+    ]
+  },
+  // 5. Video Conferencing Solutions Chennai
+  {
+    loc: `${SITE_URL}/solutions/video-conferencing`,
+    lastmod: TODAY,
+    changefreq: 'weekly',
+    priority: '0.95',
+    images: [
+      {
+        loc: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80',
+        title: 'Video Conferencing Solutions Chennai - Microsoft Teams & Zoom Rooms',
+        caption: 'AI multi-camera speaker tracking, AEC audio DSP, and wireless presentation'
+      }
+    ]
+  },
+  // 6. Auditorium AV Solutions & Sound Systems
+  {
+    loc: `${SITE_URL}/solutions/auditorium-av`,
+    lastmod: TODAY,
+    changefreq: 'weekly',
+    priority: '0.90',
+    images: [
+      {
+        loc: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=80',
+        title: 'Auditorium AV Solutions & High-Performance Sound Systems',
+        caption: 'Dante line array audio distribution, EASE acoustic simulations, and stage lighting'
+      }
+    ]
+  },
+  // 7. Smart Classroom Solutions & Education AV
+  {
+    loc: `${SITE_URL}/solutions/smart-classroom-av`,
+    lastmod: TODAY,
+    changefreq: 'weekly',
+    priority: '0.90',
+    images: [
+      {
+        loc: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80',
+        title: 'Smart Classroom Solutions & Education AV Systems',
+        caption: 'Interactive displays, lecture capture streaming, and university auditorium acoustics'
+      }
+    ]
+  },
+  // 8. Commercial Products Catalog
   {
     loc: `${SITE_URL}/products`,
     lastmod: TODAY,
@@ -62,11 +122,12 @@ const SITEMAP_ENTRIES = [
     images: [
       {
         loc: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=1200&q=80',
-        title: 'Audio Visual Equipment & Commercial Hardware Chennai',
+        title: 'Commercial Audio Visual Equipment Supplier Chennai',
         caption: 'Commercial LED display walls, 4K laser projectors, beamforming mic arrays, and digital DSP processors'
       }
     ]
   },
+  // 9. Industry Deployments
   {
     loc: `${SITE_URL}/industries`,
     lastmod: TODAY,
@@ -80,6 +141,7 @@ const SITEMAP_ENTRIES = [
       }
     ]
   },
+  // 10. OEM Brands
   {
     loc: `${SITE_URL}/brands`,
     lastmod: TODAY,
@@ -93,6 +155,7 @@ const SITEMAP_ENTRIES = [
       }
     ]
   },
+  // 11. Projects & Case Studies
   {
     loc: `${SITE_URL}/projects`,
     lastmod: TODAY,
@@ -106,6 +169,7 @@ const SITEMAP_ENTRIES = [
       }
     ]
   },
+  // 12. Engineering Insights
   {
     loc: `${SITE_URL}/insights`,
     lastmod: TODAY,
@@ -119,6 +183,7 @@ const SITEMAP_ENTRIES = [
       }
     ]
   },
+  // 13. Interactive Tools
   {
     loc: `${SITE_URL}/tools`,
     lastmod: TODAY,
@@ -132,6 +197,7 @@ const SITEMAP_ENTRIES = [
       }
     ]
   },
+  // 14. About Company
   {
     loc: `${SITE_URL}/about`,
     lastmod: TODAY,
@@ -145,6 +211,7 @@ const SITEMAP_ENTRIES = [
       }
     ]
   },
+  // 15. Contact & Showroom
   {
     loc: `${SITE_URL}/contact`,
     lastmod: TODAY,

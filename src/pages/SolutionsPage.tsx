@@ -23,10 +23,10 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({ onStartProject, in
             <span>ENGINEERING DISCIPLINES</span>
           </div>
           <h1 className="page-hero-title">
-            Audio, Visual & <span className="industries-title-cyan">Intelligent Integration.</span>
+            Audio Visual Solutions & <span className="industries-title-cyan">Smart Space Systems.</span>
           </h1>
           <p className="page-hero-subtitle">
-            Explore our turnkey technical capabilities. We design, program, calibrate, and support mission-critical AV systems across India.
+            Turnkey conference room AV solutions, boardroom video conferencing systems, auditorium acoustics, and commercial display integration engineered for peak reliability across India.
           </p>
         </div>
       </section>

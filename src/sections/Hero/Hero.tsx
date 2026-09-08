@@ -216,9 +216,13 @@ export const Hero: React.FC<HeroProps> = ({ onExplore, onStartProject }) => {
           </div>
 
           <h1 className="skyline-main-heading">
-            Technology that makes <br />
-            <span className="skyline-gradient-shimmer">spaces work better.</span>
+            AV Solutions & System Integration <br />
+            <span className="skyline-gradient-shimmer">in Chennai.</span>
           </h1>
+
+          <p className="skyline-sub-descriptor" style={{ color: 'rgba(255, 255, 255, 0.82)', maxWidth: '680px', margin: '0.8rem auto 1.4rem auto', fontSize: '1.05rem', lineHeight: '1.6' }}>
+            Chennai&apos;s premier audio visual company &amp; turnkey AV integrator. We engineer high-performance conference room AV solutions, executive boardrooms, video conferencing systems, auditoriums, and smart automation across Tamil Nadu.
+          </p>
 
           {/* Architectural Quick Specs Ticker */}
           <div className="skyline-tags-ticker">
