@@ -365,6 +365,7 @@
   font-size: 1.05rem;
   font-weight: 600;
   text-align: left;
+  text-decoration: none;
   cursor: pointer;
   transition: all 0.22s var(--ease-architectural);
 }

@@ -8,7 +8,6 @@
         http://www.google.com/schemas/sitemap-image/1.1
         http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd">
 
-  <!-- 1. Home / Landing Page -->
   <url>
     <loc>https://avnsolutions.in/</loc>
     <lastmod>2026-09-08</lastmod>
@@ -17,16 +16,15 @@
     <image:image>
       <image:loc>https://avnsolutions.in/logo.png</image:loc>
       <image:title>AVN Solutions - Audio Visual Equipment Supplier &amp; AV Integrator Chennai</image:title>
-      <image:caption>AVN Solutions India - Enterprise AV Systems, Acoustic Design &amp; Smart Automation</image:caption>
+      <image:caption>AVN Solutions India Private Limited - Headquarters &amp; AV Integration Lab</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://avnsolutions.in/hero-bg.jpg</image:loc>
       <image:title>AVN Solutions Experience Center Chennai</image:title>
-      <image:caption>High-end boardroom AV integration and video conferencing showroom</image:caption>
+      <image:caption>Enterprise boardroom AV integration and video conferencing showroom</image:caption>
     </image:image>
   </url>
 
-  <!-- 2. AV Solutions & Engineering -->
   <url>
     <loc>https://avnsolutions.in/solutions</loc>
     <lastmod>2026-09-08</lastmod>
@@ -35,11 +33,10 @@
     <image:image>
       <image:loc>https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</image:loc>
       <image:title>Corporate Boardroom &amp; Conference AV Solutions Chennai</image:title>
-      <image:caption>Complete turnkey AV solutions for enterprise meeting rooms, auditoriums and video walls</image:caption>
+      <image:caption>Turnkey AV solutions for enterprise meeting rooms, auditoriums and video walls</image:caption>
     </image:image>
   </url>
 
-  <!-- 3. Professional Services & Turnkey Integration -->
   <url>
     <loc>https://avnsolutions.in/services</loc>
     <lastmod>2026-09-08</lastmod>
@@ -52,7 +49,6 @@
     </image:image>
   </url>
 
-  <!-- 4. AV Products & Hardware Catalog -->
   <url>
     <loc>https://avnsolutions.in/products</loc>
     <lastmod>2026-09-08</lastmod>
@@ -65,7 +61,6 @@
     </image:image>
   </url>
 
-  <!-- 5. Industry-Specific AV Deployments -->
   <url>
     <loc>https://avnsolutions.in/industries</loc>
     <lastmod>2026-09-08</lastmod>
@@ -78,15 +73,18 @@
     </image:image>
   </url>
 
-  <!-- 6. OEM Brands & Hardware Partners -->
   <url>
     <loc>https://avnsolutions.in/brands</loc>
     <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://avnsolutions.in/logo.png</image:loc>
+      <image:title>Authorized AV Hardware Partners &amp; Brands Chennai</image:title>
+      <image:caption>Certified integration partner for Crestron, Q-SYS, Extron, Shure, Samsung, and LG</image:caption>
+    </image:image>
   </url>
 
-  <!-- 7. Completed Projects & Case Studies -->
   <url>
     <loc>https://avnsolutions.in/projects</loc>
     <lastmod>2026-09-08</lastmod>
@@ -99,36 +97,52 @@
     </image:image>
   </url>
 
-  <!-- 8. Technical Insights & AV Knowledge Base -->
   <url>
     <loc>https://avnsolutions.in/insights</loc>
     <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</image:loc>
+      <image:title>Technical AV Articles &amp; Room Acoustic Guides</image:title>
+      <image:caption>Engineering insights on RT60 decay, Dante audio, and display calculations</image:caption>
+    </image:image>
   </url>
 
-  <!-- 9. Interactive AV Design Tools & Calculators -->
   <url>
     <loc>https://avnsolutions.in/tools</loc>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://avnsolutions.in/logo.png</image:loc>
+      <image:title>Interactive AV Design Tools &amp; Room Calculators</image:title>
+      <image:caption>Screen viewing distance, speaker SPL, and AV budget estimator tools</image:caption>
+    </image:image>
   </url>
 
-  <!-- 10. About AVN Solutions -->
   <url>
     <loc>https://avnsolutions.in/about</loc>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://avnsolutions.in/logo.png</image:loc>
+      <image:title>About AVN Solutions India Private Limited</image:title>
+      <image:caption>Premier Audio Visual systems integrator in Chennai with AVIXA CTS engineers</image:caption>
+    </image:image>
   </url>
 
-  <!-- 11. Contact, Quotations & Experience Lab Location -->
   <url>
     <loc>https://avnsolutions.in/contact</loc>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://avnsolutions.in/logo.png</image:loc>
+      <image:title>Contact AVN Solutions Showroom &amp; Experience Center Chennai</image:title>
+      <image:caption>Sholinganallur Chennai experience center demonstration and quotation</image:caption>
+    </image:image>
   </url>
 
 </urlset>

@@ -20,6 +20,11 @@ import { AboutPage } from './pages/AboutPage';
 import { InsightsPage } from './pages/InsightsPage';
 import { ContactPage } from './pages/ContactPage';
 import { ToolsPage } from './pages/ToolsPage';
+import { NotFoundPage } from './pages/NotFoundPage';
+
+// SEO Architecture
+import { getRouteByPath } from './seo/siteRoutes';
+import { useSEO } from './seo/useSEO';
 
 import type { ProjectItem, InsightArticle } from './types';
 import './styles/variables.css';
@@ -28,7 +33,18 @@ import './styles/animations.css';
 import './App.css';
 
 export function App() {
-  const [currentPage, setCurrentPage] = useState<string>('home');
+  // Initialize currentPage based on actual browser pathname for deep linking & SEO indexing
+  const [currentPage, setCurrentPage] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      const route = getRouteByPath(window.location.pathname);
+      return route.id;
+    }
+    return 'home';
+  });
+
+  // Dynamic SEO management: updates document.title, meta descriptions, canonical URLs, OG, Twitter & JSON-LD schema
+  useSEO(currentPage);
+
   const [initialSolutionId, setInitialSolutionId] = useState<string | undefined>(undefined);
   const [initialToolTab, setInitialToolTab] = useState<string | undefined>(undefined);
   
@@ -50,6 +66,17 @@ export function App() {
     localStorage.setItem('avn_theme_mode', mode);
   };
 
+  // Synchronize browser back/forward buttons (popstate)
+  useEffect(() => {
+    const handlePopState = () => {
+      const route = getRouteByPath(window.location.pathname);
+      setCurrentPage(route.id);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   // Scroll to top on page change
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -62,6 +89,12 @@ export function App() {
       setInitialToolTab(targetId);
     }
     setCurrentPage(page);
+
+    // Synchronize browser history and URL for SEO and direct bookmarking
+    const targetPath = page === 'home' ? '/' : `/${page}`;
+    if (typeof window !== 'undefined' && window.location.pathname !== targetPath) {
+      window.history.pushState({ page, targetId }, '', targetPath);
+    }
 
     if (targetId && page === 'home') {
       setTimeout(() => {
@@ -168,6 +201,10 @@ export function App() {
             onStartProject={handleStartProjectWithData}
             initialTab={initialToolTab}
           />
+        )}
+
+        {currentPage === '404' && (
+          <NotFoundPage onNavigate={handleNavigate} />
         )}
       </div>
 

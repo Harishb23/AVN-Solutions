@@ -24,13 +24,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenProjectModal }
         {/* Top Summary & Quote Trigger */}
         <div className="footer-top-row">
           <div className="footer-brand-meta">
-            <button 
+            <a 
+              href="/"
               className="footer-logo-btn"
-              onClick={() => handleNav('home')}
+              onClick={(e) => { e.preventDefault(); handleNav('home'); }}
               aria-label="AVN Solutions Homepage"
             >
               <img src={logoImg} alt="AVN Solutions" className="footer-logo-img" />
-            </button>
+            </a>
             <p className="footer-descriptor">
               Professional audio, visual, and smart automation systems engineered for enterprise workplaces, institutions, and luxury residential environments.
             </p>
@@ -56,12 +57,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenProjectModal }
           <div className="footer-nav-col">
             <h4 className="footer-col-title">SOLUTIONS</h4>
             <ul className="footer-links-list">
-              <li><button onClick={() => handleNav('solutions', 'corporate-av')}>Corporate AV</button></li>
-              <li><button onClick={() => handleNav('solutions', 'video-conferencing')}>Video Collaboration</button></li>
-              <li><button onClick={() => handleNav('solutions', 'professional-audio')}>Professional Audio</button></li>
-              <li><button onClick={() => handleNav('solutions', 'display-visual')}>Visual Systems</button></li>
-              <li><button onClick={() => handleNav('solutions', 'smart-automation')}>Smart Automation</button></li>
-              <li><button onClick={() => handleNav('solutions', 'home-cinema')}>Home Cinema</button></li>
+              <li><a href="/solutions" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'corporate-av'); }}>Corporate AV</a></li>
+              <li><a href="/solutions" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'video-conferencing'); }}>Video Collaboration</a></li>
+              <li><a href="/solutions" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'professional-audio'); }}>Professional Audio</a></li>
+              <li><a href="/solutions" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'display-visual'); }}>Visual Systems</a></li>
+              <li><a href="/solutions" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'smart-automation'); }}>Smart Automation</a></li>
+              <li><a href="/solutions" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'home-cinema'); }}>Home Cinema</a></li>
             </ul>
           </div>
 
@@ -69,12 +70,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenProjectModal }
           <div className="footer-nav-col">
             <h4 className="footer-col-title">INDUSTRIES</h4>
             <ul className="footer-links-list">
-              <li><button onClick={() => handleNav('industries')}>Corporate</button></li>
-              <li><button onClick={() => handleNav('industries')}>Education</button></li>
-              <li><button onClick={() => handleNav('industries')}>Healthcare</button></li>
-              <li><button onClick={() => handleNav('industries')}>Hospitality</button></li>
-              <li><button onClick={() => handleNav('industries')}>Retail</button></li>
-              <li><button onClick={() => handleNav('industries')}>Residential</button></li>
+              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries'); }}>Corporate</a></li>
+              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries'); }}>Education</a></li>
+              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries'); }}>Healthcare</a></li>
+              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries'); }}>Hospitality</a></li>
+              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries'); }}>Retail</a></li>
+              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries'); }}>Residential</a></li>
             </ul>
           </div>
 
@@ -82,11 +83,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenProjectModal }
           <div className="footer-nav-col">
             <h4 className="footer-col-title">COMPANY</h4>
             <ul className="footer-links-list">
-              <li><button onClick={() => handleNav('about')}>About</button></li>
-              <li><button onClick={() => handleNav('projects')}>Projects</button></li>
-              <li><button onClick={() => handleNav('services')}>Services</button></li>
-              <li><button onClick={() => handleNav('insights')}>Insights</button></li>
-              <li><button onClick={() => handleNav('contact')}>Contact</button></li>
+              <li><a href="/about" onClick={(e) => { e.preventDefault(); handleNav('about'); }}>About</a></li>
+              <li><a href="/projects" onClick={(e) => { e.preventDefault(); handleNav('projects'); }}>Projects</a></li>
+              <li><a href="/services" onClick={(e) => { e.preventDefault(); handleNav('services'); }}>Services</a></li>
+              <li><a href="/insights" onClick={(e) => { e.preventDefault(); handleNav('insights'); }}>Insights</a></li>
+              <li><a href="/contact" onClick={(e) => { e.preventDefault(); handleNav('contact'); }}>Contact</a></li>
             </ul>
           </div>
 

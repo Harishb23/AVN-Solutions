@@ -78,25 +78,33 @@ export const Header: React.FC<HeaderProps> = ({
       <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
         <div className="container-wide header-inner">
           {/* Brand Logo */}
-          <button 
+          <a 
+            href="/"
             className="brand-logo-btn"
-            onClick={() => handleLinkClick('home')}
+            onClick={(e) => {
+              e.preventDefault();
+              handleLinkClick('home');
+            }}
             aria-label="AVN Solutions Homepage"
           >
             <img src={logoImg} alt="AVN Solutions" className="brand-logo-img" />
-          </button>
+          </a>
 
           {/* Center Navigation Dock */}
           <nav className="desktop-nav" aria-label="Main Navigation">
             {navLinks.map((item) => (
-              <button
+              <a
                 key={item.page}
+                href={`/${item.page}`}
                 className={`nav-link ${currentPage === item.page ? 'active' : ''}`}
-                onClick={() => handleLinkClick(item.page)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLinkClick(item.page);
+                }}
               >
                 <span>{item.label}</span>
                 {currentPage === item.page && <span className="nav-active-pill" aria-hidden="true" />}
-              </button>
+              </a>
             ))}
           </nav>
 
@@ -162,13 +170,17 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="mobile-menu-backdrop" onClick={() => setMobileMenuOpen(false)} />
         <div className="mobile-menu-panel">
           <div className="mobile-menu-header">
-            <button 
+            <a 
+              href="/"
               className="brand-logo-btn"
-              onClick={() => handleLinkClick('home')}
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick('home');
+              }}
               aria-label="AVN Solutions Homepage"
             >
               <img src={logoImg} alt="AVN Solutions" className="brand-logo-img" />
-            </button>
+            </a>
             <button
               className="mobile-close-btn"
               onClick={() => setMobileMenuOpen(false)}
@@ -179,23 +191,31 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           <div className="mobile-nav-list">
-            <button
+            <a
+              href="/"
               className={`mobile-nav-link ${currentPage === 'home' ? 'active' : ''}`}
-              onClick={() => handleLinkClick('home')}
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick('home');
+              }}
             >
               <span className="mobile-nav-num">00</span>
               <span className="mobile-nav-title">Home</span>
-            </button>
+            </a>
             {navLinks.map((item, idx) => (
-              <button
+              <a
                 key={item.page}
+                href={`/${item.page}`}
                 className={`mobile-nav-link ${currentPage === item.page ? 'active' : ''}`}
-                onClick={() => handleLinkClick(item.page)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLinkClick(item.page);
+                }}
               >
                 <span className="mobile-nav-num">0{idx + 1}</span>
                 <span className="mobile-nav-title">{item.label}</span>
                 <ArrowRight size={16} className="mobile-nav-arrow" />
-              </button>
+              </a>
             ))}
           </div>
 
