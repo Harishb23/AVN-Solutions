@@ -213,7 +213,7 @@ const sizes = [
 console.log('Generating Google-standard square PNG favicons...');
 const pngBuffers = {};
 for (const { name, size } of sizes) {
-  const buf = createPng(size, size, (x, y, w, h) => generateFaviconPixel(x, y, w));
+  const buf = createPng(size, size, (x, y, w) => generateFaviconPixel(x, y, w));
   fs.writeFileSync(path.join(PUBLIC_DIR, name), buf);
   pngBuffers[size] = buf;
   console.log(`✓ ${name} (${size}x${size}px) generated [${buf.length} bytes]`);
@@ -225,7 +225,7 @@ console.log('Generating standard multi-resolution favicon.ico...');
 const icoSizes = [16, 32, 48];
 const icoPngs = icoSizes.map(sz => {
   if (pngBuffers[sz]) return { size: sz, buf: pngBuffers[sz] };
-  const b = createPng(sz, sz, (x, y, w, h) => generateFaviconPixel(x, y, w));
+  const b = createPng(sz, sz, (x, y, w) => generateFaviconPixel(x, y, w));
   return { size: sz, buf: b };
 });
 

@@ -65,6 +65,33 @@ class SoundEngine {
     }
   }
 
+  // Ultra-subtle high-frequency UI hover tick
+  public playHover(freq = 950) {
+    if (this.isMuted) return;
+    try {
+      this.initContext();
+      if (!this.ctx) return;
+
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(1200, this.ctx.currentTime + 0.02);
+
+      gain.gain.setValueAtTime(0.012, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.025);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.03);
+    } catch {
+      // Ignore
+    }
+  }
+
   // High-tech macro power engage chime
   public playPowerChime() {
     if (this.isMuted) return;
