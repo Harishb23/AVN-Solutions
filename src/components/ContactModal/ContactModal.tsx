@@ -24,6 +24,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, ini
     notes: initialData?.message || ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [validationError, setValidationError] = useState<string>('');
 
   if (!isOpen) return null;
 
@@ -77,8 +78,26 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, ini
   const handleNext = () => {
     if (step < 4) {
       setStep(step + 1);
+      setValidationError('');
     } else {
-      // Trigger submission
+      if (!formData.name.trim()) {
+        setValidationError('Please enter your full name.');
+        return;
+      }
+      if (!formData.company.trim()) {
+        setValidationError('Please enter your organization or company name.');
+        return;
+      }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!formData.email.trim() || !emailRegex.test(formData.email)) {
+        setValidationError('Please enter a valid email address.');
+        return;
+      }
+      if (!formData.phone.trim() || formData.phone.trim().length < 7) {
+        setValidationError('Please enter a valid phone or WhatsApp number.');
+        return;
+      }
+      setValidationError('');
       setSubmitted(true);
       confetti({
         particleCount: 100,
@@ -277,6 +296,20 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, ini
                     <span className="pane-step-num">STEP 04 OF 04</span>
                     <h4 className="pane-title">Where should we transmit the technical proposal?</h4>
                     <p className="pane-sub">We will prepare custom single-line schematics and preliminary equipment bills.</p>
+                    {validationError && (
+                      <div className="modal-validation-notice" role="alert" style={{
+                        marginTop: '0.75rem',
+                        padding: '0.6rem 0.9rem',
+                        background: 'rgba(239, 68, 68, 0.12)',
+                        border: '1px solid rgba(239, 68, 68, 0.35)',
+                        borderRadius: '6px',
+                        color: '#fca5a5',
+                        fontSize: '0.85rem',
+                        fontWeight: 500
+                      }}>
+                        ⚠️ {validationError}
+                      </div>
+                    )}
                   </div>
 
                   <div className="form-grid">

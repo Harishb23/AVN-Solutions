@@ -57,12 +57,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenProjectModal }
           <div className="footer-nav-col">
             <h4 className="footer-col-title">SOLUTIONS</h4>
             <ul className="footer-links-list">
-              <li><a href="/solutions/boardroom-av" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'corporate-av'); }}>Boardroom &amp; Conference AV</a></li>
-              <li><a href="/solutions/video-conferencing" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'video-conferencing'); }}>Video Conferencing Solutions</a></li>
+              <li><a href="/conference-room-av-solutions" onClick={(e) => { e.preventDefault(); handleNav('conference-room-av'); }}>Conference Room AV Solutions</a></li>
+              <li><a href="/video-conferencing-solutions-chennai" onClick={(e) => { e.preventDefault(); handleNav('video-conferencing'); }}>Video Conferencing Chennai</a></li>
+              <li><a href="/av-integration-chennai" onClick={(e) => { e.preventDefault(); handleNav('av-integration'); }}>AV Integration Chennai</a></li>
+              <li><a href="/av-installation-chennai" onClick={(e) => { e.preventDefault(); handleNav('av-installation'); }}>AV Installation Chennai</a></li>
               <li><a href="/solutions/auditorium-av" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'professional-audio'); }}>Auditorium AV &amp; Sound</a></li>
               <li><a href="/solutions" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'display-visual'); }}>Visual Systems &amp; Video Walls</a></li>
-              <li><a href="/solutions" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'smart-automation'); }}>Smart Automation</a></li>
-              <li><a href="/solutions" onClick={(e) => { e.preventDefault(); handleNav('solutions', 'home-cinema'); }}>Home Cinema &amp; Acoustics</a></li>
             </ul>
           </div>
 
@@ -70,12 +70,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenProjectModal }
           <div className="footer-nav-col">
             <h4 className="footer-col-title">INDUSTRIES</h4>
             <ul className="footer-links-list">
-              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries'); }}>Corporate Enterprise</a></li>
-              <li><a href="/solutions/smart-classroom-av" onClick={(e) => { e.preventDefault(); handleNav('solution-smart-classroom-av'); }}>Smart Classrooms &amp; Education</a></li>
-              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries'); }}>Healthcare &amp; Medical</a></li>
-              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries'); }}>Hospitality Venues</a></li>
-              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries'); }}>Retail &amp; Experience Centers</a></li>
-              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries'); }}>Luxury Residential</a></li>
+              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries', 'corporate'); }}>Corporate Enterprise</a></li>
+              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries', 'education'); }}>Smart Classrooms &amp; Education</a></li>
+              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries', 'healthcare'); }}>Healthcare &amp; Medical</a></li>
+              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries', 'hospitality'); }}>Hospitality Venues</a></li>
+              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries', 'retail'); }}>Retail &amp; Experience Centers</a></li>
+              <li><a href="/industries" onClick={(e) => { e.preventDefault(); handleNav('industries', 'residential'); }}>Luxury Residential</a></li>
             </ul>
           </div>
 
@@ -83,11 +83,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenProjectModal }
           <div className="footer-nav-col">
             <h4 className="footer-col-title">COMPANY</h4>
             <ul className="footer-links-list">
-              <li><a href="/about" onClick={(e) => { e.preventDefault(); handleNav('about'); }}>About</a></li>
-              <li><a href="/projects" onClick={(e) => { e.preventDefault(); handleNav('projects'); }}>Projects</a></li>
-              <li><a href="/services" onClick={(e) => { e.preventDefault(); handleNav('services'); }}>Services</a></li>
-              <li><a href="/insights" onClick={(e) => { e.preventDefault(); handleNav('insights'); }}>Insights</a></li>
-              <li><a href="/contact" onClick={(e) => { e.preventDefault(); handleNav('contact'); }}>Contact</a></li>
+              <li><a href="/about" onClick={(e) => { e.preventDefault(); handleNav('about'); }}>About AVN</a></li>
+              <li><a href="/services" onClick={(e) => { e.preventDefault(); handleNav('services'); }}>All 12 Services</a></li>
+              <li><a href="/projects" onClick={(e) => { e.preventDefault(); handleNav('projects'); }}>Projects &amp; Case Studies</a></li>
+              <li><a href="/tools" onClick={(e) => { e.preventDefault(); handleNav('tools'); }}>AV Room Calculators</a></li>
+              <li><a href="/insights" onClick={(e) => { e.preventDefault(); handleNav('insights'); }}>Engineering Insights</a></li>
+              <li><a href="/contact" onClick={(e) => { e.preventDefault(); handleNav('contact'); }}>Contact Chennai HQ</a></li>
             </ul>
           </div>
 
@@ -97,7 +98,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenProjectModal }
             <div className="footer-contact-items">
               <div className="footer-c-item">
                 <MapPin size={15} className="text-blue" />
-                <span>{companyDetails.address.line1}, {companyDetails.address.area}, Chennai, TN {companyDetails.address.pincode}</span>
+                <a href="/contact" onClick={(e) => { e.preventDefault(); handleNav('contact'); }} className="footer-c-link">
+                  {companyDetails.address.line1}, {companyDetails.address.area}, Chennai, TN {companyDetails.address.pincode}
+                </a>
               </div>
 
               <div className="footer-c-item">
@@ -130,9 +133,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenProjectModal }
           <div className="footer-bottom-left">
             <span>© {currentYear} AVN Solutions. All rights reserved.</span>
             <span className="footer-sep">•</span>
-            <button className="footer-legal-link" onClick={() => handleNav('about')}>Privacy Policy</button>
+            <a href="/about" className="footer-legal-link" onClick={(e) => { e.preventDefault(); handleNav('about'); }}>Privacy Policy</a>
             <span className="footer-sep">•</span>
-            <button className="footer-legal-link" onClick={() => handleNav('about')}>Terms</button>
+            <a href="/about" className="footer-legal-link" onClick={(e) => { e.preventDefault(); handleNav('about'); }}>Terms</a>
           </div>
 
           <div className="footer-bottom-right">

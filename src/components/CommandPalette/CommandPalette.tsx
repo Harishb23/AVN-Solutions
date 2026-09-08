@@ -93,6 +93,38 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
       action: () => onNavigate('industries')
     },
     {
+      id: 'page-conference-room',
+      category: 'Page',
+      title: 'Conference Room AV Solutions',
+      subtitle: 'Turnkey meeting space configurator, 4K displays, beamforming audio & 1-touch join',
+      icon: <Monitor size={16} className="text-cyan" />,
+      action: () => onNavigate('conference-room-av')
+    },
+    {
+      id: 'page-video-conferencing',
+      category: 'Page',
+      title: 'Video Conferencing Solutions Chennai',
+      subtitle: 'Microsoft Teams & Zoom Rooms, AI multi-camera speaker tracking, BYOM',
+      icon: <Monitor size={16} className="text-cyan" />,
+      action: () => onNavigate('video-conferencing')
+    },
+    {
+      id: 'page-av-integration',
+      category: 'Page',
+      title: 'AV Integration Chennai',
+      subtitle: 'Turnkey AutoCAD schematics, Dante audio, Crestron/Q-SYS automation & 10G SDVoE',
+      icon: <Cpu size={16} className="text-cyan" />,
+      action: () => onNavigate('av-integration')
+    },
+    {
+      id: 'page-av-installation',
+      category: 'Page',
+      title: 'AV Installation Chennai',
+      subtitle: 'Laser-aligned display mounting, concealed plenum cabling, CTS-I field crews',
+      icon: <Wrench size={16} className="text-cyan" />,
+      action: () => onNavigate('av-installation')
+    },
+    {
       id: 'page-projects',
       category: 'Page',
       title: 'Projects & Case Studies Gallery',

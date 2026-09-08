@@ -206,7 +206,7 @@ export const industriesData: IndustryItem[] = [
     name: 'Places of Worship',
     tagline: 'Crystal Clear Sermons. Inspiring Acoustics.',
     description: 'Acoustic treatment and steerable line-array column loudspeakers engineered specifically for reverberant stone and marble sanctuaries, ensuring every word and musical note is clearly understood.',
-    image: 'https://images.unsplash.com/photo-1548625361-195feee10fce?auto=format&fit=crop&w=1600&q=80',
+    image: 'https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&w=1600&q=80',
     typicalSpaces: [
       'Sanctuaries & Prayer Halls',
       'Temple & Mosque Courtyards',

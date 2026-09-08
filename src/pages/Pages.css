@@ -1106,16 +1106,16 @@
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  padding: 0.5rem 0.75rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.55rem 0.85rem;
+  background: var(--bg-muted, #F1F5F9);
+  border: 1px solid var(--border-color, #CBD5E1);
   border-radius: var(--radius-sm);
   transition: all var(--transition-fast);
 }
 
 .sol-page-spec-chip:hover {
-  background: rgba(56, 189, 248, 0.08);
-  border-color: rgba(56, 189, 248, 0.3);
+  background: var(--orange-light, #FFF1EB);
+  border-color: rgba(255, 90, 31, 0.35);
 }
 
 .sol-spec-lbl {
@@ -1123,58 +1123,99 @@
   font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--text-tertiary);
+  color: var(--text-secondary, #475569);
+  font-weight: 600;
 }
 
 .sol-spec-val {
   font-family: var(--font-display);
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary, #0F172A);
 }
 
-/* Industries Page: Visual Impact Badge & Solution Chips */
+.theme-dark-active .sol-page-spec-chip {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.theme-dark-active .sol-spec-val {
+  color: #FFFFFF;
+}
+
+/* Industries Page: Visual Impact Badge & High-Contrast Solution Chips */
 .ind-impact-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   margin: 0.75rem 0 1.25rem;
-  padding: 0.45rem 0.9rem;
+  padding: 0.45rem 0.95rem;
   border-radius: 9999px;
-  background: rgba(56, 189, 248, 0.1);
-  border: 1px solid rgba(56, 189, 248, 0.3);
+  background: var(--orange-light, #FFF1EB);
+  border: 1px solid rgba(255, 90, 31, 0.3);
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--blue-cyan);
+  font-weight: 700;
+  color: var(--orange-primary, #FF5A1F);
   letter-spacing: 0.04em;
+}
+
+.theme-dark-active .ind-impact-badge {
+  background: rgba(255, 90, 31, 0.15);
+  border-color: rgba(255, 90, 31, 0.4);
+  color: #FF8A50;
 }
 
 .ind-solutions-chips-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 0.65rem;
-  margin-top: 0.65rem;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.75rem;
 }
 
 .ind-sol-chip {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.65rem 0.85rem;
-  background: rgba(15, 23, 42, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-sm);
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  transition: all var(--transition-fast);
+  gap: 0.65rem;
+  padding: 0.75rem 1rem;
+  background: #F8FAFC;
+  border: 1px solid #CBD5E1;
+  border-radius: var(--radius-md, 8px);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0F172A;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+}
+
+.ind-sol-chip svg,
+.ind-sol-chip .text-cyan {
+  color: var(--orange-primary, #FF5A1F);
+  flex-shrink: 0;
 }
 
 .ind-sol-chip:hover {
-  background: rgba(56, 189, 248, 0.08);
-  border-color: rgba(56, 189, 248, 0.3);
-  color: #fff;
+  background: #FFF7ED;
+  border-color: #FF5A1F;
+  color: #EA580C;
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 90, 31, 0.15);
+}
+
+/* Dark theme active overrides for solution chips */
+.theme-dark-active .ind-sol-chip {
+  background: rgba(30, 41, 59, 0.85);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: #F8FAFC;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.theme-dark-active .ind-sol-chip:hover {
+  background: rgba(255, 90, 31, 0.2);
+  border-color: #FF5A1F;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(255, 90, 31, 0.25);
 }
 
 /* Projects Page: Visual Outcome Strip on Project Cards */

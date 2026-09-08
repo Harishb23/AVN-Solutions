@@ -11,6 +11,10 @@ import { ArticleModal } from './components/ArticleModal/ArticleModal';
 // Pages
 import { HomePage } from './pages/HomePage';
 import { SolutionsPage } from './pages/SolutionsPage';
+import { AVIntegrationPage } from './pages/AVIntegrationPage';
+import { AVInstallationPage } from './pages/AVInstallationPage';
+import { ConferenceRoomPage } from './pages/ConferenceRoomPage';
+import { VideoConferencingPage } from './pages/VideoConferencingPage';
 import { IndustriesPage } from './pages/IndustriesPage';
 import { ProductsPage } from './pages/ProductsPage';
 import { BrandsPage } from './pages/BrandsPage';
@@ -54,6 +58,7 @@ export function App() {
   useSEO(currentPage);
 
   const [initialToolTab, setInitialToolTab] = useState<string | undefined>(undefined);
+  const [initialIndustryId, setInitialIndustryId] = useState<string | undefined>(undefined);
   
   // Theme state with local persistence (default dark)
   const [themeMode, setThemeMode] = useState<ThemeMode>(() => {
@@ -98,12 +103,18 @@ export function App() {
     if (page === 'solutions' && targetId) {
       setInitialSolutionId(targetId);
       if (targetId === 'corporate-av') {
-        resolvedPage = 'solution-boardroom-av';
+        resolvedPage = 'conference-room-av';
       } else if (targetId === 'video-conferencing') {
-        resolvedPage = 'solution-video-conferencing';
+        resolvedPage = 'video-conferencing';
       } else if (targetId === 'professional-audio') {
         resolvedPage = 'solution-auditorium-av';
       }
+    } else if (page === 'industries' && targetId) {
+      setInitialIndustryId(targetId);
+    } else if (page === 'solution-boardroom-av') {
+      resolvedPage = 'conference-room-av';
+    } else if (page === 'solution-video-conferencing') {
+      resolvedPage = 'video-conferencing';
     } else if (page === 'tools' && targetId) {
       setInitialToolTab(targetId);
     }
@@ -167,20 +178,50 @@ export function App() {
           />
         )}
 
+        {currentPage === 'av-integration' && (
+          <AVIntegrationPage
+            onStartProject={() => handleStartProjectWithData()}
+            onNavigate={handleNavigate}
+          />
+        )}
+
+        {currentPage === 'av-installation' && (
+          <AVInstallationPage
+            onStartProject={() => handleStartProjectWithData()}
+            onNavigate={handleNavigate}
+          />
+        )}
+
+        {(currentPage === 'conference-room-av' || currentPage === 'solution-boardroom-av') && (
+          <ConferenceRoomPage
+            onStartProject={() => handleStartProjectWithData()}
+            onNavigate={handleNavigate}
+          />
+        )}
+
+        {(currentPage === 'video-conferencing' || currentPage === 'solution-video-conferencing') && (
+          <VideoConferencingPage
+            onStartProject={() => handleStartProjectWithData()}
+            onNavigate={handleNavigate}
+          />
+        )}
+
         {(currentPage === 'solutions' || currentPage.startsWith('solution-')) && (
           <SolutionsPage
             onStartProject={() => handleStartProjectWithData()}
             initialSolutionId={
               initialSolutionId ||
-              (currentPage === 'solution-boardroom-av' ? 'corporate-av' :
-               currentPage === 'solution-video-conferencing' ? 'video-conferencing' :
-               currentPage === 'solution-auditorium-av' ? 'professional-audio' : undefined)
+              (currentPage === 'solution-auditorium-av' ? 'professional-audio' : undefined)
             }
           />
         )}
 
         {currentPage === 'industries' && (
-          <IndustriesPage onStartProject={() => handleStartProjectWithData()} />
+          <IndustriesPage
+            key={initialIndustryId || 'industries'}
+            onStartProject={() => handleStartProjectWithData()}
+            initialIndustryId={initialIndustryId}
+          />
         )}
 
         {currentPage === 'products' && (

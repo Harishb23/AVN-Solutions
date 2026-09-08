@@ -29,26 +29,82 @@ const SITEMAP_ENTRIES = [
       }
     ]
   },
-  // 2. Services: AV Integration & Installation Services Chennai
+  // 2. AV Integration Chennai
   {
-    loc: `${SITE_URL}/services`,
+    loc: `${SITE_URL}/av-integration-chennai`,
+    lastmod: TODAY,
+    changefreq: 'weekly',
+    priority: '0.95',
+    images: [
+      {
+        loc: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80',
+        title: 'AV Integration Chennai - Turnkey Audio Visual System Integration',
+        caption: 'Enterprise AV system design, AutoCAD schematics, Dante IP audio, and 10G SDVoE in Chennai'
+      }
+    ]
+  },
+  // 3. AV Installation Chennai
+  {
+    loc: `${SITE_URL}/av-installation-chennai`,
     lastmod: TODAY,
     changefreq: 'weekly',
     priority: '0.95',
     images: [
       {
         loc: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
-        title: 'AV Installation & Turnkey AV Integration Services Chennai',
-        caption: 'Comprehensive AV consulting, design, acoustic engineering and 24/7 SLA support'
+        title: 'AV Installation Chennai - Commercial Audio Visual Installation',
+        caption: 'Laser-aligned display mounting, concealed plenum cabling, and CTS-I field crews in Chennai'
       }
     ]
   },
-  // 3. Solutions Overview
+  // 4. Conference Room AV Solutions
+  {
+    loc: `${SITE_URL}/conference-room-av-solutions`,
+    lastmod: TODAY,
+    changefreq: 'weekly',
+    priority: '0.95',
+    images: [
+      {
+        loc: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
+        title: 'Conference Room AV Solutions - Boardrooms & Meeting Rooms Chennai',
+        caption: 'Fine-pitch LED walls, beamforming mics, and single-touch Crestron automation'
+      }
+    ]
+  },
+  // 5. Video Conferencing Solutions Chennai
+  {
+    loc: `${SITE_URL}/video-conferencing-solutions-chennai`,
+    lastmod: TODAY,
+    changefreq: 'weekly',
+    priority: '0.95',
+    images: [
+      {
+        loc: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80',
+        title: 'Video Conferencing Solutions Chennai - Microsoft Teams & Zoom Rooms',
+        caption: 'AI multi-camera speaker tracking, AEC audio DSP, and wireless BYOM presentation'
+      }
+    ]
+  },
+  // 6. Services Hub: Comprehensive 12 Disciplines
+  {
+    loc: `${SITE_URL}/services`,
+    lastmod: TODAY,
+    changefreq: 'weekly',
+    priority: '0.90',
+    images: [
+      {
+        loc: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
+        title: 'Comprehensive AV Services & 9-Stage Methodology Chennai',
+        caption: 'AV consulting, design, acoustic engineering and 24/7 SLA support'
+      }
+    ]
+  },
+  // 7. Solutions Overview Hub
   {
     loc: `${SITE_URL}/solutions`,
     lastmod: TODAY,
     changefreq: 'weekly',
-    priority: '0.95',
+    priority: '0.90',
     images: [
       {
         loc: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80',
@@ -57,35 +113,7 @@ const SITEMAP_ENTRIES = [
       }
     ]
   },
-  // 4. Conference Room & Boardroom AV Solutions
-  {
-    loc: `${SITE_URL}/solutions/boardroom-av`,
-    lastmod: TODAY,
-    changefreq: 'weekly',
-    priority: '0.95',
-    images: [
-      {
-        loc: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
-        title: 'Conference Room & Executive Boardroom AV Solutions Chennai',
-        caption: 'Fine-pitch LED walls, beamforming mics, and Crestron touch automation'
-      }
-    ]
-  },
-  // 5. Video Conferencing Solutions Chennai
-  {
-    loc: `${SITE_URL}/solutions/video-conferencing`,
-    lastmod: TODAY,
-    changefreq: 'weekly',
-    priority: '0.95',
-    images: [
-      {
-        loc: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80',
-        title: 'Video Conferencing Solutions Chennai - Microsoft Teams & Zoom Rooms',
-        caption: 'AI multi-camera speaker tracking, AEC audio DSP, and wireless presentation'
-      }
-    ]
-  },
-  // 6. Auditorium AV Solutions & Sound Systems
+  // 8. Auditorium AV Solutions & Sound Systems
   {
     loc: `${SITE_URL}/solutions/auditorium-av`,
     lastmod: TODAY,

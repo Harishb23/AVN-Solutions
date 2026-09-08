@@ -218,7 +218,7 @@ export const servicesData: ServiceItem[] = [
     timeline: 'Quarterly Contract',
     suitableFor: ['Corporate Campuses', 'Universities', 'Hospitals'],
     iconName: 'ShieldCheck',
-    image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80',
     badge: 'Quarterly Health Audits'
   },
   {

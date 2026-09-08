@@ -23,12 +23,12 @@ export interface RouteSEOConfig {
 export const SITE_URL = 'https://avnsolutions.in';
 
 export const PUBLIC_ROUTES: RouteSEOConfig[] = [
-  // 1. Homepage: Primary hub for local commercial searches
+  // 1. Homepage: Targets "AV solutions Chennai"
   {
     id: 'home',
     path: '/',
-    title: 'AV Solutions in Chennai | Audio Visual Integrator | AVN Solutions',
-    metaTitle: 'AV Solutions in Chennai | Premier Audio Visual Integrator',
+    title: 'AV Solutions in Chennai | Premier Audio Visual Integrator | AVN Solutions',
+    metaTitle: 'AV Solutions in Chennai | Audio Visual Integrator',
     description: 'AVN Solutions is a premier audio visual company & AV integrator in Chennai. We deliver turnkey boardroom AV, video conferencing, video walls & 24/7 SLA.',
     canonical: `${SITE_URL}/`,
     priority: 1.0,
@@ -49,7 +49,115 @@ export const PUBLIC_ROUTES: RouteSEOConfig[] = [
     breadcrumbName: 'Home'
   },
 
-  // 2. Services: Targets AV Integration & AV Installation searches
+  // 2. AV Integration Page: Targets "AV integration Chennai"
+  {
+    id: 'av-integration',
+    path: '/av-integration-chennai',
+    title: 'AV Integration Chennai | Audio Visual System Integration | AVN',
+    metaTitle: 'AV Integration Chennai | Turnkey System Integration',
+    description: 'Enterprise AV integration in Chennai by CTS-certified engineers. Turnkey system design, AutoCAD schematics, Dante IP audio, Crestron/Q-SYS programming & 10G SDVoE.',
+    canonical: `${SITE_URL}/av-integration-chennai`,
+    priority: 0.95,
+    changefreq: 'weekly',
+    ogType: 'website',
+    ogImage: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80',
+    primaryKeyword: 'AV integration Chennai',
+    secondaryKeywords: [
+      'AV integration services Chennai',
+      'audio visual integration Chennai',
+      'AV system integrator Chennai',
+      'turnkey AV integration Chennai',
+      'enterprise AV integration'
+    ],
+    searchIntent: 'Commercial',
+    h1: 'AV Integration Chennai | Turnkey Audio Visual System Integration',
+    schemaType: 'Service',
+    breadcrumbName: 'AV Integration'
+  },
+
+  // 3. AV Installation Page: Targets "AV installation Chennai"
+  {
+    id: 'av-installation',
+    path: '/av-installation-chennai',
+    title: 'AV Installation Chennai | Commercial Audio Visual Installation | AVN',
+    metaTitle: 'AV Installation Services in Chennai | Precision Mounting',
+    description: 'Professional AV installation in Chennai. Laser-aligned display & video wall mounting, concealed plenum cabling, ceiling mic suspension & 2-hour emergency SLA.',
+    canonical: `${SITE_URL}/av-installation-chennai`,
+    priority: 0.95,
+    changefreq: 'weekly',
+    ogType: 'website',
+    ogImage: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
+    primaryKeyword: 'AV installation Chennai',
+    secondaryKeywords: [
+      'audio visual installation Chennai',
+      'AV installer Chennai',
+      'commercial AV installation',
+      'boardroom AV installation Chennai',
+      'projector installation Chennai',
+      'video wall installation Chennai'
+    ],
+    searchIntent: 'Commercial',
+    h1: 'AV Installation Chennai | Precision Commercial Audio Visual Installation',
+    schemaType: 'Service',
+    breadcrumbName: 'AV Installation'
+  },
+
+  // 4. Conference Room AV Solutions: Targets "conference room AV solutions"
+  {
+    id: 'conference-room-av',
+    path: '/conference-room-av-solutions',
+    title: 'Conference Room AV Solutions | Boardrooms & Meeting Rooms | AVN',
+    metaTitle: 'Conference Room AV Solutions | Modern Meeting Space Systems',
+    description: 'Turnkey conference room AV solutions and executive boardroom systems. 4K displays, beamforming ceiling mics, single-touch Crestron automation & BYOM casting.',
+    canonical: `${SITE_URL}/conference-room-av-solutions`,
+    priority: 0.95,
+    changefreq: 'weekly',
+    ogType: 'website',
+    ogImage: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
+    primaryKeyword: 'conference room AV solutions',
+    secondaryKeywords: [
+      'boardroom AV solutions',
+      'meeting room AV solutions',
+      'conference room AV',
+      'meeting room AV setup Chennai',
+      'executive boardroom AV solutions',
+      'boardroom AV'
+    ],
+    searchIntent: 'Commercial',
+    h1: 'Conference Room AV Solutions | Modern Meeting Space Systems',
+    schemaType: 'Service',
+    breadcrumbName: 'Conference Room AV',
+    targetSolutionId: 'corporate-av'
+  },
+
+  // 5. Video Conferencing Solutions Chennai: Targets "video conferencing solutions Chennai"
+  {
+    id: 'video-conferencing',
+    path: '/video-conferencing-solutions-chennai',
+    title: 'Video Conferencing Solutions Chennai | Teams & Zoom Rooms | AVN',
+    metaTitle: 'Video Conferencing Solutions Chennai | Enterprise Hybrid Rooms',
+    description: 'Enterprise video conferencing solutions in Chennai. Certified Microsoft Teams & Zoom Rooms installation, AI multi-camera speaker tracking, AEC audio & 2-hr SLA.',
+    canonical: `${SITE_URL}/video-conferencing-solutions-chennai`,
+    priority: 0.95,
+    changefreq: 'weekly',
+    ogType: 'website',
+    ogImage: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80',
+    primaryKeyword: 'video conferencing solutions Chennai',
+    secondaryKeywords: [
+      'video conferencing solutions',
+      'video conferencing systems Chennai',
+      'Microsoft Teams Rooms Chennai',
+      'Zoom Rooms integrator Chennai',
+      'hybrid meeting room solutions Chennai'
+    ],
+    searchIntent: 'Commercial',
+    h1: 'Video Conferencing Solutions Chennai | Enterprise Hybrid Rooms',
+    schemaType: 'Service',
+    breadcrumbName: 'Video Conferencing',
+    targetSolutionId: 'video-conferencing'
+  },
+
+  // 6. Services Hub: Comprehensive 12 Disciplines & 9-Stage Process
   {
     id: 'services',
     path: '/services',
@@ -57,14 +165,12 @@ export const PUBLIC_ROUTES: RouteSEOConfig[] = [
     metaTitle: 'AV Integration & Installation Services in Chennai',
     description: 'Expert AV integration services & professional AV installation in Chennai. CTS-certified engineers deliver turnkey system design, DSP tuning & 24/7 SLA.',
     canonical: `${SITE_URL}/services`,
-    priority: 0.95,
+    priority: 0.90,
     changefreq: 'weekly',
     ogType: 'website',
     ogImage: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
-    primaryKeyword: 'AV integration Chennai',
+    primaryKeyword: 'AV integration services',
     secondaryKeywords: [
-      'AV installation Chennai',
-      'AV integration services',
       'AV system integration',
       'audio visual installation',
       'audio visual integration',
@@ -76,7 +182,7 @@ export const PUBLIC_ROUTES: RouteSEOConfig[] = [
     breadcrumbName: 'Services'
   },
 
-  // 3. Solutions Hub
+  // 7. Solutions Hub
   {
     id: 'solutions',
     path: '/solutions',
@@ -84,7 +190,7 @@ export const PUBLIC_ROUTES: RouteSEOConfig[] = [
     metaTitle: 'Turnkey Audio Visual Solutions | Boardrooms & Auditoriums',
     description: 'Explore turnkey audio visual solutions engineered by AVN Solutions: boardrooms, video conferencing suites, auditoriums, LED video walls & smart automation.',
     canonical: `${SITE_URL}/solutions`,
-    priority: 0.95,
+    priority: 0.90,
     changefreq: 'weekly',
     ogType: 'website',
     ogImage: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80',
@@ -101,62 +207,7 @@ export const PUBLIC_ROUTES: RouteSEOConfig[] = [
     breadcrumbName: 'Solutions'
   },
 
-  // 4. Targeted Solution: Conference Room & Boardroom AV
-  {
-    id: 'solution-boardroom-av',
-    path: '/solutions/boardroom-av',
-    title: 'Conference Room & Boardroom AV Solutions | AVN Solutions',
-    metaTitle: 'Conference Room & Boardroom AV Solutions | AVN Solutions',
-    description: 'Transform meeting spaces with turnkey conference room AV solutions and executive boardroom systems: fine-pitch LED, beamforming mics & single-touch automation.',
-    canonical: `${SITE_URL}/solutions/boardroom-av`,
-    priority: 0.95,
-    changefreq: 'weekly',
-    ogType: 'website',
-    ogImage: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
-    primaryKeyword: 'conference room AV solutions',
-    secondaryKeywords: [
-      'boardroom AV solutions',
-      'conference room AV',
-      'meeting room AV solutions',
-      'boardroom AV',
-      'meeting room AV',
-      'meeting room solutions',
-      'executive boardroom AV solutions'
-    ],
-    searchIntent: 'Commercial',
-    h1: 'Conference Room & Boardroom AV Solutions',
-    schemaType: 'Service',
-    breadcrumbName: 'Boardroom AV',
-    targetSolutionId: 'corporate-av'
-  },
-
-  // 5. Targeted Solution: Video Conferencing Solutions Chennai
-  {
-    id: 'solution-video-conferencing',
-    path: '/solutions/video-conferencing',
-    title: 'Video Conferencing Solutions Chennai | Teams & Zoom Rooms | AVN',
-    metaTitle: 'Video Conferencing Solutions Chennai | Systems & Installation',
-    description: 'Enterprise video conferencing solutions in Chennai. Certified Microsoft Teams & Zoom Rooms installation, AI multi-camera speaker tracking & wireless casting.',
-    canonical: `${SITE_URL}/solutions/video-conferencing`,
-    priority: 0.95,
-    changefreq: 'weekly',
-    ogType: 'website',
-    ogImage: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80',
-    primaryKeyword: 'video conferencing solutions Chennai',
-    secondaryKeywords: [
-      'video conferencing solutions',
-      'video conferencing systems',
-      'video conferencing installation',
-      'conference room video conferencing'
-    ],
-    searchIntent: 'Commercial',
-    h1: 'Video Conferencing Solutions & Systems in Chennai',
-    schemaType: 'Service',
-    breadcrumbName: 'Video Conferencing',
-    targetSolutionId: 'video-conferencing'
-  },
-
-  // 6. Targeted Solution: Auditorium AV & Sound Systems
+  // 8. Targeted Solution: Auditorium AV & Sound Systems
   {
     id: 'solution-auditorium-av',
     path: '/solutions/auditorium-av',
@@ -431,9 +482,33 @@ export function getRouteByPath(pathname: string): RouteSEOConfig {
   const found = PUBLIC_ROUTES.find(r => r.path === cleanPath);
   if (found) return found;
 
-  // Handle aliases e.g. /solutions/conference-room-av -> solution-boardroom-av
-  if (cleanPath === '/solutions/conference-room-av') {
-    return getRouteById('solution-boardroom-av');
+  // Handle aliases for AV Integration
+  if (cleanPath === '/services/av-integration' || cleanPath === '/av-integration') {
+    return getRouteById('av-integration');
+  }
+
+  // Handle aliases for AV Installation
+  if (cleanPath === '/services/av-installation' || cleanPath === '/av-installation') {
+    return getRouteById('av-installation');
+  }
+
+  // Handle aliases for Conference Room AV Solutions
+  if (
+    cleanPath === '/solutions/boardroom-av' || 
+    cleanPath === '/solutions/conference-room-av' || 
+    cleanPath === '/conference-room-av' ||
+    cleanPath === '/solutions/corporate-av'
+  ) {
+    return getRouteById('conference-room-av');
+  }
+
+  // Handle aliases for Video Conferencing Solutions
+  if (
+    cleanPath === '/solutions/video-conferencing' || 
+    cleanPath === '/video-conferencing-solutions' ||
+    cleanPath === '/video-conferencing'
+  ) {
+    return getRouteById('video-conferencing');
   }
 
   // Handle path without leading slash
