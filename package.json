@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "sitemap": "node scripts/generate-sitemap.mjs",
-    "build": "node scripts/generate-sitemap.mjs && tsc -b && vite build",
+    "favicons": "node scripts/generate-favicons.mjs",
+    "build": "node scripts/generate-favicons.mjs && node scripts/generate-sitemap.mjs && tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview"
   },

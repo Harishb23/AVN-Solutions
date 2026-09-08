@@ -17,7 +17,9 @@ export const servicesData: ServiceItem[] = [
     toolsUsed: ['AutoCAD 2024', 'Revit BIM', 'EASE 4.4', 'Stardraw AV'],
     timeline: '1 - 2 Weeks',
     suitableFor: ['Corporate Boardrooms', 'Auditoriums', 'Experience Centers'],
-    iconName: 'Compass'
+    iconName: 'Compass',
+    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80',
+    badge: 'AutoCAD 2024 & EASE 4.4'
   },
   {
     id: 'system-engineering',
@@ -35,7 +37,9 @@ export const servicesData: ServiceItem[] = [
     toolsUsed: ['AutoCAD MEP', 'Netgear AV OS', 'Middle Atlantic RackTools'],
     timeline: '1 - 2 Weeks',
     suitableFor: ['Command Centers', 'Server Rooms', 'Large Campuses'],
-    iconName: 'Cpu'
+    iconName: 'Cpu',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80',
+    badge: '10G SDVoE & Dante Net'
   },
   {
     id: 'acoustic-consulting',
@@ -53,7 +57,9 @@ export const servicesData: ServiceItem[] = [
     toolsUsed: ['Smaart V8', 'EASE Focus 3', 'NTi Audio XL2 Analyzer'],
     timeline: '3 - 5 Days',
     suitableFor: ['Boardrooms', 'Broadcast Studios', 'Auditoriums'],
-    iconName: 'Volume2'
+    iconName: 'Volume2',
+    image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=80',
+    badge: 'Smaart V8 • RT60 < 0.6s'
   },
   {
     id: 'equipment-supply',
@@ -71,7 +77,9 @@ export const servicesData: ServiceItem[] = [
     toolsUsed: ['Official OEM Partner Portals', 'Chennai Staging Facility'],
     timeline: 'Immediate to 2 Weeks',
     suitableFor: ['Enterprise IT', 'Architects', 'General Contractors'],
-    iconName: 'PackageCheck'
+    iconName: 'PackageCheck',
+    image: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=1200&q=80',
+    badge: 'Authorized Direct OEM'
   },
   {
     id: 'av-integration',
@@ -89,7 +97,9 @@ export const servicesData: ServiceItem[] = [
     toolsUsed: ['Dante Controller', 'Q-SYS Designer', 'Crestron Toolbox'],
     timeline: '2 - 4 Weeks',
     suitableFor: ['Smart Classrooms', 'Training Rooms', 'Boardrooms'],
-    iconName: 'Layers'
+    iconName: 'Layers',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
+    badge: 'Turnkey Integration'
   },
   {
     id: 'installation-commissioning',
@@ -107,7 +117,9 @@ export const servicesData: ServiceItem[] = [
     toolsUsed: ['Bosch Laser Levels', 'Fluke Cable Analyzers', 'CTS-I Toolkits'],
     timeline: '1 - 3 Weeks',
     suitableFor: ['All Commercial & Residential Spaces'],
-    iconName: 'Wrench'
+    iconName: 'Wrench',
+    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
+    badge: 'AVIXA CTS-I Certified'
   },
   {
     id: 'programming-automation',
@@ -125,7 +137,9 @@ export const servicesData: ServiceItem[] = [
     toolsUsed: ['Crestron SIMPL# / CH5', 'Q-SYS UCI Editor', 'Extron GC Plus'],
     timeline: '1 - 2 Weeks',
     suitableFor: ['Executive Boardrooms', 'Townhalls', 'Luxury Villas'],
-    iconName: 'Code2'
+    iconName: 'Code2',
+    image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80',
+    badge: 'Crestron CH5 & Q-SYS'
   },
   {
     id: 'testing-handover',
@@ -143,7 +157,9 @@ export const servicesData: ServiceItem[] = [
     toolsUsed: ['Smaart V8', 'CalMAN Ultimate', 'X-Rite Colorimeter'],
     timeline: '3 - 5 Days',
     suitableFor: ['All Commissioned Spaces'],
-    iconName: 'CheckCircle2'
+    iconName: 'CheckCircle2',
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80',
+    badge: 'Zero-Punch Handover'
   },
   {
     id: 'lighting-design',
@@ -161,7 +177,9 @@ export const servicesData: ServiceItem[] = [
     toolsUsed: ['DIALux evo', 'Lutron Designer', 'DALI-2 Gateway Tools'],
     timeline: '1 - 2 Weeks',
     suitableFor: ['Auditoriums', 'Experience Centers', 'Galleries'],
-    iconName: 'Sparkles'
+    iconName: 'Sparkles',
+    image: 'https://images.unsplash.com/photo-1507499739999-097706ad8914?auto=format&fit=crop&w=1200&q=80',
+    badge: 'DALI-2 & Circadian'
   },
   {
     id: 'project-management',
@@ -179,7 +197,9 @@ export const servicesData: ServiceItem[] = [
     toolsUsed: ['Procore', 'MS Project', 'Site Inspection Checklists'],
     timeline: 'Full Project Duration',
     suitableFor: ['New Builds', 'Campus Renovations', 'Fit-Outs'],
-    iconName: 'FolderKanban'
+    iconName: 'FolderKanban',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
+    badge: 'Zero-Delay Handover'
   },
   {
     id: 'annual-maintenance',
@@ -197,7 +217,9 @@ export const servicesData: ServiceItem[] = [
     toolsUsed: ['Diagnostic Cloud Portals', 'Thermal Imagers', 'Audio Meters'],
     timeline: 'Quarterly Contract',
     suitableFor: ['Corporate Campuses', 'Universities', 'Hospitals'],
-    iconName: 'ShieldCheck'
+    iconName: 'ShieldCheck',
+    image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=1200&q=80',
+    badge: 'Quarterly Health Audits'
   },
   {
     id: 'amc-support',
@@ -215,7 +237,9 @@ export const servicesData: ServiceItem[] = [
     toolsUsed: ['Jira Service Desk', 'Crestron XiO Cloud', 'Q-SYS Reflect'],
     timeline: 'Annual SLA (24/7/365)',
     suitableFor: ['Mission Critical Boardrooms', 'NOC Rooms', 'Hospitals'],
-    iconName: 'Headphones'
+    iconName: 'Headphones',
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80',
+    badge: '2-Hour Chennai SLA'
   }
 ];
 
@@ -281,7 +305,9 @@ export const processStepsData: ProcessStep[] = [
     description: 'We meet with key stakeholders to understand operational workflows, spatial ergonomics, user requirements, and technical goals.',
     outputs: ['User Journey & Persona Mapping', 'Functional AV Requirements Brief', 'Budgetary Bounds & Feasibility Matrix'],
     duration: 'Week 1',
-    leadRole: 'Principal AV Consultant'
+    leadRole: 'Principal AV Consultant',
+    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80',
+    tag: 'CLIENT STAKEHOLDER DISCOVERY'
   },
   {
     number: '02',
@@ -290,7 +316,9 @@ export const processStepsData: ProcessStep[] = [
     description: 'Detailed site inspection evaluating physical room dimensions, ambient lux levels, baseline RT60 reverberation, and conduit routes.',
     outputs: ['Physical Laser Dimension Scans', 'Baseline Smaart RT60 & NC Audio Data', 'MEP & Cable Pathway Readiness Report'],
     duration: 'Week 1 - 2',
-    leadRole: 'Acoustic & Site Engineer'
+    leadRole: 'Acoustic & Site Engineer',
+    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80',
+    tag: 'ON-SITE LASER & ACOUSTIC SCAN'
   },
   {
     number: '03',
@@ -299,7 +327,9 @@ export const processStepsData: ProcessStep[] = [
     description: 'Developing system architecture, equipment selection, throw distance calculations, and detailed bill of quantities.',
     outputs: ['System Topology Architecture Brief', 'Display Sightline & Audio Dispersion Maps', 'Preliminary BOQ & Budgetary Estimate'],
     duration: 'Week 2',
-    leadRole: 'Senior Design Consultant'
+    leadRole: 'Senior Design Consultant',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
+    tag: 'CONCEPT SCHEMATIC TOPOLOGY'
   },
   {
     number: '04',
@@ -308,7 +338,9 @@ export const processStepsData: ProcessStep[] = [
     description: 'Formulating single-line schematics, cable schedules, thermal management, and network security topologies.',
     outputs: ['AutoCAD Single-Line Signal Schematics', 'Rack Elevation & Heat Load Blueprints', 'Network VLAN & Bandwidth Matrix'],
     duration: 'Week 2 - 3',
-    leadRole: 'Systems Design Engineer'
+    leadRole: 'Systems Design Engineer',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80',
+    tag: 'AUTOCAD & RACK BLUEPRINTS'
   },
   {
     number: '05',
@@ -317,7 +349,9 @@ export const processStepsData: ProcessStep[] = [
     description: 'Sourcing 100% genuine equipment from certified OEM partners and pre-configuring hardware in our Chennai engineering lab.',
     outputs: ['Direct OEM Factory Shipments', 'Pre-Installation Lab Verification Test', 'Baseline Firmware Flashing & Pre-Labeling'],
     duration: 'Week 3 - 5',
-    leadRole: 'Logistics & QA Lead'
+    leadRole: 'Logistics & QA Lead',
+    image: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=1200&q=80',
+    tag: 'PRE-STAGED LAB HARDWARE'
   },
   {
     number: '06',
@@ -326,7 +360,9 @@ export const processStepsData: ProcessStep[] = [
     description: 'Physical deployment by certified AVIXA technicians following strict cabling, grounding, and aesthetic standards.',
     outputs: ['Concealed Structured Cabling & Lacing', 'Laser-Leveled Display Wall Mounting', 'Standardized Clean Rack Integration'],
     duration: 'Week 5 - 7',
-    leadRole: 'AVIXA CTS-I Field Engineer'
+    leadRole: 'AVIXA CTS-I Field Engineer',
+    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
+    tag: 'LASER ALIGNED PHYSICAL MOUNT'
   },
   {
     number: '07',
@@ -335,7 +371,9 @@ export const processStepsData: ProcessStep[] = [
     description: 'Writing control logic, designing intuitive touch glass graphics, and tuning DSP acoustic algorithms.',
     outputs: ['Custom Vector UI Glass Interface', 'IntelliMix / Q-SYS DSP Gain Structuring', 'Automated One-Touch Meeting Macros'],
     duration: 'Week 7 - 8',
-    leadRole: 'Certified Crestron/Q-SYS Programmer'
+    leadRole: 'Certified Crestron/Q-SYS Programmer',
+    image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80',
+    tag: 'CUSTOM UI & DSP ALGORITHMS'
   },
   {
     number: '08',
@@ -344,7 +382,9 @@ export const processStepsData: ProcessStep[] = [
     description: 'End-to-end stress testing under live loads, followed by hands-on training for corporate executives and IT staff.',
     outputs: ['Smaart V8 Acoustic Tuning Report', 'CalMAN Display White Balance Audit', 'Hands-on User Training & Video Manuals'],
     duration: 'Week 8',
-    leadRole: 'Quality & Commissioning Lead'
+    leadRole: 'Quality & Commissioning Lead',
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80',
+    tag: 'LIVE TESTING & OPERATOR TRAINING'
   },
   {
     number: '09',
@@ -353,6 +393,8 @@ export const processStepsData: ProcessStep[] = [
     description: 'Delivering comprehensive as-built documentation and transitioning to active 24/7 Chennai-based SLA maintenance support.',
     outputs: ['Complete As-Built Dossier & Schematics', 'Manufacturer Warranty Certificates', 'Active 24/7 Chennai SLA Maintenance Contract'],
     duration: 'Ongoing',
-    leadRole: 'SLA Support Operations Manager'
+    leadRole: 'SLA Support Operations Manager',
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80',
+    tag: 'AS-BUILT DOSSIER & 24/7 SLA'
   }
 ];

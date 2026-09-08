@@ -34,7 +34,7 @@ export const PUBLIC_ROUTES: RouteSEOConfig[] = [
     priority: 1.0,
     changefreq: 'daily',
     ogType: 'website',
-    ogImage: `${SITE_URL}/logo.png`,
+    ogImage: `${SITE_URL}/og-image.jpg`,
     primaryKeyword: 'AV solutions Chennai',
     secondaryKeywords: [
       'audio visual solutions Chennai',

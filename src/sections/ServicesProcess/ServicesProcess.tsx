@@ -71,23 +71,50 @@ export const ServicesProcess: React.FC<ServicesProcessProps> = ({ onStartProject
             const Icon = iconMap[svc.iconName] || Layers;
             return (
               <div key={svc.id} className="service-card" data-cursor="explore">
-                <div className="service-card-top">
-                  <div className="service-icon-box">
-                    <Icon size={18} className="text-cyan" />
+                {/* Visual Image Banner */}
+                <div className="service-card-media">
+                  <img 
+                    src={svc.image} 
+                    alt={`${svc.title} - AVN Solutions Chennai`} 
+                    loading="lazy" 
+                    className="service-card-img" 
+                  />
+                  <div className="service-card-media-overlay" />
+                  <div className="service-media-badges">
+                    <span className="service-number-pill">{svc.number}</span>
+                    {svc.badge && <span className="service-tech-pill">{svc.badge}</span>}
                   </div>
-                  <span className="service-number">{svc.number}</span>
+                  <div className="service-media-icon-float">
+                    <Icon size={16} />
+                  </div>
                 </div>
 
-                <h3 className="service-title">{svc.title}</h3>
-                <p className="service-desc">{svc.description}</p>
+                <div className="service-card-body">
+                  <span className="service-category-micro">{svc.categoryLabel}</span>
+                  <h3 className="service-title">{svc.title}</h3>
+                  <p className="service-desc">{svc.description}</p>
 
-                <div className="service-deliverables">
-                  {svc.deliverables.map((item, i) => (
-                    <div key={i} className="deliverable-item">
-                      <CheckCircle2 size={12} className="text-cyan" />
-                      <span>{item}</span>
-                    </div>
-                  ))}
+                  <div className="service-deliverables">
+                    {svc.deliverables.slice(0, 3).map((item, i) => (
+                      <div key={i} className="deliverable-item">
+                        <CheckCircle2 size={12} className="text-cyan" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {onNavigateServices && (
+                    <button 
+                      className="service-card-view-btn"
+                      onClick={() => {
+                        soundFx.playClick(900);
+                        onNavigateServices();
+                      }}
+                    >
+                      <span>Explore Technical Specs</span>
+                      <ChevronRight size={13} />
+                    </button>
+                  )}
                 </div>
               </div>
             );
@@ -120,12 +147,34 @@ export const ServicesProcess: React.FC<ServicesProcessProps> = ({ onStartProject
             })}
           </div>
 
-          {/* Active Step Deep-Dive Card */}
+          {/* Active Step Card With Visual Showcase Photo */}
           <div className="active-step-card">
+            {/* Visual Photo Stage */}
+            <div className="active-step-visual-col">
+              <div className="active-step-img-wrap">
+                <img 
+                  src={processStepsData[activeStep].image} 
+                  alt={processStepsData[activeStep].title} 
+                  loading="lazy"
+                  className="active-step-img" 
+                />
+                <div className="active-step-img-overlay" />
+                <div className="active-step-img-tag">
+                  {processStepsData[activeStep].tag || `STAGE ${processStepsData[activeStep].number}`}
+                </div>
+                <div className="active-step-duration-chip">
+                  {processStepsData[activeStep].duration}
+                </div>
+              </div>
+            </div>
+
             <div className="active-step-left">
-              <div className="active-step-tag">STAGE {processStepsData[activeStep].number} OF 09</div>
+              <span className="active-step-tag">STAGE {processStepsData[activeStep].number} OF 09</span>
               <h4 className="active-step-title">{processStepsData[activeStep].title}</h4>
               <p className="active-step-desc">{processStepsData[activeStep].description}</p>
+              <div className="active-step-lead">
+                <span>Phase Lead:</span> <strong>{processStepsData[activeStep].leadRole || 'AV Systems Engineer'}</strong>
+              </div>
             </div>
 
             <div className="active-step-right">
@@ -133,7 +182,7 @@ export const ServicesProcess: React.FC<ServicesProcessProps> = ({ onStartProject
               <div className="outputs-grid">
                 {processStepsData[activeStep].outputs.map((out, i) => (
                   <div key={i} className="output-chip">
-                    <CheckCircle2 size={13} className="text-cyan" />
+                    <CheckCircle2 size={14} className="text-cyan" />
                     <span>{out}</span>
                   </div>
                 ))}
@@ -147,8 +196,8 @@ export const ServicesProcess: React.FC<ServicesProcessProps> = ({ onStartProject
                     onStartProject();
                   }}
                 >
-                  <span>Initiate Stage 01 Assessment</span>
-                  <ArrowRight size={15} />
+                  <span>Initiate Stage 01 Scope Assessment</span>
+                  <ArrowRight size={14} />
                 </button>
 
                 {onNavigateServices && (

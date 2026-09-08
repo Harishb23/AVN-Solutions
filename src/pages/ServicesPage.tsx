@@ -161,6 +161,61 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onStartProject }) =>
               </div>
             </div>
           </div>
+
+          {/* Hero Visual Gallery Strip */}
+          <div className="services-hero-gallery-strip">
+            <div className="hero-gallery-card">
+              <img 
+                src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" 
+                alt="10G SDVoE Structured AV Rack Integration Chennai" 
+                className="hero-gallery-img" 
+              />
+              <div className="hero-gallery-overlay" />
+              <div className="hero-gallery-content">
+                <span className="hero-gallery-badge">SHOLINGANALLUR LAB</span>
+                <span className="hero-gallery-title">Structured 10G Rack Integration</span>
+              </div>
+            </div>
+
+            <div className="hero-gallery-card">
+              <img 
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" 
+                alt="Enterprise Boardroom 4K Video Wall" 
+                className="hero-gallery-img" 
+              />
+              <div className="hero-gallery-overlay" />
+              <div className="hero-gallery-content">
+                <span className="hero-gallery-badge">OMR & GUINDY SUITES</span>
+                <span className="hero-gallery-title">4K MicroLED Boardrooms</span>
+              </div>
+            </div>
+
+            <div className="hero-gallery-card">
+              <img 
+                src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80" 
+                alt="Acoustic RT60 EASE Simulation & Panel Tuning" 
+                className="hero-gallery-img" 
+              />
+              <div className="hero-gallery-overlay" />
+              <div className="hero-gallery-content">
+                <span className="hero-gallery-badge">Smaart V8 CALIBRATION</span>
+                <span className="hero-gallery-title">Acoustic RT60 Simulations</span>
+              </div>
+            </div>
+
+            <div className="hero-gallery-card">
+              <img 
+                src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" 
+                alt="AVIXA CTS-I Certified Laser Precision Installation" 
+                className="hero-gallery-img" 
+              />
+              <div className="hero-gallery-overlay" />
+              <div className="hero-gallery-content">
+                <span className="hero-gallery-badge">AVIXA CTS-I RIGOR</span>
+                <span className="hero-gallery-title">Laser Plane Display Mounting</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -220,61 +275,81 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onStartProject }) =>
             </div>
           </div>
 
-          {/* 12 Disciplines Grid */}
+          {/* 12 Disciplines Grid - Image-First Visual Experience */}
           {filteredServices.length > 0 ? (
             <div className="services-grid-12">
               {filteredServices.map((svc) => {
                 const Icon = iconMap[svc.iconName] || Layers;
                 return (
                   <div key={svc.id} className="service-card" data-cursor="explore">
-                    <div className="service-card-top">
-                      <div className="service-icon-box">
-                        <Icon size={22} />
+                    {/* Visual Photography Banner */}
+                    <div className="service-card-media-banner">
+                      <img 
+                        src={svc.image} 
+                        alt={`${svc.title} - AVN Solutions Chennai`} 
+                        loading="lazy" 
+                        className="service-card-photo" 
+                      />
+                      <div className="service-card-media-overlay" />
+                      
+                      <div className="service-banner-top-badges">
+                        <span className="service-category-badge-pill">{svc.categoryLabel}</span>
+                        <span className="service-number-badge">{svc.number}</span>
                       </div>
-                      <span className="service-number-badge">{svc.number}</span>
-                    </div>
 
-                    <span className="service-category-tag">{svc.categoryLabel}</span>
-                    <h3 className="service-title">{svc.title}</h3>
-                    <p className="service-desc">{svc.description}</p>
-
-                    {/* Deliverables Checklist */}
-                    <div className="service-deliverables">
-                      <span className="deliverables-header">Key Engineering Deliverables:</span>
-                      {svc.deliverables.map((item, i) => (
-                        <div key={i} className="deliverable-item">
-                          <CheckCircle2 size={13} />
-                          <span>{item}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Visual Engineering Tools Badges */}
-                    {svc.toolsUsed && svc.toolsUsed.length > 0 && (
-                      <div className="service-tools-row">
-                        <Wrench size={12} className="text-cyan" />
-                        <div className="service-tools-pills">
-                          {svc.toolsUsed.map((tool, tIdx) => (
-                            <span key={tIdx} className="service-tool-chip">{tool}</span>
-                          ))}
+                      <div className="service-banner-bottom-row">
+                        {svc.badge && (
+                          <span className="service-tech-badge-pill">{svc.badge}</span>
+                        )}
+                        <div className="service-card-floating-icon">
+                          <Icon size={18} />
                         </div>
                       </div>
-                    )}
+                    </div>
 
-                    {/* Card Footer */}
-                    <div className="service-card-footer">
-                      <div className="service-timeline-wrap">
-                        <Clock size={13} className="text-cyan" />
-                        <span>{svc.timeline || '1 - 2 Weeks'}</span>
+                    {/* Card Content Area */}
+                    <div className="service-card-content">
+                      <h3 className="service-title">{svc.title}</h3>
+                      <p className="service-desc">{svc.description}</p>
+
+                      {/* Deliverables Checklist */}
+                      <div className="service-deliverables">
+                        <span className="deliverables-header">Key Engineering Deliverables:</span>
+                        {svc.deliverables.slice(0, 3).map((item, i) => (
+                          <div key={i} className="deliverable-item">
+                            <CheckCircle2 size={13} />
+                            <span>{item}</span>
+                          </div>
+                        ))}
                       </div>
 
-                      <button
-                        className="service-action-btn"
-                        onClick={() => openServiceModal(svc)}
-                      >
-                        <span>Scope Details</span>
-                        <ChevronRight size={15} />
-                      </button>
+                      {/* Visual Engineering Tools Badges */}
+                      {svc.toolsUsed && svc.toolsUsed.length > 0 && (
+                        <div className="service-tools-row">
+                          <Wrench size={12} className="text-cyan" />
+                          <div className="service-tools-pills">
+                            {svc.toolsUsed.slice(0, 3).map((tool, tIdx) => (
+                              <span key={tIdx} className="service-tool-chip">{tool}</span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Card Footer */}
+                      <div className="service-card-footer">
+                        <div className="service-timeline-wrap">
+                          <Clock size={13} className="text-cyan" />
+                          <span>{svc.timeline || '1 - 2 Weeks'}</span>
+                        </div>
+
+                        <button
+                          className="service-action-btn"
+                          onClick={() => openServiceModal(svc)}
+                        >
+                          <span>Scope &amp; Specs</span>
+                          <ChevronRight size={15} />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 );
@@ -328,16 +403,33 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onStartProject }) =>
               })}
             </div>
 
-            {/* Active Stage Card */}
+            {/* Active Stage Card With Visual Photo Stage */}
             <div className="active-step-card">
+              {/* Visual Photo Stage */}
+              <div className="active-step-photo-col">
+                <div className="active-step-photo-wrap">
+                  <img 
+                    src={processStepsData[activeStep].image} 
+                    alt={processStepsData[activeStep].title} 
+                    loading="lazy" 
+                    className="active-step-photo" 
+                  />
+                  <div className="active-step-photo-overlay" />
+                  <span className="active-step-photo-tag">
+                    {processStepsData[activeStep].tag || `STAGE ${processStepsData[activeStep].number}`}
+                  </span>
+                  <div className="active-step-photo-duration">
+                    <Clock size={12} />
+                    <span>{processStepsData[activeStep].duration || '1 - 2 Weeks'}</span>
+                  </div>
+                </div>
+              </div>
+
               <div className="active-step-left">
                 <div>
                   <div className="active-step-badge-row">
                     <span className="active-step-tag">STAGE {processStepsData[activeStep].number} OF 09</span>
-                    <span className="active-step-duration">
-                      <Clock size={12} className="text-cyan" />
-                      <span>{processStepsData[activeStep].duration || '1 - 2 Weeks'}</span>
-                    </span>
+                    <span className="active-step-phase-pill">{processStepsData[activeStep].phase}</span>
                   </div>
 
                   <h4 className="active-step-title">{processStepsData[activeStep].title}</h4>
@@ -345,7 +437,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onStartProject }) =>
                 </div>
 
                 <div className="active-step-lead">
-                  <span>Lead Role:</span> {processStepsData[activeStep].leadRole || 'AV Systems Engineer'}
+                  <span>Lead Role:</span> <strong>{processStepsData[activeStep].leadRole || 'AV Systems Engineer'}</strong>
                 </div>
               </div>
 
@@ -521,18 +613,32 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onStartProject }) =>
               <X size={18} />
             </button>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', marginBottom: '1.25rem' }}>
-              <span className="service-category-tag">{selectedServiceModal.categoryLabel}</span>
-              <span className="service-number-badge">DISCIPLINE {selectedServiceModal.number}</span>
-            </div>
+            {selectedServiceModal.image && (
+              <div className="service-modal-hero-media">
+                <img 
+                  src={selectedServiceModal.image} 
+                  alt={selectedServiceModal.title} 
+                  className="service-modal-hero-img" 
+                />
+                <div className="service-modal-hero-overlay" />
+                <div className="service-modal-hero-badges">
+                  <span className="service-category-tag">{selectedServiceModal.categoryLabel}</span>
+                  {selectedServiceModal.badge && (
+                    <span className="service-modal-tech-badge">{selectedServiceModal.badge}</span>
+                  )}
+                  <span className="service-number-badge">DISCIPLINE {selectedServiceModal.number}</span>
+                </div>
+              </div>
+            )}
 
-            <h3 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.85rem' }}>
-              {selectedServiceModal.title}
-            </h3>
+            <div className="service-modal-body-pad">
+              <h3 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.85rem' }}>
+                {selectedServiceModal.title}
+              </h3>
 
-            <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: 1.65, marginBottom: '1.5rem' }}>
-              {selectedServiceModal.description}
-            </p>
+              <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: 1.65, marginBottom: '1.5rem' }}>
+                {selectedServiceModal.description}
+              </p>
 
             {/* Scope Deliverables */}
             <div style={{ background: 'var(--bg-primary)', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-lg)', padding: '1.5rem', marginBottom: '1.5rem' }}>
@@ -603,6 +709,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onStartProject }) =>
               >
                 <span>Close</span>
               </button>
+            </div>
             </div>
           </div>
         </div>

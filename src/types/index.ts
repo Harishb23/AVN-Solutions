@@ -93,6 +93,8 @@ export interface ServiceItem {
   timeline?: string;
   toolsUsed?: string[];
   suitableFor?: string[];
+  image?: string;
+  badge?: string;
 }
 
 export interface SLATier {
@@ -115,6 +117,8 @@ export interface ProcessStep {
   outputs: string[];
   duration?: string;
   leadRole?: string;
+  image?: string;
+  tag?: string;
 }
 
 export interface ProjectItem {
