@@ -1,0 +1,39 @@
+# ==============================================================================
+# Security & MIME Type Headers for Favicons & Brand Assets
+# Netlify, Cloudflare Pages & Static Hosting
+# ==============================================================================
+
+/favicon.ico
+  Content-Type: image/x-icon
+  Cache-Control: public, max-age=2592000, immutable
+  Access-Control-Allow-Origin: *
+
+/favicon-48x48.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=2592000, immutable
+  Access-Control-Allow-Origin: *
+
+/favicon-96x96.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=2592000, immutable
+  Access-Control-Allow-Origin: *
+
+/favicon-192x192.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=2592000, immutable
+  Access-Control-Allow-Origin: *
+
+/favicon-512x512.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=2592000, immutable
+  Access-Control-Allow-Origin: *
+
+/apple-touch-icon.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=2592000, immutable
+  Access-Control-Allow-Origin: *
+
+/favicon.svg
+  Content-Type: image/svg+xml
+  Cache-Control: public, max-age=2592000, immutable
+  Access-Control-Allow-Origin: *

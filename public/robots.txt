@@ -24,23 +24,39 @@ Allow: /*.jpg$
 Allow: /*.jpeg$
 Allow: /*.webp$
 Allow: /*.svg$
+Allow: /*.ico$
+Allow: /favicon.ico
+Allow: /favicon-48x48.png
+Allow: /favicon-96x96.png
+Allow: /favicon-192x192.png
+Allow: /favicon-512x512.png
+Allow: /apple-touch-icon.png
 
-# Googlebot Image Crawler for Rich Google Visual Search
+# Googlebot Image Crawler for Rich Google Visual Search & Favicons
 User-agent: Googlebot-Image
 Allow: /
 Allow: /assets/
 Allow: /hero-bg.jpg
 Allow: /logo.png
 Allow: /favicon.png
+Allow: /favicon.ico
+Allow: /favicon-48x48.png
+Allow: /favicon-96x96.png
+Allow: /favicon-192x192.png
+Allow: /favicon-512x512.png
+Allow: /apple-touch-icon.png
 Allow: /*.png$
 Allow: /*.jpg$
 Allow: /*.jpeg$
 Allow: /*.webp$
 Allow: /*.svg$
+Allow: /*.ico$
 
 # Googlebot Mobile Crawler
 User-agent: Googlebot-Mobile
 Allow: /
+Allow: /favicon.ico
+Allow: /favicon-48x48.png
 
 # Bingbot Crawler
 User-agent: Bingbot
